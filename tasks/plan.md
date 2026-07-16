@@ -36,7 +36,7 @@ T10 deploy + CI + README ← T9
 - [ ] `npm run build` bersih; dev server render welcome→login; manifest terpasang
 
 ### Phase 2: Auth
-- [ ] Task 3: Registrasi warga, login, verifikasi email, route guard role
+- [x] Task 3: Registrasi warga, login, verifikasi email, route guard role
 
 ### Checkpoint 2 (butuh firebaseConfig asli mulai sini)
 - [ ] Registrasi dari web lolos rules; login ops eksisting masuk UI ops; login warga masuk UI warga

@@ -1,4 +1,5 @@
 import { Navigate, Route, Routes } from "react-router-dom";
+import { AuthProvider, RequireRole } from "./lib/auth";
 import Welcome from "./pages/Welcome";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
@@ -10,16 +11,18 @@ import ScanQr from "./pages/ScanQr";
 
 export default function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Welcome />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Register />} />
-      <Route path="/warga" element={<Warga />} />
-      <Route path="/warga/scan" element={<ScanQr />} />
-      <Route path="/ops" element={<Ops />} />
-      <Route path="/ops/setoran" element={<OpsSetoran />} />
-      <Route path="/ops/penukaran" element={<OpsPenukaran />} />
-      <Route path="*" element={<Navigate to="/" replace />} />
-    </Routes>
+    <AuthProvider>
+      <Routes>
+        <Route path="/" element={<Welcome />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/warga" element={<RequireRole role="warga"><Warga /></RequireRole>} />
+        <Route path="/warga/scan" element={<RequireRole role="warga"><ScanQr /></RequireRole>} />
+        <Route path="/ops" element={<RequireRole role="ops"><Ops /></RequireRole>} />
+        <Route path="/ops/setoran" element={<RequireRole role="ops"><OpsSetoran /></RequireRole>} />
+        <Route path="/ops/penukaran" element={<RequireRole role="ops"><OpsPenukaran /></RequireRole>} />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </AuthProvider>
   );
 }
