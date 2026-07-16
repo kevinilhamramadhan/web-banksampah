@@ -44,7 +44,7 @@ T10 deploy + CI + README ← T9
 ### Phase 3: Fitur inti
 - [x] Task 4: Dashboard warga (saldo realtime + riwayat berhalaman)
 - [x] Task 5: Ops beranda (tab Masuk/Keluar berhalaman)
-- [ ] Task 6: Ops input setoran (cari warga + batch atomik + leaderboard)
+- [x] Task 6: Ops input setoran (cari warga + batch atomik + leaderboard)
 
 ### Checkpoint 3
 - [ ] Setoran via web menambah saldo warga realtime; dokumen setoran+leaderboard identik format Android; unit test poin lulus

@@ -10,8 +10,10 @@ import {
 import {
   collection,
   doc,
+  endAt,
   getDoc,
   getDocs,
+  increment,
   limit,
   onSnapshot,
   orderBy,
@@ -19,12 +21,15 @@ import {
   serverTimestamp,
   setDoc,
   startAfter,
+  startAt,
   where,
+  writeBatch,
   type QueryDocumentSnapshot,
   type Unsubscribe,
 } from "firebase/firestore";
 import { auth, db } from "./firebase";
-import type { Penukaran, Role, Setoran, UserDoc } from "./models";
+import { currentSeason } from "./constants";
+import type { Penukaran, Role, Setoran, SetoranItem, UserDoc } from "./models";
 
 // ---------- Auth ----------
 
@@ -112,3 +117,48 @@ export const setoranPage = (field: PihakField, id: string, after: QueryDocumentS
 
 export const penukaranPage = (field: PihakField, id: string, after: QueryDocumentSnapshot | null) =>
   pageOf<Penukaran>("penukaran", "createdAt", field, id, after);
+
+// ---------- Cari warga (prefix search sederhana, persis Android) ----------
+// Tanpa filter role di query (hindari composite index); ops tersaring di client.
+
+export async function searchWarga(teks: string): Promise<UserDoc[]> {
+  const q = teks.trim().toLowerCase();
+  if (!q) return [];
+  const field = /^[\d+]/.test(q) ? "noHp" : "namaLower";
+  const snap = await getDocs(
+    query(collection(db, "users"), orderBy(field), startAt(q), endAt(q + ""), limit(12)),
+  );
+  return snap.docs.map((d) => ({ uid: d.id, ...d.data() }) as UserDoc).filter((u) => u.role === "warga");
+}
+
+// ---------- Setoran (ops): satu batch atomik, persis Repo.kt ----------
+// setoran baru + saldo warga bertambah (lastTxnId divalidasi rules) + leaderboard musiman.
+
+export async function createSetoran(warga: UserDoc, items: SetoranItem[]): Promise<void> {
+  if (items.length === 0) throw new Error("Minimal satu jenis sampah");
+  const total = items.reduce((a, i) => a + i.poin, 0);
+  const setoranRef = doc(collection(db, "setoran"));
+  const season = currentSeason();
+  const batch = writeBatch(db);
+  batch.set(setoranRef, {
+    wargaId: warga.uid,
+    wargaNama: warga.nama,
+    opsId: auth.currentUser!.uid,
+    items: items.map((i) => ({
+      jenisSampahId: i.jenisSampahId,
+      jenisSampahNama: i.jenisSampahNama,
+      beratKg: i.beratKg,
+      poin: i.poin,
+    })),
+    totalPoin: total,
+    tanggal: serverTimestamp(),
+  });
+  batch.update(doc(db, "users", warga.uid), { saldoPoin: increment(total), lastTxnId: setoranRef.id });
+  // Leaderboard musiman: hanya naik saat setoran, tidak berkurang saat penukaran (sama dengan Android).
+  batch.set(
+    doc(db, "leaderboard", `${season}__${warga.uid}`),
+    { season, uid: warga.uid, nama: warga.nama, poin: increment(total) },
+    { merge: true },
+  );
+  await batch.commit();
+}

@@ -18,6 +18,22 @@ describe("poinDari", () => {
   });
 });
 
+describe("parseBerat", () => {
+  it("menerima koma desimal gaya Indonesia", async () => {
+    const { parseBerat } = await import("./constants");
+    expect(parseBerat("1,5")).toBe(1.5);
+    expect(parseBerat("2.25")).toBe(2.25);
+    expect(parseBerat("3")).toBe(3);
+  });
+  it("input tidak valid atau ≤ 0 → null", async () => {
+    const { parseBerat } = await import("./constants");
+    expect(parseBerat("abc")).toBeNull();
+    expect(parseBerat("")).toBeNull();
+    expect(parseBerat("0")).toBeNull();
+    expect(parseBerat("-1")).toBeNull();
+  });
+});
+
 describe("tarif", () => {
   it("konstanta sesuai kesepakatan", () => {
     expect(TARIF_POIN_PER_KG).toBe(5);
