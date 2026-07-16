@@ -1,0 +1,45 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "setoran",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "wargaId", "order": "ASCENDING" },
+        { "fieldPath": "tanggal", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "setoran",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "opsId", "order": "ASCENDING" },
+        { "fieldPath": "tanggal", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "penukaran",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "wargaId", "order": "ASCENDING" },
+        { "fieldPath": "createdAt", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "penukaran",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "opsId", "order": "ASCENDING" },
+        { "fieldPath": "createdAt", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "leaderboard",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "season", "order": "ASCENDING" },
+        { "fieldPath": "poin", "order": "DESCENDING" }
+      ]
+    }
+  ],
+  "fieldOverrides": []
+}
