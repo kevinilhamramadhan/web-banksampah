@@ -42,7 +42,7 @@ T10 deploy + CI + README ← T9
 - [ ] Registrasi dari web lolos rules; login ops eksisting masuk UI ops; login warga masuk UI warga
 
 ### Phase 3: Fitur inti
-- [ ] Task 4: Dashboard warga (saldo realtime + riwayat berhalaman)
+- [x] Task 4: Dashboard warga (saldo realtime + riwayat berhalaman)
 - [ ] Task 5: Ops beranda (tab Masuk/Keluar berhalaman)
 - [ ] Task 6: Ops input setoran (cari warga + batch atomik + leaderboard)
 

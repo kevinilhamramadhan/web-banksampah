@@ -7,9 +7,24 @@ import {
   signInWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
-import { doc, getDoc, serverTimestamp, setDoc } from "firebase/firestore";
+import {
+  collection,
+  doc,
+  getDoc,
+  getDocs,
+  limit,
+  onSnapshot,
+  orderBy,
+  query,
+  serverTimestamp,
+  setDoc,
+  startAfter,
+  where,
+  type QueryDocumentSnapshot,
+  type Unsubscribe,
+} from "firebase/firestore";
 import { auth, db } from "./firebase";
-import type { Role } from "./models";
+import type { Penukaran, Role, Setoran, UserDoc } from "./models";
 
 // ---------- Auth ----------
 
@@ -59,3 +74,41 @@ export async function reloadUser(): Promise<boolean> {
 }
 
 export const logout = () => signOut(auth);
+
+// ---------- Realtime ----------
+
+export function onUserDoc(uid: string, cb: (u: UserDoc | null) => void): Unsubscribe {
+  return onSnapshot(doc(db, "users", uid), (snap) =>
+    cb(snap.exists() ? ({ uid: snap.id, ...snap.data() } as UserDoc) : null),
+  );
+}
+
+// ---------- Riwayat berhalaman (limit 20 + muat lebih banyak) ----------
+// Query persis pola Android — hanya memakai composite index yang sudah ada.
+
+export const PAGE_SIZE = 20;
+
+export interface Page<T> {
+  items: T[];
+  last: QueryDocumentSnapshot | null;
+}
+
+type PihakField = "wargaId" | "opsId";
+
+async function pageOf<T>(
+  koleksi: "setoran" | "penukaran",
+  urutField: "tanggal" | "createdAt",
+  field: PihakField,
+  id: string,
+  after: QueryDocumentSnapshot | null,
+): Promise<Page<T>> {
+  const cons = [where(field, "==", id), orderBy(urutField, "desc"), ...(after ? [startAfter(after)] : []), limit(PAGE_SIZE)];
+  const snap = await getDocs(query(collection(db, koleksi), ...cons));
+  return { items: snap.docs.map((d) => ({ id: d.id, ...d.data() }) as T), last: snap.docs.at(-1) ?? null };
+}
+
+export const setoranPage = (field: PihakField, id: string, after: QueryDocumentSnapshot | null) =>
+  pageOf<Setoran>("setoran", "tanggal", field, id, after);
+
+export const penukaranPage = (field: PihakField, id: string, after: QueryDocumentSnapshot | null) =>
+  pageOf<Penukaran>("penukaran", "createdAt", field, id, after);
