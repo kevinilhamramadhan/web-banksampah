@@ -29,7 +29,7 @@ T10 deploy + CI + README ← T9
 ## Task List
 
 ### Phase 1: Foundation
-- [ ] Task 1: Scaffold + tema + routing
+- [x] Task 1: Scaffold + tema + routing
 - [ ] Task 2: Welcome screen + PWA install
 
 ### Checkpoint 1
