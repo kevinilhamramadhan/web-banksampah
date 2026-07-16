@@ -2,15 +2,14 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
-// GANTI dengan config Web App dari Firebase Console project `bank-sampah-kkn`
-// (Console → Project settings → General → Add app → Web). Bukan rahasia, boleh di-commit.
+// Config Web App "Bank Sampah Web" di project `bank-sampah-kkn`. Bukan rahasia, boleh di-commit.
 const firebaseConfig = {
-  apiKey: "GANTI_API_KEY",
+  apiKey: "AIzaSyAODjt1HHtJT9KckKGIQOzygEnYuBKP6KI",
   authDomain: "bank-sampah-kkn.firebaseapp.com",
   projectId: "bank-sampah-kkn",
   storageBucket: "bank-sampah-kkn.firebasestorage.app",
-  messagingSenderId: "GANTI_SENDER_ID",
-  appId: "GANTI_APP_ID",
+  messagingSenderId: "598258506878",
+  appId: "1:598258506878:web:a609b6b0a82fd7df5f4c2f",
 };
 
 export const app = initializeApp(firebaseConfig);
