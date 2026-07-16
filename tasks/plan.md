@@ -30,7 +30,7 @@ T10 deploy + CI + README ← T9
 
 ### Phase 1: Foundation
 - [x] Task 1: Scaffold + tema + routing
-- [ ] Task 2: Welcome screen + PWA install
+- [x] Task 2: Welcome screen + PWA install
 
 ### Checkpoint 1
 - [ ] `npm run build` bersih; dev server render welcome→login; manifest terpasang
