@@ -15,6 +15,8 @@ export async function createSetoran(ops: User, wargaId: string, entri: { jenis: 
   }));
   const totalPoin = items.reduce((a, i) => a + i.poin, 0);
   const hasil = await prisma.$transaction(async (tx) => {
+    const target = await tx.user.findUnique({ where: { id: wargaId }, select: { role: true } });
+    if (target?.role !== "warga") throw new Error("Penerima setoran harus warga");
     const s = await tx.setoran.create({ data: { wargaId, opsId: ops.id, totalPoin, items: { create: items } } });
     await tx.user.update({ where: { id: wargaId }, data: { saldoPoin: { increment: totalPoin } } });
     return s;

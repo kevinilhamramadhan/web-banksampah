@@ -19,6 +19,11 @@ describe("createSetoran", () => {
     const w = await buatUser();
     await expect(createSetoran(w, w.id, [{ jenis: "Plastik", beratKg: 1 }])).rejects.toThrow(/ops/i);
   });
+  it("penerima setoran harus warga (bukan ops)", async () => {
+    const o = await buatUser({ role: "ops", email: "ops2@test.com" });
+    const o2 = await buatUser({ role: "ops", email: "ops3@test.com" });
+    await expect(createSetoran(o, o2.id, [{ jenis: "Plastik", beratKg: 1 }])).rejects.toThrow(/warga/);
+  });
 });
 
 describe("searchWarga", () => {
