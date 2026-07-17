@@ -25,13 +25,15 @@ const resend = () => new Resend(process.env.RESEND_API_KEY);
 const kirim = (to: string, subject: string, html: string) =>
   resend().emails.send({ from: process.env.EMAIL_FROM!, to, subject, html });
 
+const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+
 export async function sendVerification(user: User) {
   const t = await createEmailToken(user.id, "verify");
   await kirim(user.email, "Verifikasi email Bank Sampah",
-    `<p>Halo ${user.nama}, klik untuk verifikasi: <a href="${process.env.APP_URL}/verifikasi?token=${t}">Verifikasi Email</a> (berlaku 1 jam)</p>`);
+    `<p>Halo ${esc(user.nama)}, klik untuk verifikasi: <a href="${process.env.APP_URL}/verifikasi?token=${encodeURIComponent(t)}">Verifikasi Email</a> (berlaku 1 jam)</p>`);
 }
 export async function sendReset(user: User) {
   const t = await createEmailToken(user.id, "reset");
   await kirim(user.email, "Reset password Bank Sampah",
-    `<p>Halo ${user.nama}, klik untuk reset password: <a href="${process.env.APP_URL}/reset?token=${t}">Reset Password</a> (berlaku 1 jam)</p>`);
+    `<p>Halo ${esc(user.nama)}, klik untuk reset password: <a href="${process.env.APP_URL}/reset?token=${encodeURIComponent(t)}">Reset Password</a> (berlaku 1 jam)</p>`);
 }
