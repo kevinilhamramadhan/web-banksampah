@@ -50,7 +50,7 @@ T10 deploy + CI + README ← T9
 - [ ] Setoran via web menambah saldo warga realtime; dokumen setoran+leaderboard identik format Android; unit test poin lulus
 
 ### Phase 4: Penukaran QR
-- [ ] Task 7: Ops — buat permintaan penukaran + QR fullscreen + countdown + expire/batal/buat-ulang
+- [x] Task 7: Ops — buat permintaan penukaran + QR fullscreen + countdown + expire/batal/buat-ulang
 - [ ] Task 8: Warga — scan kamera + transaction konfirmasi
 
 ### Checkpoint 4

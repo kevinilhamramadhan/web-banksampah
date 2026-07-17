@@ -27,8 +27,9 @@ import {
   type QueryDocumentSnapshot,
   type Unsubscribe,
 } from "firebase/firestore";
+import { Timestamp, updateDoc } from "firebase/firestore";
 import { auth, db } from "./firebase";
-import { currentSeason } from "./constants";
+import { MIN_TUKAR_POIN, RUPIAH_PER_POIN, currentSeason } from "./constants";
 import type { Penukaran, Role, Setoran, SetoranItem, UserDoc } from "./models";
 
 // ---------- Auth ----------
@@ -162,3 +163,33 @@ export async function createSetoran(warga: UserDoc, items: SetoranItem[]): Promi
   );
   await batch.commit();
 }
+
+// ---------- Penukaran poin via QR ----------
+
+export const TOKEN_UMUR_MENIT = 3;
+
+export async function createPenukaran(warga: UserDoc, poin: number): Promise<string> {
+  if (poin < MIN_TUKAR_POIN) throw new Error(`Minimal penukaran ${MIN_TUKAR_POIN} poin`);
+  const ref = doc(collection(db, "penukaran"));
+  await setDoc(ref, {
+    wargaId: warga.uid,
+    wargaNama: warga.nama,
+    opsId: auth.currentUser!.uid,
+    poinDitukar: poin,
+    jumlahRupiah: poin * RUPIAH_PER_POIN,
+    status: "pending",
+    qrToken: crypto.randomUUID(),
+    tokenExpiredAt: Timestamp.fromMillis(Date.now() + TOKEN_UMUR_MENIT * 60_000),
+    confirmedAt: null,
+    createdAt: serverTimestamp(),
+  });
+  return ref.id;
+}
+
+export function onPenukaran(id: string, cb: (p: Penukaran | null) => void): Unsubscribe {
+  return onSnapshot(doc(db, "penukaran", id), (snap) =>
+    cb(snap.exists() ? ({ id: snap.id, ...snap.data() } as Penukaran) : null),
+  );
+}
+
+export const cancelPenukaran = (id: string) => updateDoc(doc(db, "penukaran", id), { status: "cancelled" });
