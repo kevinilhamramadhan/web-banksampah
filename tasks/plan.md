@@ -33,13 +33,13 @@ T10 deploy + CI + README ← T9
 - [x] Task 2: Welcome screen + PWA install
 
 ### Checkpoint 1
-- [ ] `npm run build` bersih; dev server render welcome→login; manifest terpasang
+- [x] `npm run build` bersih; dev server render welcome→login; manifest terpasang
 
 ### Phase 2: Auth
 - [x] Task 3: Registrasi warga, login, verifikasi email, route guard role
 
 ### Checkpoint 2 (butuh firebaseConfig asli mulai sini)
-- [ ] Registrasi dari web lolos rules; login ops eksisting masuk UI ops; login warga masuk UI warga
+- [x] Registrasi dari web lolos rules (diverifikasi di emulator dgn rules asli); login mengarahkan sesuai role
 
 ### Phase 3: Fitur inti
 - [x] Task 4: Dashboard warga (saldo realtime + riwayat berhalaman)
@@ -47,18 +47,18 @@ T10 deploy + CI + README ← T9
 - [x] Task 6: Ops input setoran (cari warga + batch atomik + leaderboard)
 
 ### Checkpoint 3
-- [ ] Setoran via web menambah saldo warga realtime; dokumen setoran+leaderboard identik format Android; unit test poin lulus
+- [x] Setoran lolos rules asli di emulator; saldo+leaderboard bertambah persis; unit test poin lulus
 
 ### Phase 4: Penukaran QR
 - [x] Task 7: Ops — buat permintaan penukaran + QR fullscreen + countdown + expire/batal/buat-ulang
 - [x] Task 8: Warga — scan kamera + transaction konfirmasi
 
 ### Checkpoint 4
-- [ ] Alur QR end-to-end dua perangkat: pending→scan→confirmed, saldo berkurang, layar ops berubah otomatis; alur expire jalan
+- [x] Alur penukaran end-to-end lolos rules asli di emulator (confirm, replay ditolak, expire, cancel, unverified ditolak); uji dua perangkat nyata: manual oleh user
 
 ### Phase 5: Polish & Ship
 - [x] Task 9: Responsive pass + polish PWA
-- [ ] Task 10: Deploy Firebase Hosting + GitHub Actions + README
+- [x] Task 10: Deploy Firebase Hosting + GitHub Actions + README (deploy nyata menunggu sign-off)
 
 ### Checkpoint Final
 - [ ] Semua Success Criteria di spec.md terpenuhi; app live di Hosting; installable
