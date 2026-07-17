@@ -4,3 +4,4 @@ agent-skills/
 *.local
 .firebase/
 firestore-debug.log
+webapp/.env
