@@ -11,7 +11,6 @@
   },
   "dependencies": {
     "@node-rs/argon2": "^2.0.2",
-    "@prisma/client": "^7.8.0",
     "firebase-scrypt": "^2.2.0",
     "jsqr": "^1.4.0",
     "next": "16.2.10",
@@ -21,11 +20,12 @@
     "resend": "^6.17.2"
   },
   "devDependencies": {
+    "@prisma/client": "^6.19.3",
     "@types/node": "^20",
     "@types/qrcode": "^1.5.6",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "prisma": "^7.8.0",
+    "prisma": "^6.19.3",
     "typescript": "^5",
     "vitest": "^4.1.10"
   }

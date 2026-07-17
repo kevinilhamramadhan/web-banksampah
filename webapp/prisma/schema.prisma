@@ -1,0 +1,100 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  warga
+  ops
+}
+
+enum PenukaranStatus {
+  pending
+  confirmed
+  cancelled
+}
+
+enum TokenType {
+  verify
+  reset
+}
+
+model User {
+  id              String    @id @default(uuid())
+  role            Role      @default(warga)
+  nama            String
+  noHp            String
+  alamat          String
+  email           String    @unique
+  saldoPoin       Int       @default(0) @map("saldo_poin")
+  passwordHash    String?
+  firebaseHash    String?
+  firebaseSalt    String?
+  emailVerifiedAt DateTime?
+  createdAt       DateTime  @default(now())
+  sessions        Session[]
+  emailTokens     EmailToken[]
+  setoranSbgWarga Setoran[]    @relation("SetoranWarga")
+  setoranSbgOps   Setoran[]    @relation("SetoranOps")
+  penukaranSbgWarga Penukaran[] @relation("PenukaranWarga")
+  penukaranSbgOps   Penukaran[] @relation("PenukaranOps")
+}
+
+model Session {
+  token     String   @id
+  userId    String
+  expiresAt DateTime
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model EmailToken {
+  token     String    @id
+  userId    String
+  type      TokenType
+  expiresAt DateTime
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Setoran {
+  id        String   @id @default(uuid())
+  wargaId   String
+  opsId     String
+  totalPoin Int
+  tanggal   DateTime @default(now())
+  warga     User     @relation("SetoranWarga", fields: [wargaId], references: [id])
+  ops       User     @relation("SetoranOps", fields: [opsId], references: [id])
+  items     SetoranItem[]
+  @@index([wargaId, tanggal(sort: Desc)])
+  @@index([opsId, tanggal(sort: Desc)])
+}
+
+model SetoranItem {
+  id              String  @id @default(uuid())
+  setoranId       String
+  jenisSampahId   String
+  jenisSampahNama String
+  beratKg         Float
+  poin            Int
+  setoran         Setoran @relation(fields: [setoranId], references: [id], onDelete: Cascade)
+}
+
+model Penukaran {
+  id             String          @id @default(uuid())
+  wargaId        String
+  opsId          String
+  poinDitukar    Int
+  jumlahRupiah   Int
+  status         PenukaranStatus @default(pending)
+  qrToken        String          @unique @default(uuid())
+  tokenExpiredAt DateTime
+  confirmedAt    DateTime?
+  createdAt      DateTime        @default(now())
+  warga          User            @relation("PenukaranWarga", fields: [wargaId], references: [id])
+  ops            User            @relation("PenukaranOps", fields: [opsId], references: [id])
+  @@index([wargaId, createdAt(sort: Desc)])
+  @@index([opsId, createdAt(sort: Desc)])
+}
