@@ -1,21 +1,34 @@
 "use client";
-import { useState } from "react";
-import { muatSetoranAction, muatPenukaranAction } from "@/lib/actions/warga";
-import type { SetoranRingkas, PenukaranRingkas, RiwayatPage } from "@/lib/actions/warga";
-import { fmtRupiah } from "@/lib/constants";
-import { fmtTanggal } from "@/lib/format";
+import { useState, type ReactNode } from "react";
 
-const STATUS_LABEL: Record<PenukaranRingkas["status"], string> = {
-  pending: "Menunggu",
-  confirmed: "Berhasil",
-  cancelled: "Dibatalkan",
-};
-
-interface Props {
-  initialSetoran: RiwayatPage<SetoranRingkas>;
+export interface RiwayatPage<T> {
+  items: T[];
+  nextCursor: string | null;
 }
 
-export default function RiwayatList({ initialSetoran }: Props) {
+interface Props<S extends { id: string }, P extends { id: string }> {
+  initialSetoran: RiwayatPage<S>;
+  muatSetoran: (cursor?: string) => Promise<RiwayatPage<S> | { error: string }>;
+  muatPenukaran: (cursor?: string) => Promise<RiwayatPage<P> | { error: string }>;
+  renderSetoran: (item: S) => ReactNode;
+  renderPenukaran: (item: P) => ReactNode;
+  kosongSetoran: string;
+  kosongPenukaran: string;
+  labelSetoran?: string;
+  labelPenukaran?: string;
+}
+
+export default function RiwayatList<S extends { id: string }, P extends { id: string }>({
+  initialSetoran,
+  muatSetoran,
+  muatPenukaran,
+  renderSetoran,
+  renderPenukaran,
+  kosongSetoran,
+  kosongPenukaran,
+  labelSetoran = "Setoran",
+  labelPenukaran = "Penukaran",
+}: Props<S, P>) {
   const [tab, setTab] = useState<"setoran" | "penukaran">("setoran");
 
   const [setoran, setSetoran] = useState(initialSetoran.items);
@@ -23,16 +36,16 @@ export default function RiwayatList({ initialSetoran }: Props) {
   const [setoranSibuk, setSetoranSibuk] = useState(false);
   const [setoranError, setSetoranError] = useState("");
 
-  const [penukaran, setPenukaran] = useState<PenukaranRingkas[] | null>(null);
+  const [penukaran, setPenukaran] = useState<P[] | null>(null);
   const [penukaranCursor, setPenukaranCursor] = useState<string | null>(null);
   const [penukaranSibuk, setPenukaranSibuk] = useState(false);
   const [penukaranError, setPenukaranError] = useState("");
 
-  const muatSetoran = async (cursor: string | null) => {
+  const muatLebihSetoran = async (cursor: string | null) => {
     setSetoranSibuk(true);
     setSetoranError("");
     try {
-      const page = await muatSetoranAction(cursor ?? undefined);
+      const page = await muatSetoran(cursor ?? undefined);
       if ("error" in page) {
         setSetoranError(page.error);
         return;
@@ -46,11 +59,11 @@ export default function RiwayatList({ initialSetoran }: Props) {
     }
   };
 
-  const muatPenukaran = async (cursor: string | null) => {
+  const muatLebihPenukaran = async (cursor: string | null) => {
     setPenukaranSibuk(true);
     setPenukaranError("");
     try {
-      const page = await muatPenukaranAction(cursor ?? undefined);
+      const page = await muatPenukaran(cursor ?? undefined);
       if ("error" in page) {
         setPenukaranError(page.error);
         return;
@@ -66,7 +79,7 @@ export default function RiwayatList({ initialSetoran }: Props) {
 
   const pilihTab = (t: "setoran" | "penukaran") => {
     setTab(t);
-    if (t === "penukaran" && penukaran === null) void muatPenukaran(null);
+    if (t === "penukaran" && penukaran === null) void muatLebihPenukaran(null);
   };
 
   return (
@@ -78,7 +91,7 @@ export default function RiwayatList({ initialSetoran }: Props) {
           aria-selected={tab === "setoran"}
           onClick={() => pilihTab("setoran")}
         >
-          Setoran
+          {labelSetoran}
         </button>
         <button
           className={`chip ${tab === "penukaran" ? "aktif" : ""}`}
@@ -86,7 +99,7 @@ export default function RiwayatList({ initialSetoran }: Props) {
           aria-selected={tab === "penukaran"}
           onClick={() => pilihTab("penukaran")}
         >
-          Penukaran
+          {labelPenukaran}
         </button>
       </div>
 
@@ -94,23 +107,17 @@ export default function RiwayatList({ initialSetoran }: Props) {
         setoranError ? (
           <p className="error">{setoranError}</p>
         ) : !setoranSibuk && setoran.length === 0 ? (
-          <p className="muted">Belum ada setoran. Bawa sampahmu ke bank sampah, ya!</p>
+          <p className="muted">{kosongSetoran}</p>
         ) : (
           <div>
             {setoran.map((s) => (
               <div className="riwayat-item" key={s.id}>
-                <div className="baris">
-                  <div>
-                    <div>{s.items.map((i) => `${i.jenisSampahNama} ${i.beratKg} kg`).join(", ")}</div>
-                    <div className="muted">{fmtTanggal(new Date(s.tanggal))}</div>
-                  </div>
-                  <strong style={{ color: "var(--hijau)" }}>+{s.totalPoin} poin</strong>
-                </div>
+                {renderSetoran(s)}
               </div>
             ))}
             {setoranSibuk && <p className="muted">Memuat…</p>}
             {!setoranSibuk && setoranCursor && (
-              <button className="btn kecil sekunder" style={{ margin: "12px auto" }} onClick={() => void muatSetoran(setoranCursor)}>
+              <button className="btn kecil sekunder" style={{ margin: "12px auto" }} onClick={() => void muatLebihSetoran(setoranCursor)}>
                 Muat lebih banyak
               </button>
             )}
@@ -119,27 +126,17 @@ export default function RiwayatList({ initialSetoran }: Props) {
       ) : penukaranError ? (
         <p className="error">{penukaranError}</p>
       ) : !penukaranSibuk && (penukaran ?? []).length === 0 ? (
-        <p className="muted">Belum ada penukaran poin.</p>
+        <p className="muted">{kosongPenukaran}</p>
       ) : (
         <div>
           {(penukaran ?? []).map((p) => (
             <div className="riwayat-item" key={p.id}>
-              <div className="baris">
-                <div>
-                  <div>
-                    {STATUS_LABEL[p.status]} • {fmtRupiah(p.jumlahRupiah)}
-                  </div>
-                  <div className="muted">{fmtTanggal(new Date(p.createdAt))}</div>
-                </div>
-                <strong style={{ color: p.status === "confirmed" ? "var(--merah)" : "var(--teks-redup)" }}>
-                  {p.status === "confirmed" ? `-${p.poinDitukar} poin` : `${p.poinDitukar} poin`}
-                </strong>
-              </div>
+              {renderPenukaran(p)}
             </div>
           ))}
           {penukaranSibuk && <p className="muted">Memuat…</p>}
           {!penukaranSibuk && penukaranCursor && (
-            <button className="btn kecil sekunder" style={{ margin: "12px auto" }} onClick={() => void muatPenukaran(penukaranCursor)}>
+            <button className="btn kecil sekunder" style={{ margin: "12px auto" }} onClick={() => void muatLebihPenukaran(penukaranCursor)}>
               Muat lebih banyak
             </button>
           )}

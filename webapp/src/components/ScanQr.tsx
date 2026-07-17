@@ -125,39 +125,6 @@ export default function ScanQr({ verified, email }: { verified: boolean; email: 
               </button>
             </>
           )}
-
-          {process.env.NODE_ENV !== "production" && (
-            <form
-              style={{ marginTop: 24 }}
-              onSubmit={(e) => {
-                e.preventDefault();
-                const token = String(new FormData(e.currentTarget).get("token") ?? "");
-                if (!token) return;
-                setError("");
-                setFase("proses");
-                void (async () => {
-                  try {
-                    const res = await confirmScanAction(undefined, token);
-                    if ("error" in res) throw new Error(res.error);
-                    setHasil({ poin: res.poin, rupiah: res.rupiah });
-                    setFase("sukses");
-                    router.refresh();
-                  } catch (e) {
-                    setError((e as Error).message || "Gagal memproses QR. Coba lagi.");
-                    setFase("scan");
-                  }
-                })();
-              }}
-            >
-              <label htmlFor="devToken" className="muted">
-                Dev: uji token manual (tanpa kamera/ops)
-              </label>
-              <input id="devToken" name="token" className="input" placeholder="qrToken" />
-              <button className="btn kecil sekunder" type="submit" style={{ marginTop: 8 }}>
-                Uji token
-              </button>
-            </form>
-          )}
         </>
       )}
     </div>
