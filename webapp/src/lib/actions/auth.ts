@@ -68,6 +68,7 @@ export async function resetPasswordAction(fd: FormData): Promise<{ error?: strin
   const u = await consumeEmailToken(token, "reset");
   if (!u) return { error: "Tautan reset tidak valid atau sudah kadaluarsa." };
   await prisma.user.update({ where: { id: u.id }, data: { passwordHash: await hashPassword(password) } });
+  await prisma.session.deleteMany({ where: { userId: u.id } }); // cabut semua session lama
   return { info: "Password berhasil diubah. Silakan login." };
 }
 
@@ -83,8 +84,11 @@ export async function resendVerificationAction(): Promise<{ error?: string; info
   return { info: "Email verifikasi terkirim. Cek kotak masuk (dan folder spam)." };
 }
 
-export async function verifyEmailAction(token: string): Promise<{ error?: string; info?: string }> {
+export async function verifyEmailAction(
+  _prev: { ok?: boolean; error?: string },
+  token: string,
+): Promise<{ ok?: boolean; error?: string }> {
   const u = await consumeEmailToken(token, "verify");
-  if (!u) return { error: "Tautan verifikasi tidak valid atau sudah kadaluarsa." };
-  return { info: "Email berhasil diverifikasi." };
+  if (!u) return { error: "Tautan verifikasi tidak valid atau sudah kedaluwarsa." };
+  return { ok: true };
 }
