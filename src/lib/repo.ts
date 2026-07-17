@@ -27,7 +27,7 @@ import {
   type QueryDocumentSnapshot,
   type Unsubscribe,
 } from "firebase/firestore";
-import { Timestamp, updateDoc } from "firebase/firestore";
+import { Timestamp, runTransaction, updateDoc } from "firebase/firestore";
 import { auth, db } from "./firebase";
 import { MIN_TUKAR_POIN, RUPIAH_PER_POIN, currentSeason } from "./constants";
 import type { Penukaran, Role, Setoran, SetoranItem, UserDoc } from "./models";
@@ -193,3 +193,30 @@ export function onPenukaran(id: string, cb: (p: Penukaran | null) => void): Unsu
 }
 
 export const cancelPenukaran = (id: string) => updateDoc(doc(db, "penukaran", id), { status: "cancelled" });
+
+/**
+ * Dipanggil warga setelah scan QR — persis Repo.kt: transaction atomik
+ * pending→confirmed + saldo berkurang poinDitukar (rules memvalidasi delta).
+ */
+export async function confirmPenukaran(token: string): Promise<Penukaran> {
+  const me = auth.currentUser?.uid;
+  if (!me) throw new Error("Belum login");
+  const found = await getDocs(
+    query(collection(db, "penukaran"), where("qrToken", "==", token), where("wargaId", "==", me), limit(1)),
+  );
+  const ref = found.docs[0]?.ref;
+  if (!ref) throw new Error("QR tidak valid atau bukan untuk akun Anda");
+  const userRef = doc(db, "users", me);
+  await runTransaction(db, async (t) => {
+    const p = await t.get(ref);
+    const status = p.get("status") as string;
+    if (status !== "pending") throw new Error("Penukaran ini sudah diproses. Minta ops membuat QR baru.");
+    const exp = (p.get("tokenExpiredAt") as Timestamp | undefined)?.toMillis() ?? 0;
+    if (exp < Date.now()) throw new Error("QR sudah kedaluwarsa. Minta ops membuat ulang.");
+    const poin = p.get("poinDitukar") as number;
+    t.update(ref, { status: "confirmed", confirmedAt: serverTimestamp() });
+    t.update(userRef, { saldoPoin: increment(-poin), lastTxnId: p.id });
+  });
+  const after = await getDoc(ref);
+  return { id: after.id, ...after.data() } as Penukaran;
+}

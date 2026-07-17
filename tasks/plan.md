@@ -51,7 +51,7 @@ T10 deploy + CI + README ← T9
 
 ### Phase 4: Penukaran QR
 - [x] Task 7: Ops — buat permintaan penukaran + QR fullscreen + countdown + expire/batal/buat-ulang
-- [ ] Task 8: Warga — scan kamera + transaction konfirmasi
+- [x] Task 8: Warga — scan kamera + transaction konfirmasi
 
 ### Checkpoint 4
 - [ ] Alur QR end-to-end dua perangkat: pending→scan→confirmed, saldo berkurang, layar ops berubah otomatis; alur expire jalan
