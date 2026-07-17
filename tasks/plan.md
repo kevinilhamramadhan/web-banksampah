@@ -57,7 +57,7 @@ T10 deploy + CI + README ← T9
 - [ ] Alur QR end-to-end dua perangkat: pending→scan→confirmed, saldo berkurang, layar ops berubah otomatis; alur expire jalan
 
 ### Phase 5: Polish & Ship
-- [ ] Task 9: Responsive pass + polish PWA
+- [x] Task 9: Responsive pass + polish PWA
 - [ ] Task 10: Deploy Firebase Hosting + GitHub Actions + README
 
 ### Checkpoint Final

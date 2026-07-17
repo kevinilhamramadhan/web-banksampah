@@ -5,6 +5,7 @@ import RiwayatList from "../components/RiwayatList";
 import SaldoCard from "../components/SaldoCard";
 import VerifikasiBanner from "../components/VerifikasiBanner";
 import { useAuth } from "../lib/auth";
+import { isStandalone, promptInstall, useCanInstall } from "../lib/install";
 import { fmtRupiah } from "../lib/constants";
 import { fmtTanggal } from "../lib/format";
 import type { Penukaran, Setoran, UserDoc } from "../lib/models";
@@ -22,6 +23,7 @@ export default function Warga() {
   const uid = user!.uid;
   const [profil, setProfil] = useState<UserDoc | null>(null);
   const [tab, setTab] = useState<"setoran" | "penukaran">("setoran");
+  const canInstall = useCanInstall();
 
   useEffect(() => onUserDoc(uid, setProfil), [uid]);
 
@@ -92,6 +94,12 @@ export default function Warga() {
             </div>
           )}
         />
+      )}
+
+      {canInstall && !isStandalone() && (
+        <button className="btn kecil sekunder" style={{ margin: "24px auto 0" }} onClick={() => void promptInstall()}>
+          Install aplikasi di HP
+        </button>
       )}
     </div>
   );
