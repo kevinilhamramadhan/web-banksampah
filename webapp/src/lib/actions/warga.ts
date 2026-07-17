@@ -34,7 +34,10 @@ export async function confirmScanAction(
     const p = await confirmPenukaran(user, qrToken);
     return { ok: true, poin: p.poinDitukar, rupiah: p.jumlahRupiah };
   } catch (e) {
-    return { error: (e as Error).message };
+    // Hanya error bisnis (plain Error dari confirmPenukaran) yang boleh diteruskan;
+    // error tak terduga (Prisma/infra) dilempar ulang agar diredam Next.js.
+    if (e instanceof Error && e.constructor === Error) return { error: e.message };
+    throw e;
   }
 }
 
