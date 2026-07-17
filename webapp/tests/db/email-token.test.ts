@@ -20,4 +20,10 @@ describe("email token", () => {
     await prisma.emailToken.update({ where: { token: t }, data: { expiresAt: new Date(Date.now() - 1) } });
     expect(await consumeEmailToken(t, "reset")).toBeNull();
   });
+  it("dua consume paralel: hanya satu yang menang", async () => {
+    const u = await buatUser();
+    const t = await createEmailToken(u.id, "reset");
+    const hasil = await Promise.all([consumeEmailToken(t, "reset"), consumeEmailToken(t, "reset")]);
+    expect(hasil.filter((x) => x !== null)).toHaveLength(1);
+  });
 });

@@ -14,7 +14,8 @@ export async function createEmailToken(userId: string, type: TokenType): Promise
 export async function consumeEmailToken(token: string, type: TokenType): Promise<User | null> {
   const t = await prisma.emailToken.findUnique({ where: { token }, include: { user: true } });
   if (!t || t.type !== type || t.expiresAt < new Date()) return null;
-  await prisma.emailToken.delete({ where: { token } }); // sekali pakai
+  const { count } = await prisma.emailToken.deleteMany({ where: { token } });
+  if (count === 0) return null; // kalah race — token sudah dipakai
   if (type === "verify") {
     return prisma.user.update({ where: { id: t.userId }, data: { emailVerifiedAt: new Date() } });
   }
