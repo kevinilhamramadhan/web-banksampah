@@ -6,7 +6,10 @@ export default defineConfig({
   test: {
     projects: [
       { test: { name: "unit", include: ["src/**/*.test.ts"] } },
-      { test: { name: "db", include: ["tests/db/**/*.test.ts"], fileParallelism: false, testTimeout: 20000 } },
+      {
+        resolve: { alias: { "@": path.resolve(__dirname, "src") } },
+        test: { name: "db", include: ["tests/db/**/*.test.ts"], fileParallelism: false, testTimeout: 20000 },
+      },
     ],
   },
 });
