@@ -3,3 +3,4 @@ dist/
 agent-skills/
 *.local
 .firebase/
+firestore-debug.log
