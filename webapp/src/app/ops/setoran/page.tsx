@@ -1,16 +1,16 @@
 import Link from "next/link";
 import { requireRole } from "@/lib/session-next";
+import AppHeader from "@/components/AppHeader";
 import SetoranForm from "@/components/SetoranForm";
 
 export default async function OpsSetoranPage() {
   await requireRole("ops");
   return (
-    <div className="container">
-      <div className="baris" style={{ marginBottom: 12 }}>
-        <h1 style={{ margin: 0 }}>Input Setoran</h1>
-        <Link href="/ops">← Beranda</Link>
-      </div>
-      <SetoranForm />
-    </div>
+    <>
+      <AppHeader judul="Input Setoran" aksi={<Link href="/ops">← Beranda</Link>} />
+      <main className="container">
+        <SetoranForm />
+      </main>
+    </>
   );
 }

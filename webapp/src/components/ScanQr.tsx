@@ -84,48 +84,51 @@ export default function ScanQr({ verified, email }: { verified: boolean; email: 
     };
   }, [verified, fase, ulang, router]);
 
+  if (fase === "sukses" && hasil) {
+    // Momen uang berpindah tangan: layar perayaan penuh — hijau + emas.
+    return (
+      <div className="rayakan" role="status">
+        <svg className="cek" viewBox="0 0 96 96" fill="none" stroke="currentColor" strokeWidth="6" aria-hidden="true">
+          <circle cx="48" cy="48" r="41" strokeLinecap="round" />
+          <path d="M30 50 L44 63 L67 36" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+        <h2 style={{ color: "#fff", margin: 0, fontSize: "1.4rem" }}>Penukaran berhasil!</h2>
+        <div className="jumlah">{fmtRupiah(hasil.rupiah)}</div>
+        <p className="pesan">
+          {hasil.poin} poin kamu sudah dicairkan — terima uang tunainya dari ops, ya. Terima kasih sudah menabung
+          sampah!
+        </p>
+        <Link href="/warga" className="btn di-hijau" style={{ maxWidth: 320 }}>
+          Kembali ke Beranda
+        </Link>
+      </div>
+    );
+  }
+
   return (
     <div className="container">
-      <div className="baris" style={{ marginBottom: 12 }}>
-        <h1 style={{ margin: 0 }}>Scan QR Penukaran</h1>
-        <Link href="/warga">← Kembali</Link>
-      </div>
-
       {!verified ? (
         <VerifikasiBanner email={email} />
-      ) : fase === "sukses" && hasil ? (
-        <div className="card kolom-tengah" style={{ padding: 32 }}>
-          <div style={{ fontSize: "3rem" }} aria-hidden>
-            ✔
-          </div>
-          <h2>Penukaran berhasil</h2>
-          <p style={{ textAlign: "center" }}>
-            {hasil.poin} poin ditukar. Terima uang tunai <strong>{fmtRupiah(hasil.rupiah)}</strong> dari ops.
-          </p>
-          <Link href="/warga" style={{ width: "100%", textDecoration: "none" }}>
-            <button className="btn">Kembali ke Beranda</button>
-          </Link>
-        </div>
       ) : (
         <>
           <p className="muted">Arahkan kamera ke QR di layar ops.</p>
           {/* video selalu ter-mount saat scan/proses agar kamera tidak berkedip */}
           <video ref={videoRef} className="scan-video" muted playsInline />
-          {fase === "proses" && <p className="sukses">QR terbaca — memproses penukaran…</p>}
+          <p aria-live="polite" style={{ margin: fase === "proses" || error ? undefined : 0 }}>
+            {fase === "proses" && <span className="sukses">QR terbaca — memproses penukaran…</span>}
+            {error && <span className="error">{error}</span>}
+          </p>
           {error && (
-            <>
-              <p className="error">{error}</p>
-              <button
-                className="btn sekunder"
-                onClick={() => {
-                  setError("");
-                  setUlang((u) => u + 1);
-                  setFase("scan");
-                }}
-              >
-                Scan lagi
-              </button>
-            </>
+            <button
+              className="btn sekunder"
+              onClick={() => {
+                setError("");
+                setUlang((u) => u + 1);
+                setFase("scan");
+              }}
+            >
+              Scan lagi
+            </button>
           )}
         </>
       )}

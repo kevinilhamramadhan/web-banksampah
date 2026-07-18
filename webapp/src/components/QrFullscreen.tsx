@@ -92,16 +92,17 @@ export default function QrFullscreen({ penukaran: awal, onBuatUlang, onBatalkan,
   }, [p.qrToken, p.status]);
 
   if (p.status === "confirmed") {
+    // Momen uang berpindah tangan — perlakuan perayaan yang sama dgn sisi warga.
     return (
-      <div className="qr-layar">
-        <div style={{ fontSize: "4rem" }} aria-hidden>
-          ✔
-        </div>
-        <h2>Terkonfirmasi</h2>
-        <p style={{ fontSize: "1.4rem" }}>
-          Serahkan uang tunai <strong>{fmtRupiah(p.jumlahRupiah)}</strong> kepada {p.wargaNama}.
-        </p>
-        <button className="btn" style={{ maxWidth: 360 }} onClick={onTutup}>
+      <div className="rayakan" role="status">
+        <svg className="cek" viewBox="0 0 96 96" fill="none" stroke="currentColor" strokeWidth="6" aria-hidden="true">
+          <circle cx="48" cy="48" r="41" strokeLinecap="round" />
+          <path d="M30 50 L44 63 L67 36" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+        <h2 style={{ color: "#fff", margin: 0 }}>Terkonfirmasi!</h2>
+        <div className="jumlah">{fmtRupiah(p.jumlahRupiah)}</div>
+        <p className="pesan">Serahkan uang tunai kepada {p.wargaNama}.</p>
+        <button className="btn di-hijau" style={{ maxWidth: 320 }} onClick={onTutup}>
           Selesai
         </button>
       </div>

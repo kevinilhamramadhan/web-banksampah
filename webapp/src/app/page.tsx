@@ -31,34 +31,34 @@ export default function Home() {
   const bisaTawariInstall = canInstall || isIos();
 
   return (
-    <div className="container kolom-tengah" style={{ minHeight: "100dvh", justifyContent: "center" }}>
-      <img src="/icon-192.png" alt="" width={96} height={96} style={{ borderRadius: 24 }} />
-      <h1 style={{ textAlign: "center" }}>Bank Sampah KKN</h1>
-      <p className="muted" style={{ textAlign: "center" }}>
-        Pantau poin sampahmu dan tukarkan jadi uang tunai.
+    <div className="selamat-datang">
+      <img src="/icon-192.png" alt="" width={104} height={104} style={{ borderRadius: 26 }} />
+      <h1>Bank Sampah KKN</h1>
+      <p style={{ color: "oklch(1 0 0 / 0.88)", maxWidth: "34ch" }}>
+        Setor sampah, kumpulkan poin, tukarkan jadi uang tunai.
       </p>
 
       {!tampilInstall ? (
-        <div style={{ width: "100%", display: "grid", gap: 12 }}>
-          <button className="btn" onClick={lanjutBrowser}>
+        <div style={{ width: "100%", maxWidth: 360, display: "grid", gap: 12 }}>
+          <button className="btn di-hijau" onClick={lanjutBrowser}>
             Gunakan di Browser
           </button>
           {bisaTawariInstall && (
-            <button className="btn sekunder" onClick={() => setTampilInstall(true)}>
+            <button className="btn sekunder di-hijau" onClick={() => setTampilInstall(true)}>
               Install Aplikasi
             </button>
           )}
         </div>
       ) : (
-        <div style={{ width: "100%", display: "grid", gap: 12 }}>
+        <div style={{ width: "100%", maxWidth: 360, display: "grid", gap: 12 }}>
           <div className="card">
-            <h3>Keuntungan install</h3>
+            <h2 style={{ fontSize: "1.02rem", color: "#fff" }}>Keuntungan install</h2>
             <p className="muted" style={{ marginBottom: 0 }}>
               Buka langsung dari layar utama, tampilan layar penuh, dan lebih cepat dibuka.
             </p>
           </div>
           <InstallPrompt onInstalled={() => simpanPilihan("install")} />
-          <button className="btn sekunder" onClick={lanjutBrowser}>
+          <button className="btn sekunder di-hijau" onClick={lanjutBrowser}>
             Lanjut di browser saja
           </button>
         </div>

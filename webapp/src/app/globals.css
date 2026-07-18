@@ -1,35 +1,68 @@
-/* Palet "daun & emas" — mengikuti tema aplikasi Android Bank Sampah KKN */
+/* Bank Sampah — sistem "Daun & Emas, Berani".
+   Committed green: hijau membawa identitas, emas EKSKLUSIF untuk angka uang/poin.
+   Semua pasangan warna tervalidasi WCAG AA secara numerik (putih@hijau 6.79:1,
+   emas@hijau-pekat 7.53:1, emas-teks@kartu 4.93:1, redup@kartu 7.37:1, dst). */
+
 :root {
-  --hijau: #2b6b3f;
-  --hijau-tua: #1e5730;
-  --hijau-lembut: #e3efe3;
-  --emas: #f2c94c;
-  --permukaan: #f6faf0;
-  --kartu: #ffffff;
-  --teks: #1c2a20;
-  --teks-redup: #5d6f62;
-  --garis: #d9e4d6;
-  --merah: #b3261e;
+  /* Palet inti (OKLCH) */
+  --hijau: oklch(0.46 0.1 151); /* aksi utama */
+  --hijau-pekat: oklch(0.33 0.06 152); /* header & panel saldo */
+  --hijau-gelap: oklch(0.27 0.05 152); /* pressed */
+  --hijau-link: oklch(0.42 0.1 151); /* tautan/teks hijau di permukaan */
+  --daun-tipis: oklch(0.93 0.035 151); /* tint hijau lembut */
+
+  --emas: oklch(0.85 0.14 92); /* angka uang di bidang hijau */
+  --emas-teks: oklch(0.55 0.115 80); /* angka uang di permukaan terang */
+  --tint-emas: oklch(0.96 0.05 95); /* latar kartu perhatian */
+  --emas-garis: oklch(0.8 0.12 90);
+
+  --permukaan: oklch(0.975 0.008 151); /* body: putih bersemu daun */
+  --kartu: oklch(1 0 0);
+  --teks: oklch(0.24 0.02 152);
+  --teks-redup: oklch(0.45 0.02 152);
+  --garis: oklch(0.9 0.015 151);
+  --merah: oklch(0.5 0.19 29);
+
   --radius: 16px;
   --radius-besar: 20px;
+
+  /* Gerak: cepat, ease-out eksponensial, tanpa pantulan */
+  --gerak-cepat: 160ms cubic-bezier(0.22, 1, 0.36, 1);
+  --gerak-sedang: 240ms cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Skala z semantik */
+  --z-lekat: 10;
+  --z-layar-penuh: 50;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --hijau: #4c9a63;
-    --hijau-tua: #163f24;
-    --hijau-lembut: #22322650;
-    --permukaan: #111a13;
-    --kartu: #1b271e;
-    --teks: #e6efe7;
-    --teks-redup: #9db2a2;
-    --garis: #31423531;
+    --hijau: oklch(0.56 0.11 151);
+    --hijau-pekat: oklch(0.24 0.045 152);
+    --hijau-gelap: oklch(0.2 0.04 152);
+    --hijau-link: oklch(0.75 0.11 151);
+    --daun-tipis: oklch(0.26 0.03 151);
+    --emas-teks: oklch(0.8 0.13 90);
+    --tint-emas: oklch(0.26 0.04 95);
+    --emas-garis: oklch(0.6 0.1 90);
+    --permukaan: oklch(0.17 0.015 152);
+    --kartu: oklch(0.22 0.02 152);
+    --teks: oklch(0.93 0.01 152);
+    --teks-redup: oklch(0.72 0.02 152);
+    --garis: oklch(0.32 0.02 152);
+    --merah: oklch(0.68 0.17 25);
   }
 }
 
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
-html, body { margin: 0; padding: 0; }
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
 
 body {
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
@@ -40,17 +73,97 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-h1, h2, h3 { line-height: 1.25; margin: 0 0 0.5rem; }
-h1 { font-size: 1.5rem; }
-h2 { font-size: 1.25rem; }
-h3 { font-size: 1.05rem; }
-p { margin: 0 0 0.75rem; }
+h1,
+h2,
+h3 {
+  line-height: 1.25;
+  margin: 0 0 0.5rem;
+  text-wrap: balance;
+}
+h1 {
+  font-size: 1.4rem;
+}
+h2 {
+  font-size: 1.15rem;
+}
+h3 {
+  font-size: 1.02rem;
+}
+p {
+  margin: 0 0 0.75rem;
+  max-width: 70ch;
+}
+
+a {
+  color: var(--hijau-link);
+}
+
+:focus-visible {
+  outline: 3px solid var(--hijau);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
 
 .container {
   max-width: 720px;
   margin: 0 auto;
   padding: 16px;
-  padding-bottom: max(16px, env(safe-area-inset-bottom));
+  padding-bottom: max(24px, env(safe-area-inset-bottom));
+}
+
+/* ---------- Markas: header hijau di setiap layar ter-autentikasi ---------- */
+
+.markas {
+  background: var(--hijau-pekat);
+  color: #fff;
+  padding-top: max(10px, env(safe-area-inset-top));
+}
+.markas .container {
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+.markas h1 {
+  margin: 0;
+  color: #fff;
+}
+.markas a {
+  color: #fff;
+}
+.markas :focus-visible {
+  outline-color: #fff;
+}
+
+/* Panel saldo: menyatu dgn header — satu bidang hijau besar, bukan "kartu bank" */
+.saldo-panel {
+  background: var(--hijau-pekat);
+  color: #fff;
+  padding-bottom: 24px;
+}
+.saldo-panel .label {
+  font-size: 0.9rem;
+  color: oklch(1 0 0 / 0.88);
+}
+.saldo-panel .angka {
+  font-size: 3.2rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+}
+.saldo-panel .angka .satuan {
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  color: oklch(1 0 0 / 0.88);
+}
+.saldo-panel .rupiah {
+  color: var(--emas);
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+.saldo-panel .aturan {
+  font-size: 0.82rem;
+  color: oklch(1 0 0 / 0.88);
+  margin-top: 12px;
 }
 
 .card {
@@ -59,6 +172,24 @@ p { margin: 0 0 0.75rem; }
   border-radius: var(--radius-besar);
   padding: 16px;
   margin-bottom: 12px;
+}
+
+/* Kartu perhatian (verifikasi email): tint emas + ikon — bukan warna-saja */
+.kartu-perhatian {
+  background: var(--tint-emas);
+  border: 1px solid var(--emas-garis);
+  border-radius: var(--radius-besar);
+  padding: 16px;
+  margin-bottom: 12px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 12px;
+  align-items: start;
+}
+.kartu-perhatian .ikon {
+  width: 34px;
+  height: 34px;
+  color: var(--emas-teks);
 }
 
 .btn {
@@ -76,15 +207,46 @@ p { margin: 0 0 0.75rem; }
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
+  text-decoration: none;
+  transition: background var(--gerak-cepat), transform var(--gerak-cepat);
 }
-.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.btn:active {
+  background: var(--hijau-gelap);
+  transform: scale(0.985);
+}
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
 .btn.sekunder {
   background: transparent;
-  color: var(--hijau);
+  color: var(--hijau-link);
   border: 2px solid var(--hijau);
 }
-.btn.kecil { width: auto; min-height: 44px; padding: 8px 16px; font-size: 0.9rem; }
-.btn.bahaya { background: transparent; border: 2px solid var(--merah); color: var(--merah); }
+.btn.kecil {
+  width: auto;
+  min-height: 44px;
+  padding: 8px 16px;
+  font-size: 0.9rem;
+}
+.btn.bahaya {
+  background: transparent;
+  border: 2px solid currentColor;
+  color: var(--merah);
+}
+.markas .btn.bahaya {
+  color: #fff;
+  border-color: oklch(1 0 0 / 0.55);
+}
+.btn.di-hijau {
+  background: #fff;
+  color: var(--hijau-pekat);
+}
+.btn.sekunder.di-hijau {
+  background: transparent;
+  color: #fff;
+  border-color: oklch(1 0 0 / 0.7);
+}
 
 .input {
   width: 100%;
@@ -96,9 +258,18 @@ p { margin: 0 0 0.75rem; }
   color: var(--teks);
   font-size: 1rem;
 }
-.input:focus { outline: 2px solid var(--hijau); outline-offset: 0; border-color: var(--hijau); }
+.input:focus {
+  outline: 2px solid var(--hijau);
+  outline-offset: 0;
+  border-color: var(--hijau);
+}
 
-label { display: block; font-weight: 600; font-size: 0.9rem; margin: 12px 0 4px; }
+label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin: 12px 0 4px;
+}
 
 .chip {
   display: inline-flex;
@@ -112,37 +283,171 @@ label { display: block; font-weight: 600; font-size: 0.9rem; margin: 12px 0 4px;
   font-size: 0.95rem;
   font-weight: 600;
   cursor: pointer;
+  transition: background var(--gerak-cepat), border-color var(--gerak-cepat);
 }
-.chip.aktif { background: var(--hijau); border-color: var(--hijau); color: #fff; }
-
-.tab-bar { display: flex; gap: 8px; margin-bottom: 12px; }
-.tab-bar .chip { flex: 1; justify-content: center; }
-
-.muted { color: var(--teks-redup); font-size: 0.9rem; }
-.error { color: var(--merah); font-size: 0.9rem; margin: 8px 0; }
-.sukses { color: var(--hijau); font-weight: 600; margin: 8px 0; }
-.emas { color: var(--emas); font-weight: 700; }
-
-.baris { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
-.kolom-tengah { display: flex; flex-direction: column; align-items: center; gap: 12px; }
-
-/* Kartu saldo gaya kartu bank */
-.saldo-card {
-  background: linear-gradient(135deg, var(--hijau-tua), #2b6b3f 90%);
+.chip:hover {
+  background: var(--daun-tipis);
+}
+.chip.aktif {
+  background: var(--hijau);
+  border-color: var(--hijau);
   color: #fff;
-  border-radius: var(--radius-besar);
-  padding: 20px;
-  margin-bottom: 16px;
 }
-.saldo-card .angka { font-size: 2.6rem; font-weight: 800; letter-spacing: -1px; line-height: 1.1; }
-.saldo-card .rupiah { color: var(--emas); font-weight: 700; font-size: 1.15rem; }
-.saldo-card .aturan { font-size: 0.8rem; opacity: 0.85; margin-top: 10px; }
 
-/* Item riwayat */
-.riwayat-item { padding: 12px 4px; border-bottom: 1px solid var(--garis); }
-.riwayat-item:last-child { border-bottom: none; }
+.tab-bar {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.tab-bar .chip {
+  flex: 1;
+  justify-content: center;
+}
 
-/* Layar QR full-screen ops: latar putih agar kontras maksimal di semua tema */
+.muted {
+  color: var(--teks-redup);
+  font-size: 0.9rem;
+}
+.error {
+  color: var(--merah);
+  font-size: 0.9rem;
+  margin: 8px 0;
+}
+.sukses {
+  color: var(--hijau-link);
+  font-weight: 600;
+  margin: 8px 0;
+}
+.emas {
+  color: var(--emas-teks);
+  font-weight: 700;
+}
+
+.baris {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.kolom-tengah {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Riwayat: baris masuk dgn stagger halus saat dimuat */
+.riwayat-item {
+  padding: 12px 4px;
+  border-bottom: 1px solid var(--garis);
+  animation: baris-masuk var(--gerak-sedang) both;
+}
+.riwayat-item:nth-child(1) {
+  animation-delay: 0ms;
+}
+.riwayat-item:nth-child(2) {
+  animation-delay: 40ms;
+}
+.riwayat-item:nth-child(3) {
+  animation-delay: 80ms;
+}
+.riwayat-item:nth-child(4) {
+  animation-delay: 120ms;
+}
+.riwayat-item:nth-child(n + 5) {
+  animation-delay: 150ms;
+}
+.riwayat-item:last-child {
+  border-bottom: none;
+}
+@keyframes baris-masuk {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Skeleton utk pemuatan pertama (pengganti "Memuat…" polos) */
+.skeleton-baris {
+  height: 52px;
+  border-radius: 10px;
+  margin: 8px 0;
+  background: linear-gradient(90deg, var(--garis), var(--daun-tipis), var(--garis));
+  background-size: 200% 100%;
+  animation: berkilau 1.1s linear infinite;
+}
+@keyframes berkilau {
+  from {
+    background-position: 200% 0;
+  }
+  to {
+    background-position: -200% 0;
+  }
+}
+
+/* ---------- Layar perayaan: uang berpindah tangan ---------- */
+
+.rayakan {
+  position: fixed;
+  inset: 0;
+  background: var(--hijau-pekat);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 24px;
+  z-index: var(--z-layar-penuh);
+  text-align: center;
+}
+.rayakan .cek {
+  width: 88px;
+  height: 88px;
+  color: var(--emas);
+}
+.rayakan .cek circle {
+  stroke-dasharray: 260;
+  stroke-dashoffset: 260;
+  animation: gambar-garis 500ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.rayakan .cek path {
+  stroke-dasharray: 60;
+  stroke-dashoffset: 60;
+  animation: gambar-garis 350ms cubic-bezier(0.22, 1, 0.36, 1) 320ms forwards;
+}
+.rayakan .jumlah {
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--emas);
+  animation: muncul-skala var(--gerak-sedang) 150ms both;
+}
+.rayakan .pesan {
+  color: oklch(1 0 0 / 0.88);
+  max-width: 40ch;
+}
+@keyframes gambar-garis {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes muncul-skala {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Layar QR ops: latar putih dipertahankan — kontras pemindaian adalah fungsi */
 .qr-layar {
   position: fixed;
   inset: 0;
@@ -154,16 +459,82 @@ label { display: block; font-weight: 600; font-size: 0.9rem; margin: 12px 0 4px;
   justify-content: center;
   gap: 16px;
   padding: 24px;
-  z-index: 50;
+  z-index: var(--z-layar-penuh);
   text-align: center;
 }
-.qr-layar canvas { width: 60vmin !important; height: 60vmin !important; }
+.qr-layar canvas {
+  width: 60vmin !important;
+  height: 60vmin !important;
+}
 
-/* Scanner kamera */
-.scan-video { width: 100%; max-height: 70vh; border-radius: var(--radius-besar); background: #000; object-fit: cover; }
+.scan-video {
+  width: 100%;
+  max-height: 70vh;
+  border-radius: var(--radius-besar);
+  background: #000;
+  object-fit: cover;
+}
 
-/* Dua kolom untuk ops di layar lebar */
+/* Welcome: drenched — pintu masuk brand */
+.selamat-datang {
+  min-height: 100dvh;
+  background: var(--hijau-pekat);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 24px;
+  text-align: center;
+}
+.selamat-datang h1 {
+  font-size: 2rem;
+  color: #fff;
+}
+.selamat-datang .card {
+  background: oklch(1 0 0 / 0.08);
+  border-color: oklch(1 0 0 / 0.25);
+  color: #fff;
+  text-align: left;
+}
+.selamat-datang .muted {
+  color: oklch(1 0 0 / 0.85);
+}
+
+/* Dua kolom utk ops di layar lebar */
 @media (min-width: 900px) {
-  .container.lebar { max-width: 1080px; }
-  .dua-kolom { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start; }
+  .container.lebar {
+    max-width: 1080px;
+  }
+  .dua-kolom {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    align-items: start;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .riwayat-item,
+  .rayakan .jumlah {
+    animation-duration: 1ms;
+    animation-delay: 0ms;
+  }
+  .rayakan .cek circle,
+  .rayakan .cek path {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+  .skeleton-baris {
+    animation: none;
+    background: var(--garis);
+  }
+  .btn,
+  .chip {
+    transition: none;
+  }
+  .btn:active {
+    transform: none;
+  }
 }

@@ -3,14 +3,15 @@ import { requireRole } from "@/lib/session-next";
 import { setoranPage } from "@/lib/setoran";
 import { logoutAction } from "@/lib/actions/auth";
 import { muatSetoranAction, muatPenukaranAction } from "@/lib/actions/warga";
-import SaldoCard from "@/components/SaldoCard";
+import { MIN_TUKAR_POIN, RUPIAH_PER_POIN, TARIF_POIN_PER_KG, fmtRupiah } from "@/lib/constants";
 import VerifikasiBanner from "@/components/VerifikasiBanner";
 import RiwayatList from "@/components/RiwayatList";
 import InstallButtonKecil from "@/components/InstallButtonKecil";
 
 export default async function WargaPage() {
   const user = await requireRole("warga");
-  const setoranAwal = await setoranPage("wargaId", user.id);
+  const verified = !!user.emailVerifiedAt;
+  const setoranAwal = verified ? await setoranPage("wargaId", user.id) : { items: [], nextCursor: null };
   const initialSetoran = {
     items: setoranAwal.items.map((s) => ({
       id: s.id,
@@ -22,35 +23,56 @@ export default async function WargaPage() {
   };
 
   return (
-    <div className="container">
-      <div className="baris" style={{ marginBottom: 12 }}>
-        <h1 style={{ margin: 0 }}>Bank Sampah</h1>
-        <form action={logoutAction}>
-          <button className="btn kecil bahaya" type="submit">
-            Keluar
-          </button>
-        </form>
-      </div>
+    <>
+      <header className="markas saldo-panel">
+        <div className="container">
+          <div className="baris">
+            <h1>Bank Sampah</h1>
+            <form action={logoutAction}>
+              <button className="btn kecil bahaya" type="submit">
+                Keluar
+              </button>
+            </form>
+          </div>
+          <div className="label" style={{ marginTop: 20 }}>
+            Saldo poin {user.nama}
+          </div>
+          <div className="angka">
+            {user.saldoPoin.toLocaleString("id-ID")}
+            <span className="satuan"> poin</span>
+          </div>
+          <div className="rupiah">≈ {fmtRupiah(user.saldoPoin * RUPIAH_PER_POIN)}</div>
+          <div className="aturan">
+            1 kg sampah = {TARIF_POIN_PER_KG} poin • cair min. {MIN_TUKAR_POIN} poin (
+            {fmtRupiah(MIN_TUKAR_POIN * RUPIAH_PER_POIN)})
+          </div>
+        </div>
+      </header>
 
-      <SaldoCard nama={user.nama} saldoPoin={user.saldoPoin} />
-      {!user.emailVerifiedAt && <VerifikasiBanner email={user.email} />}
+      <main className="container">
+        {!verified ? (
+          /* Satu layar, satu tugas: sebelum verifikasi, fokus hanya ke sini. */
+          <VerifikasiBanner email={user.email} />
+        ) : (
+          <>
+            <Link href="/warga/scan" className="btn" style={{ marginBottom: 20 }}>
+              Scan QR Penukaran Poin
+            </Link>
 
-      <Link href="/warga/scan" style={{ textDecoration: "none" }}>
-        <button className="btn" disabled={!user.emailVerifiedAt} style={{ marginBottom: 16 }}>
-          Scan QR Penukaran Poin
-        </button>
-      </Link>
+            <h2>Riwayat</h2>
+            <RiwayatList
+              varian="warga"
+              initialSetoran={initialSetoran}
+              muatSetoran={muatSetoranAction}
+              muatPenukaran={muatPenukaranAction}
+              kosongSetoran="Belum ada setoran. Bawa sampahmu ke bank sampah, ya!"
+              kosongPenukaran="Belum ada penukaran poin."
+            />
 
-      <RiwayatList
-        varian="warga"
-        initialSetoran={initialSetoran}
-        muatSetoran={muatSetoranAction}
-        muatPenukaran={muatPenukaranAction}
-        kosongSetoran="Belum ada setoran. Bawa sampahmu ke bank sampah, ya!"
-        kosongPenukaran="Belum ada penukaran poin."
-      />
-
-      <InstallButtonKecil />
-    </div>
+            <InstallButtonKecil />
+          </>
+        )}
+      </main>
+    </>
   );
 }

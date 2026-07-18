@@ -3,7 +3,7 @@ import { useEffect, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { resendVerificationAction } from "@/lib/actions/auth";
 
-/** Banner "verifikasi email dulu" + kirim ulang (cooldown 60 dtk) + cek status. */
+/** Kartu perhatian "verifikasi email dulu" + kirim ulang (cooldown 60 dtk) + cek status. */
 export default function VerifikasiBanner({ email }: { email: string }) {
   const router = useRouter();
   const [cooldown, setCooldown] = useState(0);
@@ -31,18 +31,29 @@ export default function VerifikasiBanner({ email }: { email: string }) {
   };
 
   return (
-    <div className="card" style={{ borderColor: "var(--emas)" }}>
-      <h3>Verifikasi email dulu</h3>
-      <p className="muted">Scan QR penukaran poin hanya bisa setelah email {email} terverifikasi.</p>
-      {pesan.error && <p className="error">{pesan.error}</p>}
-      {pesan.info && <p className="sukses">{pesan.info}</p>}
-      <div className="baris">
-        <button className="btn kecil sekunder" onClick={kirimUlang} disabled={cooldown > 0 || pending}>
-          {cooldown > 0 ? `Kirim ulang (${cooldown})` : "Kirim ulang email"}
-        </button>
-        <button className="btn kecil" onClick={cek}>
-          Sudah verifikasi
-        </button>
+    <div className="kartu-perhatian">
+      <svg className="ikon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
+        <rect x="2.5" y="5" width="19" height="14" rx="2.5" />
+        <path d="m3.5 7 8.5 6 8.5-6" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+      <div>
+        <h2 style={{ fontSize: "1.02rem" }}>Satu langkah lagi: verifikasi email</h2>
+        <p className="muted" style={{ color: "var(--teks)" }}>
+          Kami sudah mengirim tautan ke <strong>{email}</strong>. Klik tautannya, lalu kembali ke sini — setelah itu
+          kamu bisa scan QR penukaran poin.
+        </p>
+        <p aria-live="polite" style={{ margin: pesan.error || pesan.info ? undefined : 0 }}>
+          {pesan.error && <span className="error">{pesan.error}</span>}
+          {pesan.info && <span className="sukses">{pesan.info}</span>}
+        </p>
+        <div className="baris" style={{ flexWrap: "wrap", gap: 8 }}>
+          <button className="btn kecil" onClick={kirimUlang} disabled={cooldown > 0 || pending}>
+            {cooldown > 0 ? `Kirim ulang (${cooldown})` : "Kirim ulang email"}
+          </button>
+          <button className="btn kecil sekunder" onClick={cek}>
+            Sudah verifikasi
+          </button>
+        </div>
       </div>
     </div>
   );
