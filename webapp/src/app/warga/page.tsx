@@ -3,19 +3,10 @@ import { requireRole } from "@/lib/session-next";
 import { setoranPage } from "@/lib/setoran";
 import { logoutAction } from "@/lib/actions/auth";
 import { muatSetoranAction, muatPenukaranAction } from "@/lib/actions/warga";
-import type { SetoranRingkas, PenukaranRingkas } from "@/lib/actions/warga";
-import { fmtRupiah } from "@/lib/constants";
-import { fmtTanggal } from "@/lib/format";
 import SaldoCard from "@/components/SaldoCard";
 import VerifikasiBanner from "@/components/VerifikasiBanner";
 import RiwayatList from "@/components/RiwayatList";
 import InstallButtonKecil from "@/components/InstallButtonKecil";
-
-const STATUS_LABEL: Record<PenukaranRingkas["status"], string> = {
-  pending: "Menunggu",
-  confirmed: "Berhasil",
-  cancelled: "Dibatalkan",
-};
 
 export default async function WargaPage() {
   const user = await requireRole("warga");
@@ -50,34 +41,13 @@ export default async function WargaPage() {
         </button>
       </Link>
 
-      <RiwayatList<SetoranRingkas, PenukaranRingkas>
+      <RiwayatList
+        varian="warga"
         initialSetoran={initialSetoran}
         muatSetoran={muatSetoranAction}
         muatPenukaran={muatPenukaranAction}
         kosongSetoran="Belum ada setoran. Bawa sampahmu ke bank sampah, ya!"
         kosongPenukaran="Belum ada penukaran poin."
-        renderSetoran={(s) => (
-          <div className="baris">
-            <div>
-              <div>{s.items.map((i) => `${i.jenisSampahNama} ${i.beratKg} kg`).join(", ")}</div>
-              <div className="muted">{fmtTanggal(new Date(s.tanggal))}</div>
-            </div>
-            <strong style={{ color: "var(--hijau)" }}>+{s.totalPoin} poin</strong>
-          </div>
-        )}
-        renderPenukaran={(p) => (
-          <div className="baris">
-            <div>
-              <div>
-                {STATUS_LABEL[p.status]} • {fmtRupiah(p.jumlahRupiah)}
-              </div>
-              <div className="muted">{fmtTanggal(new Date(p.createdAt))}</div>
-            </div>
-            <strong style={{ color: p.status === "confirmed" ? "var(--merah)" : "var(--teks-redup)" }}>
-              {p.status === "confirmed" ? `-${p.poinDitukar} poin` : `${p.poinDitukar} poin`}
-            </strong>
-          </div>
-        )}
       />
 
       <InstallButtonKecil />

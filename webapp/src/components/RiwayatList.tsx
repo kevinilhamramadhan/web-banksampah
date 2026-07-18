@@ -1,34 +1,95 @@
 "use client";
-import { useState, type ReactNode } from "react";
+import { useState } from "react";
+import { fmtRupiah } from "@/lib/constants";
+import { fmtTanggal } from "@/lib/format";
 
 export interface RiwayatPage<T> {
   items: T[];
   nextCursor: string | null;
 }
 
-interface Props<S extends { id: string }, P extends { id: string }> {
-  initialSetoran: RiwayatPage<S>;
-  muatSetoran: (cursor?: string) => Promise<RiwayatPage<S> | { error: string }>;
-  muatPenukaran: (cursor?: string) => Promise<RiwayatPage<P> | { error: string }>;
-  renderSetoran: (item: S) => ReactNode;
-  renderPenukaran: (item: P) => ReactNode;
+// DTO serializable dari server (tanggal berupa string ISO). wargaNama hanya terisi utk varian ops.
+export interface SetoranRow {
+  id: string;
+  tanggal: string;
+  totalPoin: number;
+  items: { jenisSampahNama: string; beratKg: number }[];
+  wargaNama?: string;
+}
+
+export interface PenukaranRow {
+  id: string;
+  createdAt: string;
+  status: "pending" | "confirmed" | "cancelled";
+  poinDitukar: number;
+  jumlahRupiah: number;
+  wargaNama?: string;
+}
+
+const STATUS_LABEL: Record<PenukaranRow["status"], string> = {
+  pending: "Menunggu",
+  confirmed: "Berhasil",
+  cancelled: "Dibatalkan",
+};
+
+interface Props {
+  /* Fungsi render TIDAK boleh dikirim dari Server Component — baris dirender di sini,
+     dipilih lewat varian yang serializable. Props fungsi di bawah adalah server action (boleh). */
+  varian: "warga" | "ops";
+  initialSetoran: RiwayatPage<SetoranRow>;
+  muatSetoran: (cursor?: string) => Promise<RiwayatPage<SetoranRow> | { error: string }>;
+  muatPenukaran: (cursor?: string) => Promise<RiwayatPage<PenukaranRow> | { error: string }>;
   kosongSetoran: string;
   kosongPenukaran: string;
   labelSetoran?: string;
   labelPenukaran?: string;
 }
 
-export default function RiwayatList<S extends { id: string }, P extends { id: string }>({
+function BarisSetoran({ s, varian }: { s: SetoranRow; varian: Props["varian"] }) {
+  const rincian = s.items.map((i) => `${i.jenisSampahNama} ${i.beratKg} kg`).join(", ");
+  return (
+    <div className="baris">
+      <div>
+        <div>{varian === "ops" ? s.wargaNama : rincian}</div>
+        <div className="muted">
+          {varian === "ops" ? `${rincian} • ${fmtTanggal(new Date(s.tanggal))}` : fmtTanggal(new Date(s.tanggal))}
+        </div>
+      </div>
+      <strong style={{ color: "var(--hijau)" }}>+{s.totalPoin} poin</strong>
+    </div>
+  );
+}
+
+function BarisPenukaran({ p, varian }: { p: PenukaranRow; varian: Props["varian"] }) {
+  return (
+    <div className="baris">
+      <div>
+        <div>
+          {varian === "ops" ? `${p.wargaNama} • ${STATUS_LABEL[p.status]}` : `${STATUS_LABEL[p.status]} • ${fmtRupiah(p.jumlahRupiah)}`}
+        </div>
+        <div className="muted">{fmtTanggal(new Date(p.createdAt))}</div>
+      </div>
+      {varian === "ops" ? (
+        <strong>{fmtRupiah(p.jumlahRupiah)}</strong>
+      ) : (
+        <strong style={{ color: p.status === "confirmed" ? "var(--merah)" : "var(--teks-redup)" }}>
+          {p.status === "confirmed" ? `-${p.poinDitukar} poin` : `${p.poinDitukar} poin`}
+        </strong>
+      )}
+    </div>
+  );
+}
+
+export default function RiwayatList({
+  varian,
   initialSetoran,
   muatSetoran,
   muatPenukaran,
-  renderSetoran,
-  renderPenukaran,
   kosongSetoran,
   kosongPenukaran,
   labelSetoran = "Setoran",
   labelPenukaran = "Penukaran",
-}: Props<S, P>) {
+}: Props) {
   const [tab, setTab] = useState<"setoran" | "penukaran">("setoran");
 
   const [setoran, setSetoran] = useState(initialSetoran.items);
@@ -36,7 +97,7 @@ export default function RiwayatList<S extends { id: string }, P extends { id: st
   const [setoranSibuk, setSetoranSibuk] = useState(false);
   const [setoranError, setSetoranError] = useState("");
 
-  const [penukaran, setPenukaran] = useState<P[] | null>(null);
+  const [penukaran, setPenukaran] = useState<PenukaranRow[] | null>(null);
   const [penukaranCursor, setPenukaranCursor] = useState<string | null>(null);
   const [penukaranSibuk, setPenukaranSibuk] = useState(false);
   const [penukaranError, setPenukaranError] = useState("");
@@ -112,7 +173,7 @@ export default function RiwayatList<S extends { id: string }, P extends { id: st
           <div>
             {setoran.map((s) => (
               <div className="riwayat-item" key={s.id}>
-                {renderSetoran(s)}
+                <BarisSetoran s={s} varian={varian} />
               </div>
             ))}
             {setoranSibuk && <p className="muted">Memuat…</p>}
@@ -131,7 +192,7 @@ export default function RiwayatList<S extends { id: string }, P extends { id: st
         <div>
           {(penukaran ?? []).map((p) => (
             <div className="riwayat-item" key={p.id}>
-              {renderPenukaran(p)}
+              <BarisPenukaran p={p} varian={varian} />
             </div>
           ))}
           {penukaranSibuk && <p className="muted">Memuat…</p>}
