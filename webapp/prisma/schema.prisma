@@ -32,8 +32,6 @@ model User {
   email           String    @unique
   saldoPoin       Int       @default(0) @map("saldo_poin")
   passwordHash    String?
-  firebaseHash    String?
-  firebaseSalt    String?
   emailVerifiedAt DateTime?
   createdAt       DateTime  @default(now())
   sessions        Session[]

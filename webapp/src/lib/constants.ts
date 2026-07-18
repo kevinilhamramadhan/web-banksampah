@@ -1,4 +1,4 @@
-// Aturan bisnis hardcode — samakan dengan Android (Repo.kt) & firestore.rules:
+// Aturan bisnis hardcode:
 // 1 kg sampah = Rp 1.000 = 5 poin → 1 poin = Rp 200; pencairan minimal 50 poin.
 export const TARIF_POIN_PER_KG = 5;
 export const RUPIAH_PER_POIN = 200;

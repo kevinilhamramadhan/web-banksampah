@@ -15,7 +15,6 @@
   "dependencies": {
     "@node-rs/argon2": "^2.0.2",
     "@prisma/client": "^6.19.3",
-    "firebase-scrypt": "^2.2.0",
     "jsqr": "^1.4.0",
     "next": "16.2.10",
     "qrcode": "^1.5.4",
@@ -29,7 +28,6 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "dotenv": "^16.4.5",
-    "firebase-admin": "^14.2.0",
     "prisma": "^6.19.3",
     "tsx": "^4.23.1",
     "typescript": "^5",

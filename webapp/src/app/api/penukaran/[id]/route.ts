@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { getSessionUser } from "@/lib/session-next";
 import { getPenukaran } from "@/lib/penukaran";
 
-/** Dipoll oleh QrFullscreen tiap 2 dtk (pengganti onSnapshot Firestore). */
+/** Dipoll oleh QrFullscreen tiap 2 dtk untuk status penukaran terkini. */
 export async function GET(_req: Request, { params }: { params: Promise<{ id: string }> }) {
   const user = await getSessionUser();
   if (!user || user.role !== "ops") {

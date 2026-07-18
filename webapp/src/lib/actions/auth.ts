@@ -2,7 +2,7 @@
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { prisma } from "@/lib/db";
-import { hashPassword, verifyAndUpgradePassword } from "@/lib/password";
+import { hashPassword, verifyPassword } from "@/lib/password";
 import { SESSION_COOKIE, SESSION_TTL_HARI, createSession, deleteSession } from "@/lib/session";
 import { getSessionUser } from "@/lib/session-next";
 import { sendVerification, sendReset, consumeEmailToken } from "@/lib/email";
@@ -18,7 +18,7 @@ export async function loginAction(fd: FormData): Promise<{ error?: string }> {
   const email = String(fd.get("email") ?? "").trim().toLowerCase();
   const password = String(fd.get("password") ?? "");
   const u = await prisma.user.findUnique({ where: { email } });
-  if (!u || !(await verifyAndUpgradePassword(u.id, password))) {
+  if (!u || !(await verifyPassword(u.id, password))) {
     return { error: "Email atau password salah." };
   }
   await pasangSession(u.id);
