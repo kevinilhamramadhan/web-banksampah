@@ -25,13 +25,28 @@ export async function confirmPenukaran(warga: User, qrToken: string) {
   if (p.status !== "pending") throw new Error("Penukaran ini sudah diproses. Minta ops membuat QR baru.");
   if (p.tokenExpiredAt < new Date()) throw new Error("QR sudah kedaluwarsa. Minta ops membuat ulang.");
   return prisma.$transaction(async (tx) => {
-    // Guard atomik anti-replay: hanya satu transaksi yang lolos WHERE status='pending'.
+    // Guard atomik anti-replay & anti-expired-race: hanya satu transaksi yang lolos WHERE
+    // status='pending' DAN belum kedaluwarsa (dicek ulang di dalam tx, bukan hanya di luar tx di atas).
     const { count } = await tx.penukaran.updateMany({
-      where: { id: p.id, status: "pending" },
+      where: { id: p.id, status: "pending", tokenExpiredAt: { gt: new Date() } },
       data: { status: "confirmed", confirmedAt: new Date() },
     });
-    if (count === 0) throw new Error("Penukaran ini sudah diproses. Minta ops membuat QR baru.");
-    await tx.user.update({ where: { id: warga.id }, data: { saldoPoin: { decrement: p.poinDitukar } } });
+    if (count === 0) {
+      const ulang = await tx.penukaran.findUniqueOrThrow({ where: { id: p.id } });
+      if (ulang.status === "pending" && ulang.tokenExpiredAt <= new Date()) {
+        throw new Error("QR sudah kedaluwarsa. Minta ops membuat ulang.");
+      }
+      throw new Error("Penukaran ini sudah diproses. Minta ops membuat QR baru.");
+    }
+    try {
+      await tx.user.update({ where: { id: warga.id }, data: { saldoPoin: { decrement: p.poinDitukar } } });
+    } catch (e) {
+      const pesan = e instanceof Error ? e.message : String(e);
+      const meta = (e as { meta?: unknown }).meta;
+      const isCekSaldo = pesan.includes("saldo_nonnegatif") || JSON.stringify(meta ?? "").includes("saldo_nonnegatif");
+      if (isCekSaldo) throw new Error("Saldo warga tidak mencukupi untuk penukaran ini.");
+      throw e;
+    }
     return tx.penukaran.findUniqueOrThrow({ where: { id: p.id } });
   });
 }

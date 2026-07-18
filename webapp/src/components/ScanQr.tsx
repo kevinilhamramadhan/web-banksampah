@@ -38,7 +38,7 @@ async function bacaQr(video: HTMLVideoElement, signal: AbortSignal): Promise<str
 export default function ScanQr({ verified, email }: { verified: boolean; email: string }) {
   const router = useRouter();
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [fase, setFase] = useState<"scan" | "proses" | "sukses">("scan");
+  const [fase, setFase] = useState<"scan" | "proses" | "sukses" | "error">("scan");
   const [hasil, setHasil] = useState<{ poin: number; rupiah: number } | null>(null);
   const [error, setError] = useState("");
   const [ulang, setUlang] = useState(0); // ganti nilai untuk memulai ulang kamera
@@ -54,6 +54,7 @@ export default function ScanQr({ verified, email }: { verified: boolean; email: 
         stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } });
       } catch {
         setError("Tidak bisa mengakses kamera. Izinkan akses kamera di browser lalu coba lagi.");
+        setFase("error");
         return;
       }
       if (abort.signal.aborted) {
@@ -73,7 +74,7 @@ export default function ScanQr({ verified, email }: { verified: boolean; email: 
       } catch (e) {
         if ((e as DOMException).name === "AbortError") return;
         setError((e as Error).message || "Gagal memproses QR. Coba lagi.");
-        setFase("scan");
+        setFase("error"); // jangan otomatis restart kamera; QR yg sama bisa terbaca ulang tiap detik saat error tampil
       }
     })();
 
@@ -119,6 +120,7 @@ export default function ScanQr({ verified, email }: { verified: boolean; email: 
                 onClick={() => {
                   setError("");
                   setUlang((u) => u + 1);
+                  setFase("scan");
                 }}
               >
                 Scan lagi

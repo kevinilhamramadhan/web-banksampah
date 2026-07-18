@@ -27,9 +27,39 @@ export default function PenukaranForm() {
           : null;
   const valid = warga !== null && poin !== null && masalah === null;
 
-  const buatUlang = () => {
+  const [buatUlangError, setBuatUlangError] = useState("");
+
+  const buatUlang = async () => {
     if (!warga || poin === null) return;
-    if (aktif) void batalkanPenukaranAction(aktif.id).catch(() => {});
+    setBuatUlangError("");
+
+    if (aktif) {
+      const hasil = await batalkanPenukaranAction(aktif.id).catch((e: unknown) => ({
+        error: e instanceof Error ? e.message : "Gagal membatalkan penukaran.",
+      }));
+      if ("error" in hasil) {
+        // Batal gagal (mis. sudah confirmed) — cek status sebenarnya sebelum bikin QR baru,
+        // supaya tidak minta warga scan ulang dan double-debit saldo.
+        try {
+          const res = await fetch(`/api/penukaran/${aktif.id}`, { cache: "no-store" });
+          if (res.ok) {
+            const data = (await res.json()) as { status: "pending" | "confirmed" | "cancelled" };
+            if (data.status === "confirmed") {
+              setAktif((prev) => (prev ? { ...prev, status: "confirmed" } : prev));
+              return;
+            }
+          }
+        } catch {
+          // abaikan; tetap tolak buat QR baru di bawah demi keamanan
+        }
+        // Bukan confirmed (mis. sudah cancelled oleh proses lain) — tutup layar QR lama, jangan buat yang baru
+        // otomatis; biarkan ops cek dulu lalu ulangi manual supaya tidak double-debit.
+        setAktif(null);
+        setBuatUlangError("Penukaran sebelumnya sudah diproses. Tidak bisa membuat QR baru — periksa statusnya dulu.");
+        return;
+      }
+    }
+
     const fd = new FormData();
     fd.set("wargaId", warga.id);
     fd.set("poin", String(poin));
@@ -45,6 +75,7 @@ export default function PenukaranForm() {
     setAktif(null);
     setWarga(null);
     setPoinTeks("");
+    setBuatUlangError("");
   };
 
   return (
@@ -84,6 +115,7 @@ export default function PenukaranForm() {
           )}
 
           {state.error && <p className="error">{state.error}</p>}
+          {buatUlangError && <p className="error">{buatUlangError}</p>}
           <button className="btn" type="submit" disabled={!valid || pending} style={{ marginTop: 16 }}>
             {pending ? "Membuat…" : "Buat Permintaan Penukaran"}
           </button>

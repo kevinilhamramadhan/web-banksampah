@@ -17,9 +17,14 @@ export default function QrFullscreen({ penukaran: awal, onBuatUlang, onBatalkan,
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [p, setP] = useState(awal);
   const [sisa, setSisa] = useState(() => sisaDetik(new Date(awal.tokenExpiredAt)));
+  // Status cek akhir saat countdown habis: "belum" | "berjalan" | "selesai".
+  const [cekAkhir, setCekAkhir] = useState<"belum" | "berjalan" | "selesai">("belum");
 
   // Reset saat QR diganti (mis. tombol "Buat Ulang" membuat penukaran baru).
-  useEffect(() => setP(awal), [awal]);
+  useEffect(() => {
+    setP(awal);
+    setCekAkhir("belum");
+  }, [awal]);
 
   useEffect(() => {
     const t = setInterval(() => setSisa(sisaDetik(new Date(p.tokenExpiredAt))), 500);
@@ -54,6 +59,31 @@ export default function QrFullscreen({ penukaran: awal, onBuatUlang, onBatalkan,
     }, 2000);
     return () => clearInterval(iv);
   }, [p.id, p.status, p.tokenExpiredAt]);
+
+  // Saat countdown habis: satu cek status terakhir sebelum menampilkan "kedaluwarsa".
+  // Menutup celah balapan di mana warga konfirmasi dalam <=2 dtk terakhir tanpa sempat terpoll.
+  useEffect(() => {
+    if (p.status !== "pending" || sisa > 0 || cekAkhir !== "belum") return;
+    setCekAkhir("berjalan");
+    (async () => {
+      try {
+        const res = await fetch(`/api/penukaran/${p.id}`, { cache: "no-store" });
+        if (res.ok) {
+          const data = (await res.json()) as {
+            status: "pending" | "confirmed" | "cancelled";
+            poinDitukar: number;
+            jumlahRupiah: number;
+            tokenExpiredAt: string;
+          };
+          setP((prev) => ({ ...prev, ...data }));
+        }
+      } catch {
+        // abaikan; tetap tampilkan layar kedaluwarsa
+      } finally {
+        setCekAkhir("selesai");
+      }
+    })();
+  }, [p.id, p.status, sisa, cekAkhir]);
 
   useEffect(() => {
     if (canvasRef.current && p.status === "pending") {
@@ -90,6 +120,14 @@ export default function QrFullscreen({ penukaran: awal, onBuatUlang, onBatalkan,
   }
 
   if (sisa <= 0) {
+    // Tunggu hasil cek status akhir dulu — jangan sampai bilang "kedaluwarsa" padahal baru saja terkonfirmasi.
+    if (cekAkhir !== "selesai") {
+      return (
+        <div className="qr-layar">
+          <h2>Memeriksa status…</h2>
+        </div>
+      );
+    }
     return (
       <div className="qr-layar">
         <h2>QR kedaluwarsa</h2>

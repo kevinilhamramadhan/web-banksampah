@@ -44,4 +44,17 @@ describe("penukaran", () => {
     expect((await prisma.penukaran.findUniqueOrThrow({ where: { id: p.id } })).status).toBe("cancelled");
     await expect(cancelPenukaran(ops, p.id)).rejects.toThrow();
   });
+  it("dua penukaran pending sekaligus: confirm kedua saat saldo sudah tidak cukup DITOLAK dgn pesan ramah, saldo & status penukaran kedua tak berubah", async () => {
+    const { ops, warga } = await siap(); // saldo 58, verified
+    const p1 = await createPenukaran(ops, warga.id, 50); // create tidak cek tabrakan antar-penukaran pending
+    const p2 = await createPenukaran(ops, warga.id, 50); // keduanya boleh dibuat (masih pending)
+    const hasil1 = await confirmPenukaran(warga, p1.qrToken);
+    expect(hasil1.status).toBe("confirmed");
+    expect((await prisma.user.findUniqueOrThrow({ where: { id: warga.id } })).saldoPoin).toBe(8);
+
+    await expect(confirmPenukaran(warga, p2.qrToken)).rejects.toThrow(/tidak mencukupi/);
+
+    expect((await prisma.user.findUniqueOrThrow({ where: { id: warga.id } })).saldoPoin).toBe(8);
+    expect((await prisma.penukaran.findUniqueOrThrow({ where: { id: p2.id } })).status).toBe("pending");
+  });
 });
