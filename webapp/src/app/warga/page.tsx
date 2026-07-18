@@ -9,6 +9,7 @@ import { fmtTanggal } from "@/lib/format";
 import SaldoCard from "@/components/SaldoCard";
 import VerifikasiBanner from "@/components/VerifikasiBanner";
 import RiwayatList from "@/components/RiwayatList";
+import InstallButtonKecil from "@/components/InstallButtonKecil";
 
 const STATUS_LABEL: Record<PenukaranRingkas["status"], string> = {
   pending: "Menunggu",
@@ -78,6 +79,8 @@ export default async function WargaPage() {
           </div>
         )}
       />
+
+      <InstallButtonKecil />
     </div>
   );
 }
