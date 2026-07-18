@@ -33,8 +33,8 @@ async function main() {
   for (;;) {
     for (const u of page.users) {
       hashes.set(u.uid, {
-        hash: u.passwordHash ? Buffer.from(u.passwordHash).toString() : null,
-        salt: u.passwordSalt ? Buffer.from(u.passwordSalt).toString() : null,
+        hash: u.passwordHash ?? null,
+        salt: u.passwordSalt ?? null,
       });
     }
     if (!page.pageToken) break;
@@ -155,11 +155,12 @@ async function main() {
 
   if (errors.length > 0) {
     console.warn(`\n${errors.length} anomali ditemukan (lihat "errors" di atas). Migrasi TIDAK dihentikan — tinjau manual sebelum go-live.`);
+    process.exitCode = 2;
   }
 }
 
 main()
-  .then(() => process.exit(0))
+  .then(() => process.exit(process.exitCode ?? 0))
   .catch((e) => {
     console.error(e);
     process.exit(1);
