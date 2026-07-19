@@ -84,6 +84,26 @@ export async function resendVerificationAction(): Promise<{ error?: string; info
   return { info: "Email verifikasi terkirim. Cek kotak masuk (dan folder spam)." };
 }
 
+/** Koreksi alamat email yang salah ketik — hanya selama BELUM terverifikasi. */
+export async function gantiEmailAction(fd: FormData): Promise<{ error?: string; info?: string }> {
+  const u = await getSessionUser();
+  if (!u) return { error: "Anda belum login." };
+  if (u.emailVerifiedAt) return { error: "Email sudah terverifikasi — tidak bisa diganti di sini." };
+  const email = String(fd.get("email") ?? "").trim().toLowerCase();
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return { error: "Format email tidak valid." };
+  if (email === u.email) return { error: "Itu alamat yang sama dengan sekarang." };
+  try {
+    const baru = await prisma.user.update({ where: { id: u.id }, data: { email } });
+    // Token verifikasi ke alamat lama dihanguskan agar tidak ada jalur nyasar.
+    await prisma.emailToken.deleteMany({ where: { userId: u.id, type: "verify" } });
+    await sendVerification(baru).catch(() => {});
+    return { info: `Alamat diganti. Email verifikasi baru terkirim ke ${email}.` };
+  } catch (e) {
+    if ((e as { code?: string }).code === "P2002") return { error: "Email ini sudah dipakai akun lain." };
+    throw e;
+  }
+}
+
 export async function verifyEmailAction(
   _prev: { ok?: boolean; error?: string },
   token: string,

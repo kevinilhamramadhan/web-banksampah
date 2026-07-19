@@ -1,13 +1,16 @@
 "use client";
 import { useEffect, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
-import { resendVerificationAction } from "@/lib/actions/auth";
+import { gantiEmailAction, resendVerificationAction } from "@/lib/actions/auth";
 
-/** Kartu perhatian "verifikasi email dulu" + kirim ulang (cooldown 60 dtk) + cek status. */
+/** Kartu perhatian "verifikasi email dulu": kirim ulang (cooldown 60 dtk), cek status,
+    dan koreksi alamat salah ketik — supaya tidak ada warga yang terjebak. */
 export default function VerifikasiBanner({ email }: { email: string }) {
   const router = useRouter();
   const [cooldown, setCooldown] = useState(0);
   const [pesan, setPesan] = useState<{ error?: string; info?: string }>({});
+  const [gantiTampil, setGantiTampil] = useState(false);
+  const [emailBaru, setEmailBaru] = useState("");
   const [pending, startTransition] = useTransition();
 
   useEffect(() => {
@@ -22,6 +25,22 @@ export default function VerifikasiBanner({ email }: { email: string }) {
       const res = await resendVerificationAction();
       setPesan(res);
       if (!res.error) setCooldown(60);
+    });
+  };
+
+  const gantiEmail = () => {
+    setPesan({});
+    const fd = new FormData();
+    fd.set("email", emailBaru);
+    startTransition(async () => {
+      const res = await gantiEmailAction(fd);
+      setPesan(res);
+      if (!res.error) {
+        setGantiTampil(false);
+        setEmailBaru("");
+        setCooldown(60);
+        router.refresh(); // tampilkan alamat baru dari server
+      }
     });
   };
 
@@ -40,20 +59,46 @@ export default function VerifikasiBanner({ email }: { email: string }) {
         <h2 style={{ fontSize: "1.02rem" }}>Satu langkah lagi: verifikasi email</h2>
         <p className="muted" style={{ color: "var(--teks)" }}>
           Kami sudah mengirim tautan ke <strong>{email}</strong>. Klik tautannya, lalu kembali ke sini — setelah itu
-          kamu bisa scan QR penukaran poin.
+          kamu bisa scan QR penukaran poin. Tidak menemukan emailnya? <strong>Cek folder spam</strong>.
         </p>
         <p aria-live="polite" style={{ margin: pesan.error || pesan.info ? undefined : 0 }}>
           {pesan.error && <span className="error">{pesan.error}</span>}
           {pesan.info && <span className="sukses">{pesan.info}</span>}
         </p>
-        <div className="baris" style={{ flexWrap: "wrap", gap: 8 }}>
-          <button className="btn kecil" onClick={kirimUlang} disabled={cooldown > 0 || pending}>
-            {cooldown > 0 ? `Kirim ulang (${cooldown})` : "Kirim ulang email"}
-          </button>
-          <button className="btn kecil sekunder" onClick={cek}>
-            Sudah verifikasi
-          </button>
-        </div>
+
+        {gantiTampil ? (
+          <div>
+            <label htmlFor="email-baru">Alamat email yang benar</label>
+            <input
+              id="email-baru"
+              className="input"
+              type="email"
+              autoComplete="email"
+              value={emailBaru}
+              onChange={(e) => setEmailBaru(e.target.value)}
+            />
+            <div className="baris" style={{ flexWrap: "wrap", gap: 8, marginTop: 8 }}>
+              <button className="btn kecil" onClick={gantiEmail} disabled={pending || !emailBaru.trim()}>
+                Simpan & kirim ulang
+              </button>
+              <button className="btn kecil sekunder" onClick={() => setGantiTampil(false)}>
+                Batal
+              </button>
+            </div>
+          </div>
+        ) : (
+          <div className="baris" style={{ flexWrap: "wrap", gap: 8 }}>
+            <button className="btn kecil" onClick={kirimUlang} disabled={cooldown > 0 || pending}>
+              {cooldown > 0 ? `Kirim ulang (${cooldown})` : "Kirim ulang email"}
+            </button>
+            <button className="btn kecil sekunder" onClick={cek}>
+              Sudah verifikasi
+            </button>
+            <button className="btn kecil sekunder" onClick={() => setGantiTampil(true)}>
+              Salah alamat? Ganti
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

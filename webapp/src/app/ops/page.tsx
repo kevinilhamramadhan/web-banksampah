@@ -1,9 +1,9 @@
 import Link from "next/link";
 import { requireRole } from "@/lib/session-next";
-import { logoutAction } from "@/lib/actions/auth";
 import { muatSetoranOpsAction, muatPenukaranOpsAction } from "@/lib/actions/ops";
 import { MIN_TUKAR_POIN, RUPIAH_PER_POIN, TARIF_POIN_PER_KG, fmtRupiah } from "@/lib/constants";
 import AppHeader from "@/components/AppHeader";
+import TombolKeluar from "@/components/TombolKeluar";
 import RiwayatList from "@/components/RiwayatList";
 
 export default async function OpsPage() {
@@ -13,16 +13,7 @@ export default async function OpsPage() {
 
   return (
     <>
-      <AppHeader
-        judul="Ops Bank Sampah"
-        aksi={
-          <form action={logoutAction}>
-            <button className="btn kecil bahaya" type="submit">
-              Keluar
-            </button>
-          </form>
-        }
-      />
+      <AppHeader judul="Ops Bank Sampah" aksi={<TombolKeluar />} />
       <main className="container lebar">
         <div className="dua-kolom">
           <div>

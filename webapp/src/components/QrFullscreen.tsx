@@ -15,6 +15,7 @@ interface Props {
 /** Layar QR full-screen di perangkat ops. Status berubah otomatis via polling (pengganti onSnapshot). */
 export default function QrFullscreen({ penukaran: awal, onBuatUlang, onBatalkan, onTutup }: Props) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const judulKonfirmasiRef = useRef<HTMLHeadingElement>(null);
   const [p, setP] = useState(awal);
   const [sisa, setSisa] = useState(() => sisaDetik(new Date(awal.tokenExpiredAt)));
   // Status cek akhir saat countdown habis: "belum" | "berjalan" | "selesai".
@@ -91,6 +92,11 @@ export default function QrFullscreen({ penukaran: awal, onBuatUlang, onBatalkan,
     }
   }, [p.qrToken, p.status]);
 
+  // Kelola fokus saat layar perayaan menggantikan QR (pengguna keyboard/screen reader).
+  useEffect(() => {
+    if (p.status === "confirmed") judulKonfirmasiRef.current?.focus();
+  }, [p.status]);
+
   if (p.status === "confirmed") {
     // Momen uang berpindah tangan — perlakuan perayaan yang sama dgn sisi warga.
     return (
@@ -99,7 +105,9 @@ export default function QrFullscreen({ penukaran: awal, onBuatUlang, onBatalkan,
           <circle cx="48" cy="48" r="41" strokeLinecap="round" />
           <path d="M30 50 L44 63 L67 36" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
-        <h2 style={{ color: "#fff", margin: 0 }}>Terkonfirmasi!</h2>
+        <h2 ref={judulKonfirmasiRef} tabIndex={-1} style={{ color: "#fff", margin: 0, outline: "none" }}>
+          Terkonfirmasi!
+        </h2>
         <div className="jumlah">{fmtRupiah(p.jumlahRupiah)}</div>
         <p className="pesan">Serahkan uang tunai kepada {p.wargaNama}.</p>
         <button className="btn di-hijau" style={{ maxWidth: 320 }} onClick={onTutup}>

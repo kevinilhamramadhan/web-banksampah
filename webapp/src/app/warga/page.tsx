@@ -1,9 +1,10 @@
 import Link from "next/link";
 import { requireRole } from "@/lib/session-next";
 import { setoranPage } from "@/lib/setoran";
-import { logoutAction } from "@/lib/actions/auth";
 import { muatSetoranAction, muatPenukaranAction } from "@/lib/actions/warga";
 import { MIN_TUKAR_POIN, RUPIAH_PER_POIN, TARIF_POIN_PER_KG, fmtRupiah } from "@/lib/constants";
+import AppHeader from "@/components/AppHeader";
+import TombolKeluar from "@/components/TombolKeluar";
 import VerifikasiBanner from "@/components/VerifikasiBanner";
 import RiwayatList from "@/components/RiwayatList";
 import InstallButtonKecil from "@/components/InstallButtonKecil";
@@ -24,30 +25,20 @@ export default async function WargaPage() {
 
   return (
     <>
-      <header className="markas saldo-panel">
-        <div className="container">
-          <div className="baris">
-            <h1>Bank Sampah</h1>
-            <form action={logoutAction}>
-              <button className="btn kecil bahaya" type="submit">
-                Keluar
-              </button>
-            </form>
-          </div>
-          <div className="label" style={{ marginTop: 20 }}>
-            Saldo poin {user.nama}
-          </div>
-          <div className="angka">
-            {user.saldoPoin.toLocaleString("id-ID")}
-            <span className="satuan"> poin</span>
-          </div>
-          <div className="rupiah">≈ {fmtRupiah(user.saldoPoin * RUPIAH_PER_POIN)}</div>
-          <div className="aturan">
-            1 kg sampah = {TARIF_POIN_PER_KG} poin • cair min. {MIN_TUKAR_POIN} poin (
-            {fmtRupiah(MIN_TUKAR_POIN * RUPIAH_PER_POIN)})
-          </div>
+      <AppHeader judul="Bank Sampah" kelas="saldo-panel" aksi={<TombolKeluar />}>
+        <div className="label" style={{ marginTop: 20 }}>
+          Saldo poin {user.nama}
         </div>
-      </header>
+        <div className="angka">
+          {user.saldoPoin.toLocaleString("id-ID")}
+          <span className="satuan"> poin</span>
+        </div>
+        <div className="rupiah">≈ {fmtRupiah(user.saldoPoin * RUPIAH_PER_POIN)}</div>
+        <div className="aturan">
+          1 kg sampah = {TARIF_POIN_PER_KG} poin • cair min. {MIN_TUKAR_POIN} poin (
+          {fmtRupiah(MIN_TUKAR_POIN * RUPIAH_PER_POIN)})
+        </div>
+      </AppHeader>
 
       <main className="container">
         {!verified ? (

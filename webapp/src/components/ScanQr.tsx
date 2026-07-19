@@ -38,10 +38,17 @@ async function bacaQr(video: HTMLVideoElement, signal: AbortSignal): Promise<str
 export default function ScanQr({ verified, email }: { verified: boolean; email: string }) {
   const router = useRouter();
   const videoRef = useRef<HTMLVideoElement>(null);
+  const judulSuksesRef = useRef<HTMLHeadingElement>(null);
   const [fase, setFase] = useState<"scan" | "proses" | "sukses" | "error">("scan");
   const [hasil, setHasil] = useState<{ poin: number; rupiah: number } | null>(null);
   const [error, setError] = useState("");
   const [ulang, setUlang] = useState(0); // ganti nilai untuk memulai ulang kamera
+
+  // Kelola fokus: saat layar perayaan menggantikan tampilan scan, pengguna
+  // keyboard/screen-reader dipindahkan ke judulnya (role=status saja tidak cukup).
+  useEffect(() => {
+    if (fase === "sukses") judulSuksesRef.current?.focus();
+  }, [fase]);
 
   useEffect(() => {
     if (!verified || fase !== "scan") return;
@@ -66,7 +73,20 @@ export default function ScanQr({ verified, email }: { verified: boolean; email: 
       try {
         const token = await bacaQr(video, abort.signal);
         setFase("proses");
-        const res = await confirmScanAction(undefined, token);
+        // Batas tunggu 20 dtk: koneksi desa bisa lambat; server punya guard anti-replay,
+        // jadi scan ulang setelah cek saldo tidak akan memotong dua kali.
+        const timeout = new Promise<never>((_, tolak) =>
+          setTimeout(
+            () =>
+              tolak(
+                new Error(
+                  "Koneksi lambat — proses belum tuntas. Cek saldo di beranda dulu; kalau belum terpotong, scan lagi.",
+                ),
+              ),
+            20_000,
+          ),
+        );
+        const res = await Promise.race([confirmScanAction(undefined, token), timeout]);
         if ("error" in res) throw new Error(res.error);
         setHasil({ poin: res.poin, rupiah: res.rupiah });
         setFase("sukses");
@@ -92,7 +112,9 @@ export default function ScanQr({ verified, email }: { verified: boolean; email: 
           <circle cx="48" cy="48" r="41" strokeLinecap="round" />
           <path d="M30 50 L44 63 L67 36" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
-        <h2 style={{ color: "#fff", margin: 0, fontSize: "1.4rem" }}>Penukaran berhasil!</h2>
+        <h2 ref={judulSuksesRef} tabIndex={-1} style={{ color: "#fff", margin: 0, fontSize: "1.4rem", outline: "none" }}>
+          Penukaran berhasil!
+        </h2>
         <div className="jumlah">{fmtRupiah(hasil.rupiah)}</div>
         <p className="pesan">
           {hasil.poin} poin kamu sudah dicairkan — terima uang tunainya dari ops, ya. Terima kasih sudah menabung
