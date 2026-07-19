@@ -371,6 +371,87 @@ label {
   }
 }
 
+/* ---------- Navigasi bawah ala aplikasi (app shell PWA) ---------- */
+
+.nav-bawah {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--z-lekat);
+  display: flex;
+  align-items: stretch;
+  max-width: 720px;
+  margin: 0 auto;
+  background: var(--kartu);
+  border-top: 1px solid var(--garis);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+.nav-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 2px;
+  padding: 8px 4px 10px;
+  min-height: 56px;
+  color: var(--teks-redup);
+  text-decoration: none;
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+.nav-item.aktif {
+  color: var(--hijau-link);
+}
+.nav-ikon svg {
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+.nav-utama .nav-ikon {
+  width: 52px;
+  height: 52px;
+  margin-top: -24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--hijau);
+  color: #fff;
+  border: 4px solid var(--permukaan);
+  box-shadow: 0 4px 12px oklch(0.33 0.06 152 / 0.35);
+}
+.nav-utama.aktif .nav-ikon {
+  background: var(--hijau-gelap);
+}
+.nav-utama .nav-ikon svg {
+  width: 26px;
+  height: 26px;
+}
+/* Ruang untuk nav supaya konten tidak tertutup */
+.dgn-nav {
+  padding-bottom: calc(76px + env(safe-area-inset-bottom));
+}
+@media (min-width: 900px) {
+  .nav-bawah {
+    border: 1px solid var(--garis);
+    border-bottom: none;
+    border-radius: 16px 16px 0 0;
+  }
+}
+
+/* Chrome ala aplikasi */
+.btn,
+.chip,
+.nav-item {
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+body {
+  overscroll-behavior-y: none;
+}
+
 /* Peringkat penabung */
 .peringkat {
   list-style: none;

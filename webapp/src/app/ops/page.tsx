@@ -17,15 +17,7 @@ export default async function OpsPage() {
       <main className="container lebar">
         <div className="dua-kolom">
           <div>
-            <div style={{ display: "grid", gap: 12, marginBottom: 12, marginTop: 8 }}>
-              <Link href="/ops/setoran" className="btn">
-                Input Setoran Sampah
-              </Link>
-              <Link href="/ops/penukaran" className="btn sekunder">
-                Penukaran Poin (QR)
-              </Link>
-            </div>
-            <p className="muted">
+            <p className="muted" style={{ marginTop: 8 }}>
               Tarif: 1 kg sampah = {TARIF_POIN_PER_KG} poin • pencairan min. {MIN_TUKAR_POIN} poin (={" "}
               {fmtRupiah(MIN_TUKAR_POIN * RUPIAH_PER_POIN)})
             </p>
