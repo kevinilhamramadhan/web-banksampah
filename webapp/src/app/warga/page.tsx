@@ -46,8 +46,11 @@ export default async function WargaPage() {
           <VerifikasiBanner email={user.email} />
         ) : (
           <>
-            <Link href="/warga/scan" className="btn" style={{ marginBottom: 20 }}>
+            <Link href="/warga/scan" className="btn" style={{ marginBottom: 12 }}>
               Scan QR Penukaran Poin
+            </Link>
+            <Link href="/warga/peringkat" className="btn sekunder" style={{ marginBottom: 20 }}>
+              Peringkat Penabung
             </Link>
 
             <h2>Riwayat</h2>

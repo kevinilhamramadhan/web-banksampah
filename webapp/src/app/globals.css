@@ -371,6 +371,26 @@ label {
   }
 }
 
+/* Peringkat penabung */
+.peringkat {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+}
+.posisi {
+  min-width: 2rem;
+  font-weight: 800;
+  color: var(--teks-redup);
+  text-align: center;
+}
+.baris-saya {
+  background: var(--daun-tipis);
+  border-radius: 12px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-bottom: none;
+}
+
 /* Skeleton utk pemuatan pertama (pengganti "Memuat…" polos) */
 .skeleton-baris {
   height: 52px;

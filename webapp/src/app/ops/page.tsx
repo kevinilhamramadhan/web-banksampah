@@ -29,6 +29,9 @@ export default async function OpsPage() {
               Tarif: 1 kg sampah = {TARIF_POIN_PER_KG} poin • pencairan min. {MIN_TUKAR_POIN} poin (={" "}
               {fmtRupiah(MIN_TUKAR_POIN * RUPIAH_PER_POIN)})
             </p>
+            <p>
+              <Link href="/warga/peringkat">Lihat peringkat penabung kuartal ini</Link>
+            </p>
           </div>
 
           <div>
