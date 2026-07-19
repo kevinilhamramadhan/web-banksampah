@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Bank Sampah KKN",
+  title: "Bank Sampah Digital",
   description: "Pantau poin sampah dan tukar poin jadi uang",
   manifest: "/manifest.webmanifest",
   icons: {

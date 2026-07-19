@@ -33,7 +33,7 @@ export async function peringkatKuartal(uidSaya?: string): Promise<Peringkat> {
     _sum: { totalPoin: true },
     orderBy: { _sum: { totalPoin: "desc" } },
   });
-  // ponytail: seluruh grup dimuat lalu diberi posisi di memori — skala KKN ratusan warga;
+  // ponytail: seluruh grup dimuat lalu diberi posisi di memori — skala komunitas ratusan warga;
   // kalau membengkak, ganti ke query ranking SQL.
   const users = await prisma.user.findMany({
     where: { id: { in: grup.map((g) => g.wargaId) } },

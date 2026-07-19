@@ -13,40 +13,38 @@ export default function VerifikasiForm({ token }: { token: string }) {
 
   if (!token) {
     return (
-      <div className="container" style={{ maxWidth: 480, paddingTop: 32 }}>
+      <>
         <h1>Verifikasi Email</h1>
-        <p className="error">Tautan verifikasi tidak valid atau sudah kedaluwarsa.</p>
-        <div style={{ marginTop: 16 }}>
-          <Link href="/login" className="btn">
-            Masuk
-          </Link>
-        </div>
-      </div>
+        <p className="auth-sub error">Tautan verifikasi tidak valid atau sudah kedaluwarsa.</p>
+        <Link href="/login" className="btn">
+          Ke Halaman Masuk
+        </Link>
+      </>
     );
   }
 
   return (
-    <div className="container" style={{ maxWidth: 480, paddingTop: 32 }}>
+    <>
       <h1>Verifikasi Email</h1>
       {!state?.ok && !state?.error && (
         <>
-          <p className="muted">Tekan tombol di bawah untuk memverifikasi email Anda.</p>
+          <p className="auth-sub">Satu klik lagi dan akunmu aktif sepenuhnya.</p>
           <form action={() => formAction(token)}>
-            <button className="btn" type="submit" disabled={pending} style={{ marginTop: 16 }}>
+            <button className="btn" type="submit" disabled={pending}>
               {pending ? "Memproses…" : "Verifikasi Email Saya"}
             </button>
           </form>
         </>
       )}
-      {state?.ok && <p className="sukses">Email berhasil diverifikasi.</p>}
-      {state?.error && <p className="error">{state.error}</p>}
+      <p aria-live="polite" style={{ margin: state?.ok || state?.error ? "4px 0 16px" : 0 }}>
+        {state?.ok && <span className="sukses">Email berhasil diverifikasi — selamat menabung sampah!</span>}
+        {state?.error && <span className="error">{state.error}</span>}
+      </p>
       {(state?.ok || state?.error) && (
-        <div style={{ marginTop: 16 }}>
-          <Link href="/login" className="btn">
-            Masuk
-          </Link>
-        </div>
+        <Link href="/login" className="btn">
+          Ke Halaman Masuk
+        </Link>
       )}
-    </div>
+    </>
   );
 }

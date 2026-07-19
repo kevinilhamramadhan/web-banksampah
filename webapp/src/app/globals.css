@@ -371,6 +371,110 @@ label {
   }
 }
 
+/* ---------- Cangkang auth profesional: panel brand (desktop) + kartu form ---------- */
+
+.auth-split {
+  min-height: 100dvh;
+  display: grid;
+}
+.auth-panel {
+  display: none;
+}
+.auth-isi {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 16px;
+}
+.auth-kartu {
+  width: 100%;
+  max-width: 420px;
+}
+.auth-kartu h1 {
+  font-size: 1.55rem;
+  margin-bottom: 4px;
+}
+.auth-sub {
+  color: var(--teks-redup);
+  margin-bottom: 22px;
+}
+.auth-merek {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+  font-size: 1.05rem;
+  color: var(--teks);
+  text-decoration: none;
+  margin-bottom: 28px;
+}
+.auth-merek img {
+  border-radius: 10px;
+}
+.auth-kaki {
+  margin-top: 26px;
+  padding-top: 16px;
+  border-top: 1px solid var(--garis);
+  text-align: center;
+  color: var(--teks-redup);
+  font-size: 0.95rem;
+}
+.label-baris {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.tautan-kecil {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 12px 0 4px;
+  color: var(--hijau-link);
+  font: inherit;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+}
+@media (min-width: 900px) {
+  .auth-split {
+    grid-template-columns: 1fr 1fr;
+  }
+  .auth-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: var(--hijau-pekat);
+    color: #fff;
+    padding: 48px;
+  }
+  .auth-panel .merek {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 800;
+    font-size: 1.15rem;
+  }
+  .auth-panel .merek img {
+    border-radius: 12px;
+  }
+  .auth-panel .tagline {
+    font-size: 2rem;
+    font-weight: 800;
+    line-height: 1.25;
+    max-width: 16ch;
+    text-wrap: balance;
+  }
+  .auth-panel .catatan {
+    color: oklch(1 0 0 / 0.75);
+    font-size: 0.9rem;
+  }
+  .auth-isi .auth-merek {
+    display: none; /* brand sudah dibawa panel kiri */
+  }
+}
+
 /* ---------- Navigasi bawah ala aplikasi (app shell PWA) ---------- */
 
 .nav-bawah {

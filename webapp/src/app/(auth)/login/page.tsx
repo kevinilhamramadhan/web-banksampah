@@ -18,7 +18,7 @@ export default function LoginPage() {
   const lupaPassword = () => {
     setResetMsg({});
     if (!email.trim()) {
-      setResetMsg({ error: "Isi email dulu, lalu tekan “Lupa password” lagi." });
+      setResetMsg({ error: "Isi email di atas dulu, lalu tekan “Lupa password?” lagi." });
       return;
     }
     const fd = new FormData();
@@ -29,9 +29,9 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="container" style={{ maxWidth: 480, paddingTop: 32 }}>
-      <h1>Masuk</h1>
-      <p className="muted">Bank Sampah KKN</p>
+    <>
+      <h1>Selamat datang kembali</h1>
+      <p className="auth-sub">Masuk untuk mengelola tabungan sampahmu.</p>
       <form action={formAction}>
         <label htmlFor="email">Email</label>
         <input
@@ -39,26 +39,31 @@ export default function LoginPage() {
           name="email"
           className="input"
           type="email"
+          placeholder="nama@email.com"
           autoComplete="email"
           required
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        <label htmlFor="password">Password</label>
+        <div className="label-baris">
+          <label htmlFor="password">Password</label>
+          <button type="button" className="tautan-kecil" onClick={lupaPassword} disabled={resetPending}>
+            Lupa password?
+          </button>
+        </div>
         <input id="password" name="password" className="input" type="password" autoComplete="current-password" required />
-        {state?.error && <p className="error">{state.error}</p>}
-        {resetMsg.error && <p className="error">{resetMsg.error}</p>}
-        {resetMsg.info && <p className="sukses">{resetMsg.info}</p>}
-        <button className="btn" type="submit" disabled={pending} style={{ marginTop: 16 }}>
+        <p aria-live="polite" style={{ margin: state?.error || resetMsg.error || resetMsg.info ? "8px 0 0" : 0 }}>
+          {state?.error && <span className="error">{state.error}</span>}
+          {resetMsg.error && <span className="error">{resetMsg.error}</span>}
+          {resetMsg.info && <span className="sukses">{resetMsg.info}</span>}
+        </p>
+        <button className="btn" type="submit" disabled={pending} style={{ marginTop: 20 }}>
           {pending ? "Memproses…" : "Masuk"}
         </button>
       </form>
-      <div className="baris" style={{ marginTop: 16 }}>
-        <button className="btn kecil sekunder" type="button" onClick={lupaPassword} disabled={resetPending}>
-          Lupa password?
-        </button>
-        <Link href="/register">Daftar akun warga</Link>
-      </div>
-    </div>
+      <p className="auth-kaki">
+        Belum punya akun? <Link href="/register">Daftar sekarang</Link>
+      </p>
+    </>
   );
 }

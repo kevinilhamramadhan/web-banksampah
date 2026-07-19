@@ -33,7 +33,7 @@ export default function Home() {
   return (
     <div className="selamat-datang">
       <img src="/icon-192.png" alt="" width={104} height={104} style={{ borderRadius: 26 }} />
-      <h1>Bank Sampah KKN</h1>
+      <h1>Bank Sampah</h1>
       <p style={{ color: "oklch(1 0 0 / 0.88)", maxWidth: "34ch" }}>
         Setor sampah, kumpulkan poin, tukarkan jadi uang tunai.
       </p>
