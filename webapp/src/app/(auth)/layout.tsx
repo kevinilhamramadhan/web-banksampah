@@ -21,6 +21,10 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
             Bank Sampah
           </Link>
           {children}
+          <p className="auth-legal">
+            <Link href="/tentang">Tentang</Link> · <Link href="/privasi">Privasi</Link> ·{" "}
+            <Link href="/ketentuan">Ketentuan</Link>
+          </p>
         </div>
       </div>
     </div>

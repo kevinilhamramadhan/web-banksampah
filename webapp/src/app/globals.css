@@ -535,6 +535,15 @@ label {
   justify-content: space-between;
   align-items: baseline;
 }
+.auth-legal {
+  margin-top: 22px;
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--teks-redup);
+}
+.auth-legal a {
+  color: var(--teks-redup);
+}
 .tautan-kecil {
   background: none;
   border: none;
