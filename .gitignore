@@ -5,4 +5,6 @@ agent-skills/
 .firebase/
 firestore-debug.log
 webapp/.env
-webapp/prisma
+webapp/prisma/
+graphify-out/
+prompt-uiux-pwa-banksampah.md
