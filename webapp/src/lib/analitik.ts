@@ -29,6 +29,27 @@ function labelBulan(d: Date) {
   return d.toLocaleDateString("id-ID", { month: "short", year: "2-digit" });
 }
 
+export interface RingkasanBulan {
+  jumlahSetoran: number;
+  poin: number;
+  beratKg: number;
+}
+
+/** Ringkasan bulan berjalan untuk beranda ops — satu query, sengaja ringan. */
+export async function ringkasanBulanIni(sekarang = new Date()): Promise<RingkasanBulan> {
+  const awal = new Date(sekarang.getFullYear(), sekarang.getMonth(), 1);
+  const setoran = await prisma.setoran.findMany({
+    where: { tanggal: { gte: awal } },
+    select: { totalPoin: true, items: { select: { beratKg: true } } },
+  });
+  const beratKg = setoran.reduce((a, s) => a + s.items.reduce((b, i) => b + i.beratKg, 0), 0);
+  return {
+    jumlahSetoran: setoran.length,
+    poin: setoran.reduce((a, s) => a + s.totalPoin, 0),
+    beratKg: Math.round(beratKg * 10) / 10,
+  };
+}
+
 export async function analitikOps(sekarang = new Date()): Promise<AnalitikOps> {
   const awal6 = new Date(sekarang.getFullYear(), sekarang.getMonth() - 5, 1);
   const sejak30 = new Date(sekarang.getTime() - 30 * 86_400_000);
@@ -40,7 +61,8 @@ export async function analitikOps(sekarang = new Date()): Promise<AnalitikOps> {
     prisma.setoranItem.groupBy({
       by: ["jenisSampahNama"],
       _sum: { beratKg: true, poin: true },
-      orderBy: { _sum: { poin: "desc" } },
+      // Diurut berat: bagan mengkodekan kg, jadi urutannya harus sejalan dengan panjang bar.
+      orderBy: { _sum: { beratKg: "desc" } },
     }),
     prisma.setoran.findMany({ where: { tanggal: { gte: sejak30 } }, distinct: ["wargaId"], select: { wargaId: true } }),
     prisma.setoran.findMany({

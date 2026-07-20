@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { requireRole } from "@/lib/session-next";
 import { listJenisSampah } from "@/lib/jenis-sampah";
 import AppHeader from "@/components/AppHeader";
@@ -9,7 +8,7 @@ export default async function OpsJenisSampahPage() {
   const rows = await listJenisSampah(false);
   return (
     <>
-      <AppHeader judul="Kelola Jenis Sampah" aksi={<Link href="/ops">← Beranda</Link>} />
+      <AppHeader judul="Jenis Sampah" />
       <main className="container">
         <p className="muted">
           Tarif menentukan poin per kilogram. Menonaktifkan jenis menyembunyikannya dari form

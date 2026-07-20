@@ -112,28 +112,36 @@ function BarisJenis({
 }) {
   const [tarif, setTarif] = useState(String(j.tarifPoinPerKg));
   const berubah = tarif !== String(j.tarifPoinPerKg) && /^\d+$/.test(tarif) && Number(tarif) > 0;
+  // Status disandikan lewat badge, bukan opacity — menurunkan opacity teks bisa
+  // menjatuhkan kontras di bawah AA.
   return (
-    <div className="card" style={{ opacity: j.aktif ? 1 : 0.6 }}>
-      <div className="baris" style={{ marginBottom: 8 }}>
+    <div className="card">
+      <div className="baris" style={{ marginBottom: 10 }}>
         <strong>{j.nama}</strong>
-        <span className={j.aktif ? "chip aktif" : "chip"} style={{ minHeight: 32, padding: "4px 12px", pointerEvents: "none" }}>
-          {j.aktif ? "Aktif" : "Nonaktif"}
-        </span>
+        {/* Badge status, bukan chip: sengaja tak berbentuk tombol supaya tak terlihat bisa ditekan. */}
+        <span className={`status${j.aktif ? "" : " mati"}`}>{j.aktif ? "Aktif" : "Nonaktif"}</span>
       </div>
+      {/* Baris tarif: kelompok input di kiri, aksi utama di kanan. Tanpa wrap agar
+          tidak pernah terlihat seperti tata letak yang jebol. */}
       <div className="baris" style={{ gap: 8 }}>
-        <input
-          className="input"
-          inputMode="numeric"
-          aria-label={`Tarif ${j.nama} (poin per kg)`}
-          value={tarif}
-          onChange={(e) => setTarif(e.target.value.replace(/[^\d]/g, ""))}
-          style={{ maxWidth: 120 }}
-        />
-        <span className="muted">poin/kg</span>
-        <button className="btn kecil sekunder" type="button" disabled={!berubah || pending} onClick={() => onSimpanTarif(Number(tarif))}>
+        <span className="baris" style={{ gap: 8 }}>
+          <input
+            className="input"
+            inputMode="numeric"
+            aria-label={`Tarif ${j.nama} (poin per kg)`}
+            value={tarif}
+            onChange={(e) => setTarif(e.target.value.replace(/[^\d]/g, ""))}
+            style={{ maxWidth: 84 }}
+          />
+          <span className="muted">poin/kg</span>
+        </span>
+        {/* Simpan = aksi utama baris ini; mengubah status sengaja dibuat tenang. */}
+        <button className="btn kecil" type="button" disabled={!berubah || pending} onClick={() => onSimpanTarif(Number(tarif))}>
           Simpan
         </button>
-        <button className="btn kecil" type="button" disabled={pending} onClick={onToggle}>
+      </div>
+      <div style={{ marginTop: 10 }}>
+        <button className="btn kecil sekunder" type="button" disabled={pending} onClick={onToggle}>
           {j.aktif ? "Nonaktifkan" : "Aktifkan"}
         </button>
       </div>

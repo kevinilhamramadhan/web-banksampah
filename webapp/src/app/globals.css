@@ -342,7 +342,144 @@ label {
   font-weight: 700;
 }
 
-/* ---------- Analitik ops: kartu statistik + bagan CSS murni ---------- */
+/* ---------- Beranda ops: dua aksi utama + ringkasan + daftar menu ---------- */
+
+/* Afordans aksi, bukan kartu konten: dua tugas inti ops dapat target besar. */
+.aksi-utama {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 12px;
+  margin: 16px 0 18px;
+}
+.aksi-kartu {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 76px;
+  padding: 14px 16px;
+  border-radius: var(--radius-besar);
+  background: var(--kartu);
+  border: 1px solid var(--garis);
+  color: var(--teks);
+  text-decoration: none;
+  transition: background var(--gerak-cepat), transform var(--gerak-cepat);
+}
+.aksi-kartu:active {
+  transform: scale(0.99);
+}
+.aksi-kartu .ikon {
+  flex: none;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--daun-tipis);
+  color: var(--hijau-link);
+}
+.aksi-kartu .ikon svg {
+  width: 22px;
+  height: 22px;
+}
+.aksi-kartu .judul {
+  font-weight: 700;
+  font-size: 1.02rem;
+}
+.aksi-kartu .ket {
+  font-size: 0.85rem;
+  color: var(--teks-redup);
+}
+/* Setoran = pekerjaan paling sering → satu-satunya bidang penuh warna di layar ini. */
+.aksi-kartu.utama {
+  background: var(--hijau);
+  border-color: var(--hijau);
+  color: #fff;
+}
+.aksi-kartu.utama:active {
+  background: var(--hijau-gelap);
+}
+.aksi-kartu.utama .ikon {
+  background: oklch(1 0 0 / 0.18);
+  color: #fff;
+}
+.aksi-kartu.utama .ket {
+  color: oklch(1 0 0 / 0.85);
+}
+
+/* Ringkasan satu baris — pengganti hamparan kartu statistik. */
+.ringkas {
+  color: var(--teks-redup);
+  margin: 0 0 6px;
+}
+.ringkas strong {
+  color: var(--teks);
+}
+
+/* Daftar menu: baris berpembatas tipis, bukan tumpukan kartu. */
+.menu-list {
+  margin: 8px 0 0;
+  border-top: 1px solid var(--garis);
+}
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 64px;
+  padding: 12px 4px;
+  border-bottom: 1px solid var(--garis);
+  color: var(--teks);
+  text-decoration: none;
+  transition: background var(--gerak-cepat);
+}
+.menu-item:hover {
+  background: var(--daun-tipis);
+}
+.menu-item .ikon {
+  flex: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--daun-tipis);
+  color: var(--hijau-link);
+}
+.menu-item .ikon svg {
+  width: 20px;
+  height: 20px;
+}
+.menu-item .judul {
+  font-weight: 600;
+}
+.menu-item .ket {
+  font-size: 0.85rem;
+  color: var(--teks-redup);
+}
+.menu-item .lanjut {
+  margin-left: auto;
+  flex: none;
+  color: var(--teks-redup);
+}
+
+/* Badge status: sengaja persegi & kecil agar tak tertukar dengan chip yang bisa ditekan. */
+.status {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.76rem;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 6px;
+  background: var(--daun-tipis);
+  color: var(--hijau-link);
+}
+.status.mati {
+  background: var(--garis);
+  color: var(--teks-redup);
+}
+
+/* ---------- Analitik ops: bagan CSS murni ---------- */
 .stat-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -387,6 +524,22 @@ label {
   background: var(--hijau);
   border-radius: 6px 6px 0 0;
   min-height: 3px;
+}
+/* Bulan kosong: garis abu tipis, dibaca "tidak ada data" — bukan bar kecil yang menipu. */
+.bagan .batang.nol {
+  background: var(--garis);
+}
+
+/* Ringkasan naratif analitik — angka menonjol tanpa hamparan kartu statistik. */
+.sorot {
+  font-size: 1.12rem;
+  line-height: 1.65;
+  max-width: 62ch;
+  margin: 14px 0 26px;
+  text-wrap: pretty;
+}
+.sorot strong {
+  font-weight: 800;
 }
 .bagan .cap {
   font-size: 0.7rem;

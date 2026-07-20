@@ -1,8 +1,8 @@
 import { beforeEach, describe, expect, it } from "vitest";
-import { buatUser, buatJenis, resetDb } from "./helpers";
+import { buatUser, buatJenis, prisma, resetDb } from "./helpers";
 import { createSetoran } from "@/lib/setoran";
 import { createPenukaran, confirmPenukaran } from "@/lib/penukaran";
-import { analitikOps } from "@/lib/analitik";
+import { analitikOps, ringkasanBulanIni } from "@/lib/analitik";
 
 beforeEach(resetDb);
 
@@ -39,6 +39,23 @@ describe("analitikOps", () => {
     expect(hasil.tren).toHaveLength(6);
     expect(hasil.tren.at(-1)!.poin).toBe(70);
     expect(hasil.tren.at(-1)!.beratKg).toBe(8);
+  });
+
+  it("ringkasanBulanIni hanya menghitung bulan berjalan", async () => {
+    const ops = await buatUser({ role: "ops", email: "ops2@test.com" });
+    const w = await buatUser({ email: "w@test.com" });
+    const j = await buatJenis({ nama: "Plastik", tarifPoinPerKg: 5 });
+    await createSetoran(ops, w.id, [{ jenisId: j.id, beratKg: 2 }]); // 10 poin, 2kg (bulan ini)
+    await createSetoran(ops, w.id, [{ jenisId: j.id, beratKg: 1 }]); // 5 poin, 1kg (bulan ini)
+    // Setoran bulan lalu — tidak boleh ikut terhitung.
+    await prisma.setoran.create({
+      data: { wargaId: w.id, opsId: ops.id, totalPoin: 999, tanggal: new Date(2020, 0, 15) },
+    });
+
+    const r = await ringkasanBulanIni();
+    expect(r.jumlahSetoran).toBe(2);
+    expect(r.poin).toBe(15);
+    expect(r.beratKg).toBe(3);
   });
 
   it("DB kosong → nol semua, tren tetap 6 bulan", async () => {

@@ -47,26 +47,41 @@ const IKON = {
       <path d="M4 21c0-4 4-6 8-6s8 2 8 6" strokeLinecap="round" />
     </svg>
   ),
+  menu: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+      <line x1="4" y1="7" x2="20" y2="7" strokeLinecap="round" />
+      <line x1="4" y1="12" x2="20" y2="12" strokeLinecap="round" />
+      <line x1="4" y1="17" x2="14" y2="17" strokeLinecap="round" />
+    </svg>
+  ),
 };
 
 interface Item {
   href: string;
   label: string;
   ikon: keyof typeof IKON;
+  /** Rute lain yang termasuk "wilayah" item ini, agar status aktif selalu jujur. */
+  cakupan?: string[];
 }
 
 const MENU: Record<"warga" | "ops", Item[]> = {
   warga: [
-    { href: "/warga", label: "Beranda", ikon: "beranda" },
+    { href: "/warga", label: "Beranda", ikon: "beranda", cakupan: ["/warga/kontribusi"] },
     { href: "/warga/peringkat", label: "Peringkat", ikon: "peringkat" },
     { href: "/warga/scan", label: "Scan", ikon: "scan" },
     { href: "/warga/pengaturan", label: "Pengaturan", ikon: "pengaturan" },
     { href: "/warga/profil", label: "Profil", ikon: "profil" },
   ],
   ops: [
-    { href: "/ops", label: "Beranda", ikon: "beranda" },
+    { href: "/ops", label: "Beranda", ikon: "beranda", cakupan: ["/ops/riwayat"] },
     { href: "/ops/setoran", label: "Setoran", ikon: "setoran" },
     { href: "/ops/penukaran", label: "Penukaran", ikon: "penukaran" },
+    {
+      href: "/ops/menu",
+      label: "Menu",
+      ikon: "menu",
+      cakupan: ["/ops/analitik", "/ops/laporan", "/ops/jenis-sampah", "/warga/peringkat"],
+    },
   ],
 };
 
@@ -75,7 +90,8 @@ export default function AppNav({ peran }: { peran: "warga" | "ops" }) {
   return (
     <nav className="nav-bawah" aria-label="Navigasi utama">
       {MENU[peran].map((item) => {
-        const aktif = pathname === item.href;
+        const aktif =
+          pathname === item.href || (item.cakupan?.some((p) => pathname.startsWith(p)) ?? false);
         return (
           <Link
             key={item.href}

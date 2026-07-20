@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { redirect } from "next/navigation";
 import { getSessionUser } from "@/lib/session-next";
 import { peringkatKuartal } from "@/lib/peringkat";
@@ -13,7 +12,7 @@ export default async function PeringkatPage() {
 
   return (
     <>
-      <AppHeader judul="Peringkat Penabung" aksi={user.role === "ops" ? <Link href="/ops">← Beranda</Link> : undefined}>
+      <AppHeader judul="Peringkat Penabung">
         <p className="label" style={{ margin: "4px 0 0" }}>
           {musimLabel} — poin dari setoran sampah kuartal ini
         </p>

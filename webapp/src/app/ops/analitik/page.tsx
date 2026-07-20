@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { requireRole } from "@/lib/session-next";
 import { analitikOps } from "@/lib/analitik";
 import { fmtRupiah } from "@/lib/constants";
@@ -8,74 +7,70 @@ export default async function OpsAnalitikPage() {
   await requireRole("ops");
   const a = await analitikOps();
   const maxPoin = Math.max(1, ...a.tren.map((t) => t.poin));
-  const maxJenisPoin = Math.max(1, ...a.perJenis.map((j) => j.poin));
+  const maxJenis = Math.max(0.001, ...a.perJenis.map((j) => j.beratKg));
+  const nf = (n: number) => n.toLocaleString("id-ID");
 
   return (
     <>
-      <AppHeader judul="Analitik" aksi={<Link href="/ops">← Beranda</Link>} />
-      <main className="container lebar">
-        <div className="stat-grid">
-          <div className="stat">
-            <div className="label">Total poin terkumpul</div>
-            <div className="nilai emas">{a.totalPoinTerkumpul.toLocaleString("id-ID")}</div>
-          </div>
-          <div className="stat">
-            <div className="label">Total dana dicairkan</div>
-            <div className="nilai emas">{fmtRupiah(a.totalRupiahDicairkan)}</div>
-          </div>
-          <div className="stat">
-            <div className="label">Total setoran</div>
-            <div className="nilai">{a.totalSetoran.toLocaleString("id-ID")}</div>
-          </div>
-          <div className="stat">
-            <div className="label">Total berat</div>
-            <div className="nilai">
-              {a.totalBeratKg.toLocaleString("id-ID")} <span style={{ fontSize: "0.9rem", fontWeight: 600 }}>kg</span>
-            </div>
-          </div>
-          <div className="stat">
-            <div className="label">Warga aktif (30 hari)</div>
-            <div className="nilai">{a.wargaAktif30Hari.toLocaleString("id-ID")}</div>
-          </div>
-        </div>
+      <AppHeader judul="Analitik" />
+      <main className="container">
+        {a.totalSetoran === 0 ? (
+          <p className="muted" style={{ marginTop: 20 }}>
+            Belum ada setoran yang tercatat. Angka dan tren akan muncul di sini setelah setoran pertama.
+          </p>
+        ) : (
+          <>
+            {/* Ringkasan naratif — sengaja bukan hamparan kartu statistik. */}
+            <p className="sorot">
+              Warga sudah menabung <strong className="emas">{nf(a.totalPoinTerkumpul)} poin</strong> dari{" "}
+              <strong>{nf(a.totalBeratKg)} kg</strong> sampah lewat <strong>{nf(a.totalSetoran)} setoran</strong>.
+              Sebanyak <strong className="emas">{fmtRupiah(a.totalRupiahDicairkan)}</strong> sudah dicairkan, dan{" "}
+              <strong>{nf(a.wargaAktif30Hari)} warga</strong> menyetor dalam 30 hari terakhir.
+            </p>
 
-        <div className="card">
-          <h2 style={{ fontSize: "1.02rem" }}>Poin masuk per bulan</h2>
-          {a.totalSetoran === 0 ? (
-            <p className="muted">Belum ada setoran untuk ditampilkan.</p>
-          ) : (
-            <div className="bagan" role="img" aria-label="Bagan poin masuk enam bulan terakhir">
-              {a.tren.map((t) => (
-                <div className="kolom" key={t.label}>
-                  <span className="val">{t.poin > 0 ? t.poin : ""}</span>
-                  <div className="batang" style={{ height: `${Math.round((t.poin / maxPoin) * 100)}%` }} />
-                  <span className="cap">{t.label}</span>
+            <section aria-labelledby="tren">
+              <h2 id="tren" style={{ fontSize: "1.05rem" }}>
+                Poin masuk per bulan
+              </h2>
+              <div className="bagan" role="img" aria-label="Bagan poin masuk enam bulan terakhir">
+                {a.tren.map((t) => (
+                  <div className="kolom" key={t.label}>
+                    <span className="val">{t.poin > 0 ? nf(t.poin) : ""}</span>
+                    <div
+                      className={`batang${t.poin === 0 ? " nol" : ""}`}
+                      style={{ height: t.poin === 0 ? 3 : `${Math.round((t.poin / maxPoin) * 100)}%` }}
+                    />
+                    <span className="cap">{t.label}</span>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            <section aria-labelledby="jenis" style={{ marginTop: 32 }}>
+              <h2 id="jenis" style={{ fontSize: "1.05rem", marginBottom: 2 }}>
+                Kontribusi per jenis sampah
+              </h2>
+              {/* Bar menyandikan berat, sedangkan poin ikut ditampilkan — sebutkan agar
+                  jenis bertarif tinggi (poin besar, berat kecil) tidak terbaca janggal. */}
+              <p className="muted" style={{ marginBottom: 12 }}>
+                Panjang bar mengikuti berat (kg).
+              </p>
+              {a.perJenis.map((j) => (
+                <div className="jenis-baris" key={j.nama}>
+                  <div className="baris">
+                    <strong>{j.nama}</strong>
+                    <span className="muted">
+                      {nf(j.beratKg)} kg · <span className="emas">{nf(j.poin)} poin</span>
+                    </span>
+                  </div>
+                  <div className="isi">
+                    <span style={{ width: `${Math.round((j.beratKg / maxJenis) * 100)}%` }} />
+                  </div>
                 </div>
               ))}
-            </div>
-          )}
-        </div>
-
-        <div className="card">
-          <h2 style={{ fontSize: "1.02rem" }}>Kontribusi per jenis sampah</h2>
-          {a.perJenis.length === 0 ? (
-            <p className="muted">Belum ada data jenis sampah.</p>
-          ) : (
-            a.perJenis.map((j) => (
-              <div className="jenis-baris" key={j.nama}>
-                <div className="baris">
-                  <strong>{j.nama}</strong>
-                  <span className="muted">
-                    {j.beratKg.toLocaleString("id-ID")} kg • <span className="emas">{j.poin.toLocaleString("id-ID")} poin</span>
-                  </span>
-                </div>
-                <div className="isi">
-                  <span style={{ width: `${Math.round((j.poin / maxJenisPoin) * 100)}%` }} />
-                </div>
-              </div>
-            ))
-          )}
-        </div>
+            </section>
+          </>
+        )}
       </main>
     </>
   );
