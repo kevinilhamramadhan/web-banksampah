@@ -1,16 +1,22 @@
 # Bank Sampah — Web PWA (Next.js + Prisma + Neon)
 
-Web PWA Bank Sampah KKN: aplikasi mandiri berbasis **Next.js + Prisma + Neon
+Web PWA Bank Sampah Digital: aplikasi mandiri berbasis **Next.js + Prisma + Neon
 Postgres**, tanpa Firebase sama sekali. (Versi lama berbasis Vite + Firebase dan
 aplikasi Android sudah dipensiunkan; riwayatnya masih ada di git history.
 Sistem dimulai dengan **data segar** — warga registrasi baru, saldo mulai 0.)
 
-- **Warga**: registrasi, login, pantau saldo poin, riwayat, scan QR penukaran.
-- **Ops**: input setoran sampah (poin otomatis), proses penukaran poin via QR.
-- Tarif hardcode: 1 kg = 5 poin, 1 poin = Rp 200, pencairan min. 50 poin
-  (`src/lib/constants.ts`).
+- **Warga**: registrasi, login, pantau saldo poin, riwayat, scan QR penukaran,
+  peringkat kuartal, halaman profil (edit data & ganti password), pemilih tema.
+- **Ops**: input setoran sampah (poin otomatis), proses penukaran via QR,
+  kelola jenis sampah & tarif, dashboard analitik, unduh laporan CSV (LPJ).
+- Nilai: 1 poin = Rp 200, pencairan min. 50 poin (`src/lib/constants.ts`).
+  **Tarif poin per kg per jenis sampah** disimpan di DB (tabel `JenisSampah`,
+  `src/lib/jenis-sampah.ts`) dan dikelola ops di `/ops/jenis-sampah`.
 - Auth: sesi cookie server-side (`src/lib/session.ts`), password di-hash Argon2
   (`src/lib/password.ts`). Verifikasi email & reset password via Resend.
+- **PWA**: service worker offline (`public/sw.js`), halaman `/offline`, manifest
+  ter-generate (`src/app/manifest.ts`) dengan shortcuts, meta iOS, dan indikator
+  offline global. Lihat bagian **PWA** di bawah.
 
 ## Stack
 
@@ -85,6 +91,29 @@ npm run test:db  # integrasi DB (tests/db/**/*.test.ts) — pakai DATABASE_URL_T
   `src/lib/password.ts` (langsung maupun transitif lewat `src/lib/actions/*`).
   Verifikasi lokal: `grep -rn 'runtime.*=.*"edge"' src/` harus kosong.
 
+## PWA (offline, installable)
+
+- **Service worker** `public/sw.js` (ditulis native — bukan Workbox/Serwist, karena
+  proyek memakai Turbopack). Strategi: navigasi *network-first* → fallback `/offline`;
+  aset statis (`_next/static`, ikon, manifest) *cache-first* (stale-while-revalidate);
+  data dinamis/RSC/POST **tidak pernah di-cache** (menghindari saldo/riwayat basi pada
+  aplikasi keuangan). Didaftarkan oleh `src/components/DaftarSW.tsx`.
+- **Manifest** di-generate typed dari `src/app/manifest.ts` (disajikan di
+  `/manifest.webmanifest`) — lengkap dengan `id`/`scope`/`orientation`/`categories`
+  dan `shortcuts` (Scan QR, Setor, Peringkat). Header `/sw.js` diatur di `next.config.ts`
+  (`Cache-Control: no-store` + CSP), bersama header keamanan global.
+- **iOS/Apple**: `appleWebApp` (capable, title, status-bar) + `apple-touch-icon` di
+  `src/app/layout.tsx`. **Splash screen iOS penuh belum disertakan** (perlu meng-generate
+  banyak ukuran gambar); tambahkan `apple-touch-startup-image` bila diperlukan.
+- **Dark mode**: pemilih terang/gelap/ikuti-sistem di halaman Profil
+  (`src/components/TombolTema.tsx`) — disimpan di `localStorage 'tema'` dan diterapkan
+  sebelum paint via skrip no-flash di layout (atribut `data-theme`).
+- **Audit Lighthouse**: tidak dapat dijalankan di lingkungan pengembangan ini (tanpa
+  Chrome). Verifikasi manual: jalankan `npm run build && npm start`, buka DevTools →
+  Application → pastikan Service Worker terdaftar & manifest terbaca; matikan network
+  lalu navigasi → muncul halaman `/offline`. Kriteria PWA yang kini terpenuhi: manifest
+  valid + ikon, SW terdaftar dengan fallback offline, installable, meta viewport/theme.
+
 ## RUNBOOK GO-LIVE
 
 Sistem mulai dari data kosong — tidak ada migrasi data. Urutan peluncuran:
@@ -95,7 +124,10 @@ Sistem mulai dari data kosong — tidak ada migrasi data. Urutan peluncuran:
    DATABASE_URL="<neon-prod-url>" npx prisma migrate deploy
    DATABASE_URL="<neon-prod-url>" SEED_OPS_EMAIL=... SEED_OPS_PASSWORD=... SEED_OPS_NAMA=... npx prisma db seed
    ```
-   Ganti `SEED_OPS_PASSWORD` ke nilai rahasia (bukan nilai dev).
+   Ganti `SEED_OPS_PASSWORD` ke nilai rahasia (bukan nilai dev). `migrate deploy`
+   menerapkan semua migrasi termasuk `JenisSampah` yang **sudah menyertakan seed 4
+   jenis awal** (Plastik/Logam/Kardus/Lainnya, tarif 5); `db seed` mengulang seed itu
+   secara idempoten. Sesuaikan tarif/jenis lewat `/ops/jenis-sampah` setelah live.
 
 2. **Set env production di Vercel** (`DATABASE_URL` Neon prod, `RESEND_API_KEY`,
    `EMAIL_FROM` domain terverifikasi, `APP_URL` = domain final) lalu deploy.
@@ -105,7 +137,10 @@ Sistem mulai dari data kosong — tidak ada migrasi data. Urutan peluncuran:
    - Login ops (akun seed) → cari warga → setoran uji → saldo warga bertambah.
    - Penukaran uji end-to-end dengan **dua perangkat** (laptop ops tampilkan
      QR, HP warga scan) → status `confirmed`, saldo berkurang.
-   - Cek installability PWA (Chrome → menu → Install app / Lighthouse).
+   - Ops: `/ops/jenis-sampah` (tambah/ubah tarif), `/ops/analitik` (angka terisi),
+     `/ops/laporan` (unduh CSV setoran & penukaran, buka di Excel/Sheets).
+   - Cek installability PWA + offline: Chrome → Install app; matikan network →
+     navigasi harus menampilkan halaman `/offline` (lihat bagian PWA).
 
 4. **Umumkan ke warga.** Bagikan URL; warga lama mendaftar ulang (saldo mulai
    0 — kalau ada saldo lama yang belum dicairkan, ops meng-input ulang lewat
