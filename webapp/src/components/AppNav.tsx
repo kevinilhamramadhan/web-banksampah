@@ -47,19 +47,18 @@ interface Item {
   href: string;
   label: string;
   ikon: keyof typeof IKON;
-  utama?: boolean;
 }
 
 const MENU: Record<"warga" | "ops", Item[]> = {
   warga: [
     { href: "/warga", label: "Beranda", ikon: "beranda" },
-    { href: "/warga/scan", label: "Scan", ikon: "scan", utama: true },
+    { href: "/warga/scan", label: "Scan", ikon: "scan" },
     { href: "/warga/peringkat", label: "Peringkat", ikon: "peringkat" },
     { href: "/warga/profil", label: "Profil", ikon: "profil" },
   ],
   ops: [
     { href: "/ops", label: "Beranda", ikon: "beranda" },
-    { href: "/ops/setoran", label: "Setoran", ikon: "setoran", utama: true },
+    { href: "/ops/setoran", label: "Setoran", ikon: "setoran" },
     { href: "/ops/penukaran", label: "Penukaran", ikon: "penukaran" },
   ],
 };
@@ -74,7 +73,7 @@ export default function AppNav({ peran }: { peran: "warga" | "ops" }) {
           <Link
             key={item.href}
             href={item.href}
-            className={`nav-item${item.utama ? " nav-utama" : ""}${aktif ? " aktif" : ""}`}
+            className={`nav-item${aktif ? " aktif" : ""}`}
             aria-current={aktif ? "page" : undefined}
           >
             <span className="nav-ikon">{IKON[item.ikon]}</span>

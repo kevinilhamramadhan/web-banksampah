@@ -626,31 +626,24 @@ label {
 }
 .nav-item.aktif {
   color: var(--hijau-link);
+  font-weight: 700;
+}
+/* Ikon jadi "pil" — saat aktif diberi latar tint agar item terpilih jelas terlihat. */
+.nav-ikon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px 16px;
+  border-radius: 999px;
+  transition: background var(--gerak-cepat);
 }
 .nav-ikon svg {
   width: 24px;
   height: 24px;
   display: block;
 }
-.nav-utama .nav-ikon {
-  width: 52px;
-  height: 52px;
-  margin-top: -24px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--hijau);
-  color: #fff;
-  border: 4px solid var(--permukaan);
-  box-shadow: 0 4px 12px oklch(0.33 0.06 152 / 0.35);
-}
-.nav-utama.aktif .nav-ikon {
-  background: var(--hijau-gelap);
-}
-.nav-utama .nav-ikon svg {
-  width: 26px;
-  height: 26px;
+.nav-item.aktif .nav-ikon {
+  background: var(--daun-tipis);
 }
 /* Ruang untuk nav supaya konten tidak tertutup */
 .dgn-nav {

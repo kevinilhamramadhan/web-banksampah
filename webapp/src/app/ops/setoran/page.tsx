@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { requireRole } from "@/lib/session-next";
 import { listJenisSampah } from "@/lib/jenis-sampah";
 import AppHeader from "@/components/AppHeader";
@@ -9,7 +8,7 @@ export default async function OpsSetoranPage() {
   const jenis = await listJenisSampah(true);
   return (
     <>
-      <AppHeader judul="Input Setoran" aksi={<Link href="/ops">← Beranda</Link>} />
+      <AppHeader judul="Input Setoran" />
       <main className="container">
         <SetoranForm jenis={jenis.map((j) => ({ id: j.id, nama: j.nama, tarifPoinPerKg: j.tarifPoinPerKg }))} />
       </main>

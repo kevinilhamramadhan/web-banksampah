@@ -9,12 +9,11 @@ export default async function PeringkatPage() {
   const user = await getSessionUser();
   if (!user) redirect("/login");
   const { musimLabel, top, saya } = await peringkatKuartal(user.role === "warga" ? user.id : undefined);
-  const kembali = user.role === "ops" ? "/ops" : "/warga";
   const sayaDiLuarTop = saya && !top.some((t) => t.wargaId === saya.wargaId);
 
   return (
     <>
-      <AppHeader judul="Peringkat Penabung" aksi={<Link href={kembali}>← Kembali</Link>}>
+      <AppHeader judul="Peringkat Penabung" aksi={user.role === "ops" ? <Link href="/ops">← Beranda</Link> : undefined}>
         <p className="label" style={{ margin: "4px 0 0" }}>
           {musimLabel} — poin dari setoran sampah kuartal ini
         </p>
