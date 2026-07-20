@@ -1,6 +1,11 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import DaftarSW from "@/components/DaftarSW";
+import IndikatorOffline from "@/components/IndikatorOffline";
+
+// Terapkan tema tersimpan sebelum paint (hindari kedip terang→gelap).
+// Hanya "dark"/"light" yang dipatok; "system"/kosong → media query yang mengatur.
+const skripTema = `(function(){try{var t=localStorage.getItem('tema');if(t==='dark'||t==='light'){document.documentElement.dataset.theme=t;}}catch(e){}})();`;
 
 export const metadata: Metadata = {
   title: "Bank Sampah Digital",
@@ -35,6 +40,8 @@ export default function RootLayout({
   return (
     <html lang="id">
       <body>
+        <script dangerouslySetInnerHTML={{ __html: skripTema }} />
+        <IndikatorOffline />
         {children}
         <DaftarSW />
       </body>

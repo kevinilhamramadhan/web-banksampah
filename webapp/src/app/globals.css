@@ -35,8 +35,11 @@
   --z-layar-penuh: 50;
 }
 
+/* Token gelap. Dipakai dua kondisi: (a) ikut sistem, kecuali user memilih terang
+   eksplisit; (b) user memilih gelap manual (data-theme="dark") apa pun setelan sistem.
+   Nilainya identik — dijaga tetap sinkron bila diubah. */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --hijau: oklch(0.56 0.11 151);
     --hijau-pekat: oklch(0.24 0.045 152);
     --hijau-gelap: oklch(0.2 0.04 152);
@@ -52,6 +55,22 @@
     --garis: oklch(0.32 0.02 152);
     --merah: oklch(0.68 0.17 25);
   }
+}
+:root[data-theme="dark"] {
+  --hijau: oklch(0.56 0.11 151);
+  --hijau-pekat: oklch(0.24 0.045 152);
+  --hijau-gelap: oklch(0.2 0.04 152);
+  --hijau-link: oklch(0.75 0.11 151);
+  --daun-tipis: oklch(0.26 0.03 151);
+  --emas-teks: oklch(0.8 0.13 90);
+  --tint-emas: oklch(0.26 0.04 95);
+  --emas-garis: oklch(0.6 0.1 90);
+  --permukaan: oklch(0.17 0.015 152);
+  --kartu: oklch(0.22 0.02 152);
+  --teks: oklch(0.93 0.01 152);
+  --teks-redup: oklch(0.72 0.02 152);
+  --garis: oklch(0.32 0.02 152);
+  --merah: oklch(0.68 0.17 25);
 }
 
 * {
@@ -321,6 +340,25 @@ label {
 .emas {
   color: var(--emas-teks);
   font-weight: 700;
+}
+
+/* Banner offline global (lekat di atas layar saat koneksi putus) */
+.banner-offline {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--z-layar-penuh);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 6px 12px;
+  padding-top: max(6px, env(safe-area-inset-top));
+  background: var(--hijau-pekat);
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 600;
 }
 
 .baris {

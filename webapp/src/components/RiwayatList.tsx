@@ -126,7 +126,9 @@ export default function RiwayatList({
       setSetoran((prev) => (cursor ? [...prev, ...page.items] : page.items));
       setSetoranCursor(page.nextCursor);
     } catch {
-      setSetoranError("Gagal memuat riwayat. Coba lagi.");
+      setSetoranError(
+        navigator.onLine ? "Gagal memuat riwayat. Coba lagi." : "Kamu sedang offline — riwayat butuh koneksi.",
+      );
     } finally {
       setSetoranSibuk(false);
     }
@@ -144,7 +146,9 @@ export default function RiwayatList({
       setPenukaran((prev) => (cursor ? [...(prev ?? []), ...page.items] : page.items));
       setPenukaranCursor(page.nextCursor);
     } catch {
-      setPenukaranError("Gagal memuat riwayat. Coba lagi.");
+      setPenukaranError(
+        navigator.onLine ? "Gagal memuat riwayat. Coba lagi." : "Kamu sedang offline — riwayat butuh koneksi.",
+      );
     } finally {
       setPenukaranSibuk(false);
     }
@@ -197,9 +201,8 @@ export default function RiwayatList({
 
       {tab === "setoran" && (
         <div id="panel-setoran" role="tabpanel" aria-labelledby="tab-setoran">
-          <p aria-live="polite" style={{ margin: setoranError || setoranSibuk ? undefined : 0 }}>
+          <p aria-live="polite" style={{ margin: setoranError ? undefined : 0 }}>
             {setoranError && <span className="error">{setoranError}</span>}
-            {setoranSibuk && !setoranError && <span className="muted">Memuat riwayat…</span>}
           </p>
           {!setoranError && !setoranSibuk && setoran.length === 0 ? (
             <p className="muted">{kosongSetoran}</p>
@@ -210,6 +213,7 @@ export default function RiwayatList({
                   <BarisSetoran s={s} varian={varian} />
                 </div>
               ))}
+              {setoranSibuk && <p className="muted">Memuat…</p>}
               {!setoranSibuk && setoranCursor && (
                 <button className="btn kecil sekunder" style={{ margin: "12px auto" }} onClick={() => void muatLebihSetoran(setoranCursor)}>
                   Muat lebih banyak
