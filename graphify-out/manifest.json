@@ -369,11 +369,6 @@
     "ast_hash": "0fcc8665e572ab7be3dc76db735a1775",
     "semantic_hash": ""
   },
-  "prompt-uiux-pwa-banksampah.md": {
-    "mtime": 1784508293.461709,
-    "ast_hash": "95cf37d258fd5eacd071f9545ec525bf",
-    "semantic_hash": ""
-  },
   "webapp/public/sw.js": {
     "mtime": 1784532990.356465,
     "ast_hash": "b5b48e254acf0d2d22d70c6d6b62a288",

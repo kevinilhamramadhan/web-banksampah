@@ -995,3 +995,34 @@ body {
     transform: none;
   }
 }
+
+/* ---------- Install PWA di halaman Pengaturan ---------- */
+.install-status {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+.install-status.terinstall {
+  background: var(--daun-tipis);
+  color: var(--hijau-link);
+}
+.install-instruksi {
+  padding: 14px;
+  border-radius: var(--radius);
+  background: var(--daun-tipis);
+}
+.install-langkah {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+.install-langkah li {
+  margin: 8px 0;
+  line-height: 1.6;
+}
+.install-langkah li strong {
+  color: var(--hijau-link);
+}

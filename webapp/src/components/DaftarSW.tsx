@@ -1,5 +1,8 @@
 "use client";
 import { useEffect } from "react";
+// Side-effect: mendaftarkan listener beforeinstallprompt sedini mungkin
+// agar event tidak terlewat di halaman mana pun.
+import "@/lib/install";
 
 // Mendaftarkan service worker sekali saat aplikasi dimuat di client.
 // Tanpa UI — hanya efek samping registrasi.

@@ -3,6 +3,7 @@ import { requireRole } from "@/lib/session-next";
 import AppHeader from "@/components/AppHeader";
 import PengaturanAkun from "@/components/PengaturanAkun";
 import TombolTema from "@/components/TombolTema";
+import InstallPengaturan from "@/components/InstallPengaturan";
 import TombolKeluar from "@/components/TombolKeluar";
 
 export default async function ProfilPage() {
@@ -18,6 +19,8 @@ export default async function ProfilPage() {
           <p className="muted" style={{ marginTop: 0 }}>Pilih mode terang, gelap, atau ikuti setelan perangkat.</p>
           <TombolTema />
         </div>
+
+        <InstallPengaturan />
 
         <div className="card">
           <h2 style={{ fontSize: "1.02rem" }}>Tentang &amp; bantuan</h2>
