@@ -70,27 +70,27 @@
     "semantic_hash": ""
   },
   "webapp/src/app/ops/penukaran/page.tsx": {
-    "mtime": 1784534855.7458606,
+    "mtime": 1784536732.2159545,
     "ast_hash": "d769cb25c42fb893c091fc69ee179093",
     "semantic_hash": ""
   },
   "webapp/src/app/ops/setoran/page.tsx": {
-    "mtime": 1784534848.2700849,
+    "mtime": 1784536732.2159545,
     "ast_hash": "1528902601e54a7e37257c044dc7cbd6",
     "semantic_hash": ""
   },
   "webapp/src/app/page.tsx": {
-    "mtime": 1784534570.0699348,
+    "mtime": 1784536732.2162955,
     "ast_hash": "93239a1e762c250c18aa8f01b9777023",
     "semantic_hash": ""
   },
   "webapp/src/app/warga/page.tsx": {
-    "mtime": 1784533612.9075732,
+    "mtime": 1784536732.2165866,
     "ast_hash": "5c1931a58421cbbdeaa54b5a9909b2ce",
     "semantic_hash": ""
   },
   "webapp/src/app/warga/scan/page.tsx": {
-    "mtime": 1784534832.3359916,
+    "mtime": 1784536732.2169926,
     "ast_hash": "4ef866f150d0faca28cefebf102695c4",
     "semantic_hash": ""
   },
@@ -300,7 +300,7 @@
     "semantic_hash": ""
   },
   ".impeccable/live/config.json": {
-    "mtime": 1784368745.4913437,
+    "mtime": 1784536732.2089074,
     "ast_hash": "f8f63834836064f6401a6d538c0fc99b",
     "semantic_hash": ""
   },
@@ -320,7 +320,7 @@
     "semantic_hash": ""
   },
   "webapp/src/app/warga/peringkat/page.tsx": {
-    "mtime": 1784534871.171229,
+    "mtime": 1784536732.2167425,
     "ast_hash": "c8436ef9e2c41fdeadf9a30e8145f2b8",
     "semantic_hash": ""
   },
@@ -330,8 +330,8 @@
     "semantic_hash": ""
   },
   "webapp/src/components/AppNav.tsx": {
-    "mtime": 1784534785.3519762,
-    "ast_hash": "dfc34d3b4f70355e64ed632fdc3ee7be",
+    "mtime": 1784538284.803667,
+    "ast_hash": "b70a177d568eb3bc730859a6f756523f",
     "semantic_hash": ""
   },
   "webapp/src/components/TombolKeluar.tsx": {
@@ -350,17 +350,17 @@
     "semantic_hash": ""
   },
   ".impeccable/critique/2026-07-18T15-39-58Z__webapp-src-app-warga-page-tsx.md": {
-    "mtime": 1784389198.4488547,
+    "mtime": 1784536732.2087157,
     "ast_hash": "35183e3a9a173b4c7199edc5f0c3c5a7",
     "semantic_hash": ""
   },
   ".impeccable/critique/2026-07-19T00-25-20Z__webapp-src-app-warga-page-tsx.md": {
-    "mtime": 1784420720.2171605,
+    "mtime": 1784536732.2088006,
     "ast_hash": "fe9ce9a145ccdbd4942cd4e970b8f929",
     "semantic_hash": ""
   },
   "PRODUCT.md": {
-    "mtime": 1784368716.181956,
+    "mtime": 1784536732.2090056,
     "ast_hash": "e1f147d90ef53f9f6615cc2ff39b913e",
     "semantic_hash": ""
   },
@@ -385,7 +385,7 @@
     "semantic_hash": ""
   },
   "webapp/src/components/DaftarSW.tsx": {
-    "mtime": 1784536491.8913136,
+    "mtime": 1784536732.2172594,
     "ast_hash": "28704bb650fd2dd4427c79af3a737003",
     "semantic_hash": ""
   },
@@ -480,8 +480,8 @@
     "semantic_hash": ""
   },
   "webapp/src/app/warga/profil/page.tsx": {
-    "mtime": 1784536375.4318304,
-    "ast_hash": "a1c079a3202c2cbd99da6786dc40111e",
+    "mtime": 1784538265.2050703,
+    "ast_hash": "982c9fab008bcc3b3091f665a4a7f167",
     "semantic_hash": ""
   },
   "webapp/src/components/PengaturanAkun.tsx": {
@@ -525,28 +525,33 @@
     "semantic_hash": ""
   },
   "webapp/src/app/warga/kontribusi/page.tsx": {
-    "mtime": 1784533689.6636002,
+    "mtime": 1784536732.2163894,
     "ast_hash": "35ddcb121f828685ebd05dcf3dbaaedd",
     "semantic_hash": ""
   },
   "webapp/src/components/Onboarding.tsx": {
-    "mtime": 1784533628.8933706,
+    "mtime": 1784536732.2174118,
     "ast_hash": "86b16111cd4ade7dd37e8f47b44c949c",
     "semantic_hash": ""
   },
   "webapp/src/lib/kontribusi.ts": {
-    "mtime": 1784533668.7658653,
+    "mtime": 1784536732.2175026,
     "ast_hash": "f66cce3d4c951694d601edfa7dc5df53",
     "semantic_hash": ""
   },
   "webapp/tests/db/kontribusi.test.ts": {
-    "mtime": 1784533703.3694265,
+    "mtime": 1784536732.217587,
     "ast_hash": "2894480c1ba20e52eb73c744e504f958",
     "semantic_hash": ""
   },
   "webapp/src/components/InstallPengaturan.tsx": {
-    "mtime": 1784536511.525674,
+    "mtime": 1784536732.217333,
     "ast_hash": "07ce5c8dc5fcc908afd5d5be2f823c4e",
+    "semantic_hash": ""
+  },
+  "webapp/src/app/warga/pengaturan/page.tsx": {
+    "mtime": 1784538254.8498263,
+    "ast_hash": "8df6c236d813f4de3895db577b1a059e",
     "semantic_hash": ""
   }
 }

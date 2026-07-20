@@ -1,16 +1,16 @@
 # Graph Report - websampah  (2026-07-20)
 
 ## Corpus Check
-- 107 files · ~29,904 words
+- 108 files · ~30,092 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 450 nodes · 756 edges · 44 communities (36 shown, 8 thin omitted)
+- 452 nodes · 756 edges · 46 communities (38 shown, 8 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 7 edges (avg confidence: 0.71)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `5952ade7`
+- Built from commit: `82585374`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -71,19 +71,19 @@
 ## Import Cycles
 - None detected.
 
-## Communities (44 total, 8 thin omitted)
+## Communities (46 total, 8 thin omitted)
 
 ### Community 0 - "auth.ts"
-Cohesion: 0.11
-Nodes (25): LoginPage(), LoginState, ResetState, RegisterPage(), RegisterState, ResetForm(), ResetState, VerifikasiForm() (+17 more)
+Cohesion: 0.07
+Nodes (43): main(), prisma, main(), prisma, LoginPage(), LoginState, ResetState, RegisterPage() (+35 more)
 
 ### Community 1 - "page.tsx"
-Cohesion: 0.09
-Nodes (40): PenukaranForm(), Props, bacaQr(), BarcodeDetectorLike, ScanQr(), JenisPilihan, SetoranForm(), WargaSearch() (+32 more)
+Cohesion: 0.08
+Nodes (44): GET(), PenukaranForm(), Props, bacaQr(), BarcodeDetectorLike, ScanQr(), JenisPilihan, SetoranForm() (+36 more)
 
 ### Community 2 - "ops.ts"
-Cohesion: 0.12
-Nodes (24): main(), prisma, main(), prisma, GET(), PengaturanAkun(), gantiPasswordAction(), ProfilState (+16 more)
+Cohesion: 0.53
+Nodes (4): kuartalRange(), Peringkat, PeringkatBaris, peringkatKuartal()
 
 ### Community 3 - "dependencies"
 Cohesion: 0.11
@@ -138,8 +138,8 @@ Cohesion: 0.26
 Nodes (15): OpsJenisSampahPage(), KelolaJenis(), isUniqueError(), JenisDTO, muatJenisAction(), pastikanOps(), segarkan(), tambahJenisAction() (+7 more)
 
 ### Community 31 - "page.tsx"
-Cohesion: 0.15
-Nodes (15): OpsAnalitikPage(), OpsLaporanPage(), OpsPage(), TombolKeluar(), isoHari(), UnduhLaporan(), logoutAction(), muatSetoranOpsAction() (+7 more)
+Cohesion: 0.16
+Nodes (13): OpsAnalitikPage(), OpsLaporanPage(), OpsPage(), TombolKeluar(), isoHari(), UnduhLaporan(), analitikOps, JenisRingkas (+5 more)
 
 ### Community 32 - "RiwayatList.tsx"
 Cohesion: 0.20
@@ -162,16 +162,16 @@ Nodes (11): RFC-4180, GET(), parseTanggal(), slug(), STATUS, tgl(), bidangCsv(),
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `dependencies` connect `dependencies` to `devDependencies`?**
-  _High betweenness centrality (0.100) - this node is a cross-community bridge._
+  _High betweenness centrality (0.099) - this node is a cross-community bridge._
 - **Why does `QrFullscreen()` connect `dependencies` to `RiwayatList.tsx`, `page.tsx`, `page.tsx`?**
   _High betweenness centrality (0.099) - this node is a cross-community bridge._
 - **What connects `IKON`, `Item`, `MENU` to the rest of the system?**
   _152 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `auth.ts` be split into smaller, more focused modules?**
-  _Cohesion score 0.10634920634920635 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.06990622335890878 - nodes in this community are weakly interconnected._
 - **Should `page.tsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.08635703918722787 - nodes in this community are weakly interconnected._
-- **Should `ops.ts` be split into smaller, more focused modules?**
-  _Cohesion score 0.1173054587688734 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.08469449485783424 - nodes in this community are weakly interconnected._
 - **Should `dependencies` be split into smaller, more focused modules?**
   _Cohesion score 0.1111111111111111 - nodes in this community are weakly interconnected._
+- **Should `compilerOptions` be split into smaller, more focused modules?**
+  _Cohesion score 0.06896551724137931 - nodes in this community are weakly interconnected._
