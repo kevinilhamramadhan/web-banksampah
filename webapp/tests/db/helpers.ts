@@ -9,7 +9,18 @@ export async function resetDb() {
   const [{ db }] = await prisma.$queryRaw<{ db: string }[]>`SELECT current_database() AS db`;
   if (!db.includes("test")) throw new Error("resetDb menolak: bukan database test");
   await prisma.$executeRawUnsafe(
-    `TRUNCATE "Penukaran","SetoranItem","Setoran","EmailToken","Session","User" CASCADE`);
+    `TRUNCATE "JenisSampah","Penukaran","SetoranItem","Setoran","EmailToken","Session","User" CASCADE`);
+}
+
+/** Buat satu jenis sampah untuk test setoran (default tarif 5 poin/kg). */
+export function buatJenis(over: Partial<{ nama: string; tarifPoinPerKg: number; aktif: boolean }> = {}) {
+  return prisma.jenisSampah.create({
+    data: {
+      nama: over.nama ?? `Jenis-${crypto.randomUUID().slice(0, 8)}`,
+      tarifPoinPerKg: over.tarifPoinPerKg ?? 5,
+      aktif: over.aktif ?? true,
+    },
+  });
 }
 export function buatUser(over: Partial<{ role: "warga" | "ops"; email: string; saldoPoin: number; emailVerifiedAt: Date | null }> = {}) {
   return prisma.user.create({ data: {

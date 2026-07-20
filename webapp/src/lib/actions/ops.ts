@@ -38,17 +38,18 @@ export async function simpanSetoranAction(
   if (!user || user.role !== "ops") return { error: "Anda belum login sebagai ops." };
 
   const wargaId = String(fd.get("wargaId") ?? "").trim();
-  const jenis = String(fd.get("jenis") ?? "").trim();
+  const jenisId = String(fd.get("jenisId") ?? "").trim();
   const beratTeks = String(fd.get("berat") ?? "").trim();
 
   if (!wargaId) return { error: "Pilih warga dulu." };
-  if (!jenis) return { error: "Pilih jenis sampah." };
+  if (!jenisId) return { error: "Pilih jenis sampah." };
   const berat = parseBerat(beratTeks);
   if (berat === null) return { error: "Berat sampah tidak valid." };
 
   try {
-    const hasil = await createSetoran(user, wargaId, [{ jenis, beratKg: berat }]);
-    return { sukses: `Setoran ${jenis} ${beratTeks} kg (+${hasil.totalPoin} poin) tersimpan.` };
+    const hasil = await createSetoran(user, wargaId, [{ jenisId, beratKg: berat }]);
+    const nama = hasil.rincian[0]?.nama ?? "Sampah";
+    return { sukses: `Setoran ${nama} ${beratTeks} kg (+${hasil.totalPoin} poin) tersimpan.` };
   } catch (e) {
     // Hanya error bisnis (plain Error) yang boleh diteruskan; error tak terduga dilempar ulang.
     if (e instanceof Error && e.constructor === Error) return { error: e.message };

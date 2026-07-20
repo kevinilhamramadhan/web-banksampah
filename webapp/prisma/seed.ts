@@ -34,6 +34,17 @@ async function main() {
   });
 
   console.log(`Akun ops siap: ${ops.email} (id: ${ops.id})`);
+
+  // Jenis sampah awal (tarif 5 poin/kg) — idempoten via upsert per nama.
+  const jenisAwal = ["Plastik", "Logam", "Kardus", "Lainnya"];
+  for (let i = 0; i < jenisAwal.length; i++) {
+    await prisma.jenisSampah.upsert({
+      where: { nama: jenisAwal[i] },
+      update: {},
+      create: { nama: jenisAwal[i], tarifPoinPerKg: 5, urutan: i },
+    });
+  }
+  console.log(`Jenis sampah siap: ${jenisAwal.join(", ")}`);
 }
 
 main()

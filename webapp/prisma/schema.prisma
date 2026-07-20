@@ -80,6 +80,17 @@ model SetoranItem {
   setoran         Setoran @relation(fields: [setoranId], references: [id], onDelete: Cascade)
 }
 
+// Master jenis sampah + tarif poin/kg, dikelola ops dari DB (menggantikan hardcode).
+// SetoranItem menyimpan snapshot nama+poin, jadi mengubah tarif tidak mengubah riwayat.
+model JenisSampah {
+  id             String   @id @default(uuid())
+  nama           String   @unique
+  tarifPoinPerKg Int
+  aktif          Boolean  @default(true)
+  urutan         Int      @default(0)
+  createdAt      DateTime @default(now())
+}
+
 model Penukaran {
   id             String          @id @default(uuid())
   wargaId        String

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { requireRole } from "@/lib/session-next";
 import { muatSetoranOpsAction, muatPenukaranOpsAction } from "@/lib/actions/ops";
-import { MIN_TUKAR_POIN, RUPIAH_PER_POIN, TARIF_POIN_PER_KG, fmtRupiah } from "@/lib/constants";
+import { MIN_TUKAR_POIN, RUPIAH_PER_POIN, fmtRupiah } from "@/lib/constants";
 import AppHeader from "@/components/AppHeader";
 import TombolKeluar from "@/components/TombolKeluar";
 import RiwayatList from "@/components/RiwayatList";
@@ -18,10 +18,11 @@ export default async function OpsPage() {
         <div className="dua-kolom">
           <div>
             <p className="muted" style={{ marginTop: 8 }}>
-              Tarif: 1 kg sampah = {TARIF_POIN_PER_KG} poin • pencairan min. {MIN_TUKAR_POIN} poin (={" "}
-              {fmtRupiah(MIN_TUKAR_POIN * RUPIAH_PER_POIN)})
+              Pencairan minimal {MIN_TUKAR_POIN} poin (= {fmtRupiah(MIN_TUKAR_POIN * RUPIAH_PER_POIN)}).
+              Tarif poin per kg diatur per jenis sampah.
             </p>
-            <p>
+            <p style={{ display: "grid", gap: 6 }}>
+              <Link href="/ops/jenis-sampah">Kelola jenis sampah &amp; tarif</Link>
               <Link href="/warga/peringkat">Lihat peringkat penabung kuartal ini</Link>
             </p>
           </div>

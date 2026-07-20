@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it } from "vitest";
-import { buatUser, prisma, resetDb } from "./helpers";
+import { buatUser, buatJenis, prisma, resetDb } from "./helpers";
 import { createSetoran } from "@/lib/setoran";
 import { kuartalRange, peringkatKuartal } from "@/lib/peringkat";
 
@@ -23,10 +23,11 @@ describe("peringkatKuartal", () => {
     const b = await buatUser({ email: "b@test.com" });
     const c = await buatUser({ email: "c@test.com" });
 
-    await createSetoran(ops, a.id, [{ jenis: "Plastik", beratKg: 2 }]); // 10 poin
-    await createSetoran(ops, b.id, [{ jenis: "Kardus", beratKg: 10 }]); // 50 poin
-    await createSetoran(ops, b.id, [{ jenis: "Logam", beratKg: 1 }]); // +5 → 55
-    await createSetoran(ops, c.id, [{ jenis: "Plastik", beratKg: 1 }]); // 5 poin
+    const j = await buatJenis({ nama: "Plastik", tarifPoinPerKg: 5 });
+    await createSetoran(ops, a.id, [{ jenisId: j.id, beratKg: 2 }]); // 10 poin
+    await createSetoran(ops, b.id, [{ jenisId: j.id, beratKg: 10 }]); // 50 poin
+    await createSetoran(ops, b.id, [{ jenisId: j.id, beratKg: 1 }]); // +5 → 55
+    await createSetoran(ops, c.id, [{ jenisId: j.id, beratKg: 1 }]); // 5 poin
     // Setoran kuartal LALU utk a — tidak boleh terhitung.
     await prisma.setoran.create({
       data: { wargaId: a.id, opsId: ops.id, totalPoin: 999, tanggal: new Date(2020, 0, 1) },
