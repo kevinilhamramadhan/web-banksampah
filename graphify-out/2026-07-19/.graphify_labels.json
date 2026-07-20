@@ -1,0 +1,21 @@
+{
+  "0": "auth.ts",
+  "1": "page.tsx",
+  "2": "ops.ts",
+  "3": "dependencies",
+  "4": "compilerOptions",
+  "5": "devDependencies",
+  "6": "Global Constraints",
+  "7": "install.ts",
+  "8": "Desain: Migrasi Bank Sampah dari Firebase ke Neon Postgres + Next.js",
+  "9": "Bank Sampah — Web PWA (Next.js + Prisma + Neon)",
+  "10": "QrFullscreen.tsx",
+  "11": "layout.tsx",
+  "12": "CLAUDE.md",
+  "13": "AGENTS.md",
+  "14": "next.config.ts",
+  "15": "error.tsx",
+  "16": "not-found.tsx",
+  "17": "CLAUDE.md",
+  "18": "vitest.config.ts"
+}

@@ -5,3 +5,4 @@ agent-skills/
 .firebase/
 firestore-debug.log
 webapp/.env
+webapp/prisma
