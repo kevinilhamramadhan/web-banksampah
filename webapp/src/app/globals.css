@@ -342,6 +342,78 @@ label {
   font-weight: 700;
 }
 
+/* ---------- Analitik ops: kartu statistik + bagan CSS murni ---------- */
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px;
+  margin: 8px 0 16px;
+}
+.stat {
+  background: var(--kartu);
+  border: 1px solid var(--garis);
+  border-radius: var(--radius-besar);
+  padding: 14px 16px;
+}
+.stat .label {
+  font-size: 0.82rem;
+  color: var(--teks-redup);
+}
+.stat .nilai {
+  font-size: 1.55rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+}
+.bagan {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  height: 160px;
+  padding-top: 8px;
+}
+.bagan .kolom {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 6px;
+  height: 100%;
+}
+.bagan .batang {
+  width: 100%;
+  max-width: 42px;
+  background: var(--hijau);
+  border-radius: 6px 6px 0 0;
+  min-height: 3px;
+}
+.bagan .cap {
+  font-size: 0.7rem;
+  color: var(--teks-redup);
+}
+.bagan .val {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--emas-teks);
+}
+.jenis-baris {
+  margin: 10px 0;
+}
+.jenis-baris .isi {
+  height: 10px;
+  border-radius: 999px;
+  background: var(--daun-tipis);
+  overflow: hidden;
+  margin-top: 4px;
+}
+.jenis-baris .isi > span {
+  display: block;
+  height: 100%;
+  background: var(--hijau);
+  border-radius: 999px;
+}
+
 /* Banner offline global (lekat di atas layar saat koneksi putus) */
 .banner-offline {
   position: fixed;

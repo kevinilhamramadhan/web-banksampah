@@ -22,6 +22,7 @@ export default async function OpsPage() {
               Tarif poin per kg diatur per jenis sampah.
             </p>
             <p style={{ display: "grid", gap: 6 }}>
+              <Link href="/ops/analitik">Lihat analitik &amp; tren</Link>
               <Link href="/ops/jenis-sampah">Kelola jenis sampah &amp; tarif</Link>
               <Link href="/warga/peringkat">Lihat peringkat penabung kuartal ini</Link>
             </p>
