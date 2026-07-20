@@ -799,6 +799,70 @@ body {
   object-fit: cover;
 }
 
+/* ---------- Onboarding warga baru: overlay slide singkat ---------- */
+.onboarding {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-layar-penuh);
+  background: var(--hijau-pekat);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  padding: 32px;
+  text-align: center;
+}
+.onboarding:focus {
+  outline: none;
+}
+.ob-lewati {
+  position: absolute;
+  top: max(16px, env(safe-area-inset-top));
+  right: 16px;
+  background: none;
+  border: none;
+  color: oklch(1 0 0 / 0.8);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 8px;
+}
+.ob-isi {
+  max-width: 34ch;
+}
+.ob-isi h2 {
+  color: #fff;
+  font-size: 1.5rem;
+}
+.ob-isi p {
+  color: oklch(1 0 0 / 0.88);
+  margin: 0;
+}
+.ob-dots {
+  display: flex;
+  gap: 8px;
+}
+.ob-dots span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: oklch(1 0 0 / 0.35);
+}
+.ob-dots span.aktif {
+  background: var(--emas);
+}
+.ob-aksi {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+  max-width: 360px;
+}
+.ob-aksi .btn {
+  flex: 1;
+}
+
 /* Welcome: drenched — pintu masuk brand */
 .selamat-datang {
   min-height: 100dvh;
