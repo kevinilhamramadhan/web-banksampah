@@ -1,16 +1,16 @@
 # Graph Report - websampah  (2026-07-20)
 
 ## Corpus Check
-- 112 files · ~31,338 words
+- 112 files · ~31,302 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 448 nodes · 788 edges · 39 communities (32 shown, 7 thin omitted)
+- 448 nodes · 763 edges · 43 communities (36 shown, 7 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 7 edges (avg confidence: 0.71)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `a79874d6`
+- Built from commit: `1aa2a2fc`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -33,7 +33,6 @@
 - ResetForm.tsx
 - VerifikasiForm.tsx
 - page.tsx
-- DaftarSW.tsx
 - helpers.ts
 - jenis.ts
 - RiwayatList.tsx
@@ -42,16 +41,17 @@
 - kontribusi.ts
 - route.ts
 - Onboarding.tsx
+- email.ts
 - page.tsx
 
 ## God Nodes (most connected - your core abstractions)
-1. `getSessionUser()` - 28 edges
-2. `requireRole()` - 18 edges
-3. `compilerOptions` - 16 edges
-4. `Global Constraints` - 15 edges
-5. `fmtRupiah()` - 13 edges
-6. `hashPassword()` - 13 edges
-7. `buatUser()` - 13 edges
+1. `getSessionUser()` - 26 edges
+2. `compilerOptions` - 16 edges
+3. `Global Constraints` - 15 edges
+4. `fmtRupiah()` - 13 edges
+5. `hashPassword()` - 13 edges
+6. `buatUser()` - 13 edges
+7. `requireRole()` - 12 edges
 8. `resetDb()` - 12 edges
 9. `Product` - 10 edges
 10. `Desain: Migrasi Bank Sampah dari Firebase ke Neon Postgres + Next.js` - 10 edges
@@ -71,19 +71,19 @@
 ## Import Cycles
 - None detected.
 
-## Communities (39 total, 7 thin omitted)
+## Communities (43 total, 7 thin omitted)
 
 ### Community 0 - "auth.ts"
-Cohesion: 0.11
-Nodes (25): LoginPage(), LoginState, ResetState, RegisterPage(), RegisterState, ResetForm(), ResetState, VerifikasiForm() (+17 more)
+Cohesion: 0.18
+Nodes (7): ResetForm(), ResetState, VerifikasiForm(), VerifikasiState, resetPasswordAction(), verifyEmailAction(), consumeEmailToken()
 
 ### Community 1 - "page.tsx"
 Cohesion: 0.10
 Nodes (37): GET(), PenukaranForm(), Props, JenisPilihan, SetoranForm(), WargaSearch(), batalkanPenukaranAction(), buatPenukaranAction() (+29 more)
 
 ### Community 2 - "ops.ts"
-Cohesion: 0.14
-Nodes (20): main(), prisma, main(), prisma, PengaturanAkun(), gantiPasswordAction(), ProfilState, updateProfilAction() (+12 more)
+Cohesion: 0.09
+Nodes (34): main(), prisma, main(), prisma, LoginPage(), LoginState, ResetState, RegisterPage() (+26 more)
 
 ### Community 3 - "dependencies"
 Cohesion: 0.11
@@ -133,17 +133,13 @@ Nodes (6): Anti-Patterns Verdict, Design Health Score (Nielsen) — 29/40 "Good"
 Cohesion: 0.33
 Nodes (5): Anti-Patterns Verdict, Design Health Score (Nielsen) — 21/40 "Acceptable", Minor, Persona Red Flags, Priority Issues
 
-### Community 27 - "DaftarSW.tsx"
-Cohesion: 0.43
-Nodes (5): PeringkatPage(), kuartalRange(), Peringkat, PeringkatBaris, peringkatKuartal()
-
 ### Community 29 - "jenis.ts"
-Cohesion: 0.29
-Nodes (13): KelolaJenis(), isUniqueError(), JenisDTO, muatJenisAction(), pastikanOps(), segarkan(), tambahJenisAction(), toggleJenisAction() (+5 more)
+Cohesion: 0.26
+Nodes (15): OpsJenisSampahPage(), KelolaJenis(), isUniqueError(), JenisDTO, muatJenisAction(), pastikanOps(), segarkan(), tambahJenisAction() (+7 more)
 
 ### Community 31 - "page.tsx"
-Cohesion: 0.09
-Nodes (27): OpsAnalitikPage(), OpsJenisSampahPage(), OpsLaporanPage(), OpsPage(), OpsPenukaranPage(), OpsSetoranPage(), ProfilPage(), ScanPage() (+19 more)
+Cohesion: 0.11
+Nodes (21): OpsAnalitikPage(), OpsLaporanPage(), OpsPage(), ProfilPage(), bacaQr(), BarcodeDetectorLike, ScanQr(), TombolKeluar() (+13 more)
 
 ### Community 32 - "RiwayatList.tsx"
 Cohesion: 0.20
@@ -157,8 +153,12 @@ Nodes (6): KontribusiPage(), JenisRingkas, kontribusiWarga, kunciBulan(), labelB
 Cohesion: 0.24
 Nodes (11): RFC-4180, GET(), parseTanggal(), slug(), STATUS, tgl(), bidangCsv(), BOM (+3 more)
 
+### Community 37 - "email.ts"
+Cohesion: 0.36
+Nodes (9): VerifikasiBanner(), gantiEmailAction(), resendVerificationAction(), createEmailToken(), esc(), kirim(), resend(), sendReset() (+1 more)
+
 ## Knowledge Gaps
-- **152 isolated node(s):** `SLIDE`, `TrenBulan`, `JenisRingkas`, `nextConfig`, `name` (+147 more)
+- **152 isolated node(s):** `IKON`, `Item`, `MENU`, `SLIDE`, `TrenBulan` (+147 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **7 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -166,16 +166,16 @@ Nodes (11): RFC-4180, GET(), parseTanggal(), slug(), STATUS, tgl(), bidangCsv(),
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `dependencies` connect `dependencies` to `devDependencies`?**
-  _High betweenness centrality (0.107) - this node is a cross-community bridge._
+  _High betweenness centrality (0.104) - this node is a cross-community bridge._
 - **Why does `QrFullscreen()` connect `dependencies` to `RiwayatList.tsx`, `page.tsx`, `page.tsx`?**
-  _High betweenness centrality (0.107) - this node is a cross-community bridge._
-- **What connects `SLIDE`, `TrenBulan`, `JenisRingkas` to the rest of the system?**
+  _High betweenness centrality (0.103) - this node is a cross-community bridge._
+- **What connects `IKON`, `Item`, `MENU` to the rest of the system?**
   _152 weakly-connected nodes found - possible documentation gaps or missing edges._
-- **Should `auth.ts` be split into smaller, more focused modules?**
-  _Cohesion score 0.10634920634920635 - nodes in this community are weakly interconnected._
 - **Should `page.tsx` be split into smaller, more focused modules?**
   _Cohesion score 0.10195035460992907 - nodes in this community are weakly interconnected._
 - **Should `ops.ts` be split into smaller, more focused modules?**
-  _Cohesion score 0.1379800853485064 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.08834586466165413 - nodes in this community are weakly interconnected._
 - **Should `dependencies` be split into smaller, more focused modules?**
   _Cohesion score 0.1111111111111111 - nodes in this community are weakly interconnected._
+- **Should `compilerOptions` be split into smaller, more focused modules?**
+  _Cohesion score 0.06896551724137931 - nodes in this community are weakly interconnected._

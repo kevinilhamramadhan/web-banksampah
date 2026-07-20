@@ -385,8 +385,8 @@
     "semantic_hash": ""
   },
   "webapp/src/components/DaftarSW.tsx": {
-    "mtime": 1784532990.359465,
-    "ast_hash": "ba256bca336cd5667d988fae5cbac00b",
+    "mtime": 1784536491.8913136,
+    "ast_hash": "28704bb650fd2dd4427c79af3a737003",
     "semantic_hash": ""
   },
   "webapp/src/app/ops/loading.tsx": {
@@ -480,8 +480,8 @@
     "semantic_hash": ""
   },
   "webapp/src/app/warga/profil/page.tsx": {
-    "mtime": 1784532990.3594282,
-    "ast_hash": "51263dc97ec731347112f1ac713bead8",
+    "mtime": 1784536375.4318304,
+    "ast_hash": "a1c079a3202c2cbd99da6786dc40111e",
     "semantic_hash": ""
   },
   "webapp/src/components/PengaturanAkun.tsx": {
@@ -542,6 +542,11 @@
   "webapp/tests/db/kontribusi.test.ts": {
     "mtime": 1784533703.3694265,
     "ast_hash": "2894480c1ba20e52eb73c744e504f958",
+    "semantic_hash": ""
+  },
+  "webapp/src/components/InstallPengaturan.tsx": {
+    "mtime": 1784536511.525674,
+    "ast_hash": "07ce5c8dc5fcc908afd5d5be2f823c4e",
     "semantic_hash": ""
   }
 }

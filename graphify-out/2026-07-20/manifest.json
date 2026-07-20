@@ -14,21 +14,6 @@
     "ast_hash": "3b992b150f911b39bdd6796fb6348fc4",
     "semantic_hash": ""
   },
-  "webapp/prisma/migrations/20260717063154_init/migration.sql": {
-    "mtime": 1784352712.1596522,
-    "ast_hash": "ce9a1311dac0312cae82e365a1c07f2c",
-    "semantic_hash": ""
-  },
-  "webapp/prisma/migrations/20260718061302_drop_firebase_columns/migration.sql": {
-    "mtime": 1784355182.4114237,
-    "ast_hash": "9837cac0ea88f5214af5033a691a1e92",
-    "semantic_hash": ""
-  },
-  "webapp/prisma/seed.ts": {
-    "mtime": 1784532990.356465,
-    "ast_hash": "0e13834bdefd657e3ee7ddfe7193ba91",
-    "semantic_hash": ""
-  },
   "webapp/src/app/(auth)/login/page.tsx": {
     "mtime": 1784478766.8753,
     "ast_hash": "545eac2aae9e6ade6636c4b3b302fb77",
@@ -85,13 +70,13 @@
     "semantic_hash": ""
   },
   "webapp/src/app/ops/penukaran/page.tsx": {
-    "mtime": 1784389922.2802396,
-    "ast_hash": "3a066cd41d7e9fc8b3b8b5dc4082a43a",
+    "mtime": 1784534855.7458606,
+    "ast_hash": "d769cb25c42fb893c091fc69ee179093",
     "semantic_hash": ""
   },
   "webapp/src/app/ops/setoran/page.tsx": {
-    "mtime": 1784532990.3594282,
-    "ast_hash": "2a0b9ca00111b644db5cba5ed4c9878b",
+    "mtime": 1784534848.2700849,
+    "ast_hash": "1528902601e54a7e37257c044dc7cbd6",
     "semantic_hash": ""
   },
   "webapp/src/app/page.tsx": {
@@ -105,8 +90,8 @@
     "semantic_hash": ""
   },
   "webapp/src/app/warga/scan/page.tsx": {
-    "mtime": 1784389903.6997595,
-    "ast_hash": "188b65ad4bea2186b88e4c26f2d3e3ee",
+    "mtime": 1784534832.3359916,
+    "ast_hash": "4ef866f150d0faca28cefebf102695c4",
     "semantic_hash": ""
   },
   "webapp/src/components/InstallButtonKecil.tsx": {
@@ -319,11 +304,6 @@
     "ast_hash": "f8f63834836064f6401a6d538c0fc99b",
     "semantic_hash": ""
   },
-  "webapp/prisma/seed-warga.ts": {
-    "mtime": 1784421425.3830397,
-    "ast_hash": "929ad2be411f3d45397f2481974c62fd",
-    "semantic_hash": ""
-  },
   "webapp/src/app/(auth)/layout.tsx": {
     "mtime": 1784532990.356465,
     "ast_hash": "8376d0f84e580fe32d45b2d9d835f129",
@@ -340,8 +320,8 @@
     "semantic_hash": ""
   },
   "webapp/src/app/warga/peringkat/page.tsx": {
-    "mtime": 1784440084.4008307,
-    "ast_hash": "0590e404dd14d095230de3e550553588",
+    "mtime": 1784534871.171229,
+    "ast_hash": "c8436ef9e2c41fdeadf9a30e8145f2b8",
     "semantic_hash": ""
   },
   "webapp/src/components/AppHeader.tsx": {
@@ -350,8 +330,8 @@
     "semantic_hash": ""
   },
   "webapp/src/components/AppNav.tsx": {
-    "mtime": 1784532990.359465,
-    "ast_hash": "1907fe521e622ba8d917edde048ffe1b",
+    "mtime": 1784534785.3519762,
+    "ast_hash": "dfc34d3b4f70355e64ed632fdc3ee7be",
     "semantic_hash": ""
   },
   "webapp/src/components/TombolKeluar.tsx": {
@@ -387,11 +367,6 @@
   ".claude/settings.local.json": {
     "mtime": 1784508459.7352886,
     "ast_hash": "0fcc8665e572ab7be3dc76db735a1775",
-    "semantic_hash": ""
-  },
-  "prompt-uiux-pwa-banksampah.md": {
-    "mtime": 1784508293.461709,
-    "ast_hash": "95cf37d258fd5eacd071f9545ec525bf",
     "semantic_hash": ""
   },
   "webapp/public/sw.js": {
@@ -437,11 +412,6 @@
   "webapp/src/lib/useOnline.ts": {
     "mtime": 1784532990.361465,
     "ast_hash": "a1f46d1c08044072a16851417d9cd82a",
-    "semantic_hash": ""
-  },
-  "webapp/prisma/migrations/20260720000000_jenis_sampah/migration.sql": {
-    "mtime": 1784532990.355465,
-    "ast_hash": "1429b9cb977781a5bc1c1474479514f3",
     "semantic_hash": ""
   },
   "webapp/src/app/ops/jenis-sampah/page.tsx": {
