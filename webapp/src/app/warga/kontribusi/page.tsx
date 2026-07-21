@@ -11,7 +11,7 @@ export default async function KontribusiPage() {
 
   return (
     <>
-      <AppHeader judul="Kontribusiku" aksi={<Link href="/warga">← Beranda</Link>} />
+      <AppHeader judul="Kontribusiku" aksi={<Link href="/warga" className="tautan-sentuh">← Beranda</Link>} />
       <main className="container">
         {k.totalSetoran === 0 ? (
           <div className="kartu-perhatian">

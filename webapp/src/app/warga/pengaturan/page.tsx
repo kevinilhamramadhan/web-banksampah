@@ -21,7 +21,7 @@ export default async function PengaturanPage() {
 
         <div className="card">
           <h2 style={{ fontSize: "1.02rem" }}>Tentang &amp; bantuan</h2>
-          <p style={{ display: "grid", gap: 8, margin: 0 }}>
+          <p className="tautan-daftar">
             <Link href="/tentang">Tentang aplikasi</Link>
             <Link href="/privasi">Kebijakan privasi</Link>
             <Link href="/ketentuan">Syarat &amp; ketentuan</Link>

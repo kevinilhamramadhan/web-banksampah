@@ -7,11 +7,15 @@ export default function InfoLayout({ children }: { children: ReactNode }) {
     <>
       <header className="markas">
         <div className="container">
+          {/* Merek di sini adalah navigasi, bukan judul halaman — kalau dijadikan <h1>
+              setiap halaman info punya dua h1 dan hierarki heading jadi rusak. */}
           <div className="baris">
-            <h1 style={{ fontSize: "1.15rem" }}>
-              <Link href="/">Bank Sampah</Link>
-            </h1>
-            <Link href="/">← Kembali</Link>
+            <Link href="/" className="merek-info">
+              Bank Sampah
+            </Link>
+            <Link href="/" className="tautan-sentuh">
+              ← Kembali
+            </Link>
           </div>
         </div>
       </header>

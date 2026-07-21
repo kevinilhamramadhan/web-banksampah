@@ -61,7 +61,7 @@ export default async function OpsPage() {
 
         <div className="baris" style={{ marginTop: 24 }}>
           <h2 style={{ margin: 0, fontSize: "1.05rem" }}>Aktivitas terbaru</h2>
-          <Link href="/ops/riwayat">Lihat semua</Link>
+          <Link href="/ops/riwayat" className="tautan-sentuh">Lihat semua</Link>
         </div>
 
         {terbaru.length === 0 ? (

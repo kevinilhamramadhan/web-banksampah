@@ -12,13 +12,13 @@ export default async function Home() {
 
   return (
     <div className="landing">
-      <header className="hero blob-container" style={{ padding: "40px 0 20px" }}>
+      <header className="hero" style={{ padding: "40px 0 20px" }}>
         <div className="container" style={{ position: "relative", zIndex: 1 }}>
-          <div className="hero-merek glass" style={{ display: "inline-flex", padding: "10px 20px", borderRadius: "999px", marginBottom: "20px", alignItems: "center", gap: "10px" }}>
+          <div className="hero-merek" style={{ display: "inline-flex", padding: "10px 20px", borderRadius: "999px", marginBottom: "20px", alignItems: "center", gap: "10px" }}>
             <Image src="/icon-192.png" alt="" width={32} height={32} style={{ borderRadius: 8 }} />
             <span style={{ fontWeight: 700 }}>Bank Sampah Digital</span>
           </div>
-          <h1 className="gradient-text animate-float" style={{ fontSize: "2.5rem", fontWeight: 800, lineHeight: 1.1, marginBottom: "20px" }}>Pilah sampahmu,<br/>rawat lingkungan,<br/>tabung jadi uang.</h1>
+          <h1 style={{ fontSize: "2.5rem", fontWeight: 800, lineHeight: 1.1, marginBottom: "20px", textWrap: "balance" }}>Pilah sampahmu,<br/>rawat lingkungan,<br/>tabung jadi uang.</h1>
           <p>
             Kenali jenis sampah dan cara mengolahnya — lalu setor sampah anorganikmu ke bank sampah
             untuk jadi tabungan poin yang bisa dicairkan.

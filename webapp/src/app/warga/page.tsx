@@ -32,9 +32,11 @@ export default async function WargaPage() {
         </div>
         <div className="angka" style={{ paddingBottom: "10px" }}>
           {user.saldoPoin.toLocaleString("id-ID")}
-          <span className="satuan" style={{ color: "var(--hijau-link)" }}> poin</span>
+          {/* Warna sengaja diserahkan ke .saldo-panel (putih & emas). Override inline
+              dgn --hijau-link dibuat untuk permukaan terang → 1.48:1 di panel hijau. */}
+          <span className="satuan"> poin</span>
         </div>
-        <div className="rupiah" style={{ color: "var(--hijau-link)" }}>≈ {fmtRupiah(user.saldoPoin * RUPIAH_PER_POIN)}</div>
+        <div className="rupiah">≈ {fmtRupiah(user.saldoPoin * RUPIAH_PER_POIN)}</div>
         <div className="aturan">
           1 poin = {fmtRupiah(RUPIAH_PER_POIN)} • cair min. {MIN_TUKAR_POIN} poin (
           {fmtRupiah(MIN_TUKAR_POIN * RUPIAH_PER_POIN)})

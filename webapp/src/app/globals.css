@@ -12,7 +12,7 @@
   --daun-tipis: oklch(0.93 0.035 151); /* tint hijau lembut */
 
   --emas: oklch(0.85 0.14 92); /* angka uang di bidang hijau */
-  --emas-teks: oklch(0.55 0.115 80); /* angka uang di permukaan terang */
+  --emas-teks: oklch(0.51 0.115 80); /* angka uang di permukaan terang (AA di kartu & daun-tipis) */
   --tint-emas: oklch(0.96 0.05 95); /* latar kartu perhatian */
   --emas-garis: oklch(0.8 0.12 90);
 
@@ -686,6 +686,7 @@ label {
 .auth-merek {
   display: inline-flex;
   align-items: center;
+  min-height: 44px;
   gap: 10px;
   font-weight: 800;
   font-size: 1.05rem;
@@ -997,7 +998,10 @@ body {
   font: inherit;
   font-weight: 600;
   cursor: pointer;
-  padding: 8px;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 8px 12px;
 }
 .ob-isi {
   max-width: 34ch;
@@ -1202,6 +1206,40 @@ body {
 }
 .install-langkah li strong {
   color: var(--hijau-link);
+}
+
+/* ---------- Target sentuh: tautan mandiri ≥44px ----------
+   PRODUCT.md menjanjikan target sentuh ≥44px. Tautan yang berdiri sendiri (kaki
+   halaman, tautan aksi, merek di header info) sebelumnya hanya setinggi barisnya
+   (16–24px). Tautan di TENGAH kalimat sengaja dibiarkan mengalir. */
+.tautan-sentuh,
+.auth-legal a,
+.auth-kaki a,
+.landing-footer a,
+.tautan-kecil {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 4px;
+}
+.merek-info {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #fff;
+  text-decoration: none;
+}
+/* Daftar tautan dalam kartu (mis. "Tentang & bantuan" di Pengaturan). */
+.tautan-daftar {
+  display: grid;
+  margin: 0;
+}
+.tautan-daftar a {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
 }
 
 /* ---------- Utility Modern & UI Effects ---------- */
