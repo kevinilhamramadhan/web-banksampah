@@ -6,7 +6,7 @@ import type { ReactNode } from "react";
 export default function AuthLayout({ children }: { children: ReactNode }) {
   return (
     <div className="auth-split">
-      <aside className="auth-panel">
+      <aside className="auth-panel gradient-bg blob-container" style={{ position: "relative", zIndex: 1, overflow: "hidden" }}>
         <div className="merek">
           <Image src="/icon-192.png" alt="" width={44} height={44} />
           Bank Sampah
@@ -15,7 +15,7 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
         <p className="catatan">Setor sampah, kumpulkan poin, cairkan jadi uang tunai di bank sampah.</p>
       </aside>
       <div className="auth-isi">
-        <div className="auth-kartu">
+        <div className="auth-kartu glass-panel">
           <Link href="/" className="auth-merek">
             <Image src="/icon-192.png" alt="" width={36} height={36} />
             Bank Sampah

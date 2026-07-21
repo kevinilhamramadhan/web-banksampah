@@ -6,13 +6,112 @@
     {
       "label": "layout.tsx",
       "file_type": "code",
+      "source_file": "webapp/src/app/layout.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "webapp_src_app_layout",
+      "community": 53,
+      "community_name": "layout.tsx",
+      "norm_label": "layout.tsx"
+    },
+    {
+      "label": "outfit",
+      "file_type": "code",
+      "source_file": "webapp/src/app/layout.tsx",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "webapp_src_app_layout_outfit",
+      "community": 53,
+      "community_name": "layout.tsx",
+      "norm_label": "outfit"
+    },
+    {
+      "label": "metadata",
+      "file_type": "code",
+      "source_file": "webapp/src/app/layout.tsx",
+      "source_location": "L17",
+      "_origin": "ast",
+      "id": "webapp_src_app_layout_metadata",
+      "community": 53,
+      "community_name": "layout.tsx",
+      "norm_label": "metadata"
+    },
+    {
+      "label": "viewport",
+      "file_type": "code",
+      "source_file": "webapp/src/app/layout.tsx",
+      "source_location": "L32",
+      "_origin": "ast",
+      "id": "webapp_src_app_layout_viewport",
+      "community": 53,
+      "community_name": "layout.tsx",
+      "norm_label": "viewport"
+    },
+    {
+      "label": "RootLayout()",
+      "file_type": "code",
+      "source_file": "webapp/src/app/layout.tsx",
+      "source_location": "L42",
+      "_origin": "ast",
+      "id": "webapp_src_app_layout_rootlayout",
+      "community": 53,
+      "community_name": "layout.tsx",
+      "norm_label": "rootlayout()"
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "webapp/src/app/page.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "webapp_src_app_page",
+      "community": 36,
+      "community_name": "page.tsx",
+      "norm_label": "page.tsx"
+    },
+    {
+      "label": "Home()",
+      "file_type": "code",
+      "source_file": "webapp/src/app/page.tsx",
+      "source_location": "L9",
+      "_origin": "ast",
+      "id": "webapp_src_app_page_home",
+      "community": 36,
+      "community_name": "page.tsx",
+      "norm_label": "home()"
+    },
+    {
+      "label": "InstallPengaturan.tsx",
+      "file_type": "code",
+      "source_file": "webapp/src/components/InstallPengaturan.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "webapp_src_components_installpengaturan",
+      "community": 45,
+      "community_name": "InstallPengaturan.tsx",
+      "norm_label": "installpengaturan.tsx"
+    },
+    {
+      "label": "InstallPengaturan()",
+      "file_type": "code",
+      "source_file": "webapp/src/components/InstallPengaturan.tsx",
+      "source_location": "L9",
+      "_origin": "ast",
+      "id": "webapp_src_components_installpengaturan_installpengaturan",
+      "community": 45,
+      "community_name": "InstallPengaturan.tsx",
+      "norm_label": "installpengaturan()"
+    },
+    {
+      "label": "layout.tsx",
+      "file_type": "code",
       "source_file": "webapp/src/app/warga/layout.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "webapp_src_app_warga_layout",
       "community": 52,
       "community_name": "layout.tsx",
-      "norm_label": "layout.tsx"
+      "norm_label": "layout.tsx",
+      "id": "webapp_src_app_warga_layout"
     },
     {
       "label": "WargaLayout()",
@@ -20,10 +119,10 @@
       "source_file": "webapp/src/app/warga/layout.tsx",
       "source_location": "L8",
       "_origin": "ast",
-      "id": "webapp_src_app_warga_layout_wargalayout",
       "community": 52,
       "community_name": "layout.tsx",
-      "norm_label": "wargalayout()"
+      "norm_label": "wargalayout()",
+      "id": "webapp_src_app_warga_layout_wargalayout"
     },
     {
       "label": "page.tsx",
@@ -438,8 +537,8 @@
       "source_file": "webapp/src/components/DaftarSW.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 11,
-      "community_name": "layout.tsx",
+      "community": 54,
+      "community_name": "DaftarSW.tsx",
       "norm_label": "daftarsw.tsx",
       "id": "webapp_src_components_daftarsw"
     },
@@ -449,32 +548,10 @@
       "source_file": "webapp/src/components/DaftarSW.tsx",
       "source_location": "L9",
       "_origin": "ast",
-      "community": 11,
-      "community_name": "layout.tsx",
+      "community": 54,
+      "community_name": "DaftarSW.tsx",
       "norm_label": "daftarsw()",
       "id": "webapp_src_components_daftarsw_daftarsw"
-    },
-    {
-      "label": "InstallPengaturan.tsx",
-      "file_type": "code",
-      "source_file": "webapp/src/components/InstallPengaturan.tsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 45,
-      "community_name": "InstallPengaturan.tsx",
-      "norm_label": "installpengaturan.tsx",
-      "id": "webapp_src_components_installpengaturan"
-    },
-    {
-      "label": "InstallPengaturan()",
-      "file_type": "code",
-      "source_file": "webapp/src/components/InstallPengaturan.tsx",
-      "source_location": "L9",
-      "_origin": "ast",
-      "community": 45,
-      "community_name": "InstallPengaturan.tsx",
-      "norm_label": "installpengaturan()",
-      "id": "webapp_src_components_installpengaturan_installpengaturan"
     },
     {
       "label": "page.tsx",
@@ -541,28 +618,6 @@
       "community_name": "page.tsx",
       "norm_label": "scanpage()",
       "id": "webapp_src_app_warga_scan_page_scanpage"
-    },
-    {
-      "label": "page.tsx",
-      "file_type": "code",
-      "source_file": "webapp/src/app/page.tsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 36,
-      "community_name": "page.tsx",
-      "norm_label": "page.tsx",
-      "id": "webapp_src_app_page"
-    },
-    {
-      "label": "Home()",
-      "file_type": "code",
-      "source_file": "webapp/src/app/page.tsx",
-      "source_location": "L9",
-      "_origin": "ast",
-      "community": 36,
-      "community_name": "page.tsx",
-      "norm_label": "home()",
-      "id": "webapp_src_app_page_home"
     },
     {
       "label": "page.tsx",
@@ -746,8 +801,8 @@
       "source_file": "webapp/package.json",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 3,
-      "community_name": "dependencies",
+      "community": 5,
+      "community_name": "devDependencies",
       "norm_label": "package.json",
       "id": "webapp_package"
     },
@@ -757,8 +812,8 @@
       "source_file": "webapp/package.json",
       "source_location": "L2",
       "_origin": "ast",
-      "community": 3,
-      "community_name": "dependencies",
+      "community": 5,
+      "community_name": "devDependencies",
       "norm_label": "name",
       "id": "webapp_package_name"
     },
@@ -768,8 +823,8 @@
       "source_file": "webapp/package.json",
       "source_location": "L3",
       "_origin": "ast",
-      "community": 3,
-      "community_name": "dependencies",
+      "community": 5,
+      "community_name": "devDependencies",
       "norm_label": "version",
       "id": "webapp_package_version"
     },
@@ -779,8 +834,8 @@
       "source_file": "webapp/package.json",
       "source_location": "L4",
       "_origin": "ast",
-      "community": 3,
-      "community_name": "dependencies",
+      "community": 5,
+      "community_name": "devDependencies",
       "norm_label": "private",
       "id": "webapp_package_private"
     },
@@ -790,8 +845,8 @@
       "source_file": "webapp/package.json",
       "source_location": "L5",
       "_origin": "ast",
-      "community": 3,
-      "community_name": "dependencies",
+      "community": 5,
+      "community_name": "devDependencies",
       "norm_label": "scripts",
       "id": "webapp_package_scripts"
     },
@@ -801,8 +856,8 @@
       "source_file": "webapp/package.json",
       "source_location": "L6",
       "_origin": "ast",
-      "community": 3,
-      "community_name": "dependencies",
+      "community": 5,
+      "community_name": "devDependencies",
       "norm_label": "dev",
       "id": "webapp_package_scripts_dev"
     },
@@ -812,8 +867,8 @@
       "source_file": "webapp/package.json",
       "source_location": "L7",
       "_origin": "ast",
-      "community": 3,
-      "community_name": "dependencies",
+      "community": 5,
+      "community_name": "devDependencies",
       "norm_label": "build",
       "id": "webapp_package_scripts_build"
     },
@@ -823,8 +878,8 @@
       "source_file": "webapp/package.json",
       "source_location": "L8",
       "_origin": "ast",
-      "community": 3,
-      "community_name": "dependencies",
+      "community": 5,
+      "community_name": "devDependencies",
       "norm_label": "start",
       "id": "webapp_package_scripts_start"
     },
@@ -834,8 +889,8 @@
       "source_file": "webapp/package.json",
       "source_location": "L9",
       "_origin": "ast",
-      "community": 3,
-      "community_name": "dependencies",
+      "community": 5,
+      "community_name": "devDependencies",
       "norm_label": "test",
       "id": "webapp_package_scripts_test"
     },
@@ -845,8 +900,8 @@
       "source_file": "webapp/package.json",
       "source_location": "L10",
       "_origin": "ast",
-      "community": 3,
-      "community_name": "dependencies",
+      "community": 5,
+      "community_name": "devDependencies",
       "norm_label": "test:db",
       "id": "webapp_package_scripts_test_db"
     },
@@ -856,8 +911,8 @@
       "source_file": "webapp/package.json",
       "source_location": "L11",
       "_origin": "ast",
-      "community": 3,
-      "community_name": "dependencies",
+      "community": 5,
+      "community_name": "devDependencies",
       "norm_label": "postinstall",
       "id": "webapp_package_scripts_postinstall"
     },
@@ -867,8 +922,8 @@
       "source_file": "webapp/package.json",
       "source_location": "L13",
       "_origin": "ast",
-      "community": 3,
-      "community_name": "dependencies",
+      "community": 5,
+      "community_name": "devDependencies",
       "norm_label": "prisma",
       "id": "webapp_package_prisma"
     },
@@ -878,8 +933,8 @@
       "source_file": "webapp/package.json",
       "source_location": "L14",
       "_origin": "ast",
-      "community": 3,
-      "community_name": "dependencies",
+      "community": 5,
+      "community_name": "devDependencies",
       "norm_label": "seed",
       "id": "webapp_package_prisma_seed"
     },
@@ -988,8 +1043,8 @@
       "source_file": "webapp/package.json",
       "source_location": "L21",
       "_origin": "ast",
-      "community": 1,
-      "community_name": "page.tsx",
+      "community": 3,
+      "community_name": "dependencies",
       "norm_label": "qrcode",
       "id": "webapp_package_dependencies_qrcode"
     },
@@ -999,8 +1054,8 @@
       "source_file": "webapp/package.json",
       "source_location": "L21",
       "_origin": "ast",
-      "community": 1,
-      "community_name": "page.tsx",
+      "community": 3,
+      "community_name": "dependencies",
       "norm_label": "qrcode",
       "id": "qrcode"
     },
@@ -1753,50 +1808,6 @@
       "id": "webapp_src_app_error_error"
     },
     {
-      "label": "layout.tsx",
-      "file_type": "code",
-      "source_file": "webapp/src/app/layout.tsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 11,
-      "community_name": "layout.tsx",
-      "norm_label": "layout.tsx",
-      "id": "webapp_src_app_layout"
-    },
-    {
-      "label": "metadata",
-      "file_type": "code",
-      "source_file": "webapp/src/app/layout.tsx",
-      "source_location": "L10",
-      "_origin": "ast",
-      "community": 11,
-      "community_name": "layout.tsx",
-      "norm_label": "metadata",
-      "id": "webapp_src_app_layout_metadata"
-    },
-    {
-      "label": "viewport",
-      "file_type": "code",
-      "source_file": "webapp/src/app/layout.tsx",
-      "source_location": "L25",
-      "_origin": "ast",
-      "community": 11,
-      "community_name": "layout.tsx",
-      "norm_label": "viewport",
-      "id": "webapp_src_app_layout_viewport"
-    },
-    {
-      "label": "RootLayout()",
-      "file_type": "code",
-      "source_file": "webapp/src/app/layout.tsx",
-      "source_location": "L35",
-      "_origin": "ast",
-      "community": 11,
-      "community_name": "layout.tsx",
-      "norm_label": "rootlayout()",
-      "id": "webapp_src_app_layout_rootlayout"
-    },
-    {
       "label": "manifest.ts",
       "file_type": "code",
       "source_file": "webapp/src/app/manifest.ts",
@@ -2176,8 +2187,8 @@
       "source_file": "webapp/src/components/QrFullscreen.tsx",
       "source_location": "L16",
       "_origin": "ast",
-      "community": 1,
-      "community_name": "page.tsx",
+      "community": 3,
+      "community_name": "dependencies",
       "norm_label": "qrfullscreen()",
       "id": "webapp_src_components_qrfullscreen_qrfullscreen"
     },
@@ -2473,8 +2484,8 @@
       "source_file": "webapp/src/components/VerifikasiBanner.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 2,
-      "community_name": "ops.ts",
+      "community": 0,
+      "community_name": "auth.ts",
       "norm_label": "verifikasibanner.tsx",
       "id": "webapp_src_components_verifikasibanner"
     },
@@ -2484,8 +2495,8 @@
       "source_file": "webapp/src/components/VerifikasiBanner.tsx",
       "source_location": "L8",
       "_origin": "ast",
-      "community": 2,
-      "community_name": "ops.ts",
+      "community": 0,
+      "community_name": "auth.ts",
       "norm_label": "verifikasibanner()",
       "id": "webapp_src_components_verifikasibanner_verifikasibanner"
     },
@@ -2594,8 +2605,8 @@
       "source_file": "webapp/src/lib/actions/auth.ts",
       "source_location": "L75",
       "_origin": "ast",
-      "community": 2,
-      "community_name": "ops.ts",
+      "community": 0,
+      "community_name": "auth.ts",
       "norm_label": "resendverificationaction()",
       "id": "webapp_src_lib_actions_auth_resendverificationaction"
     },
@@ -2605,8 +2616,8 @@
       "source_file": "webapp/src/lib/actions/auth.ts",
       "source_location": "L88",
       "_origin": "ast",
-      "community": 2,
-      "community_name": "ops.ts",
+      "community": 0,
+      "community_name": "auth.ts",
       "norm_label": "gantiemailaction()",
       "id": "webapp_src_lib_actions_auth_gantiemailaction"
     },
@@ -3188,8 +3199,8 @@
       "source_file": "webapp/src/lib/email.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 2,
-      "community_name": "ops.ts",
+      "community": 0,
+      "community_name": "auth.ts",
       "norm_label": "email.ts",
       "id": "webapp_src_lib_email"
     },
@@ -3199,8 +3210,8 @@
       "source_file": "webapp/src/lib/email.ts",
       "source_location": "L6",
       "_origin": "ast",
-      "community": 2,
-      "community_name": "ops.ts",
+      "community": 0,
+      "community_name": "auth.ts",
       "norm_label": "createemailtoken()",
       "id": "webapp_src_lib_email_createemailtoken"
     },
@@ -3221,8 +3232,8 @@
       "source_file": "webapp/src/lib/email.ts",
       "source_location": "L25",
       "_origin": "ast",
-      "community": 2,
-      "community_name": "ops.ts",
+      "community": 0,
+      "community_name": "auth.ts",
       "norm_label": "resend()",
       "id": "webapp_src_lib_email_resend"
     },
@@ -3232,8 +3243,8 @@
       "source_file": "webapp/src/lib/email.ts",
       "source_location": "L26",
       "_origin": "ast",
-      "community": 2,
-      "community_name": "ops.ts",
+      "community": 0,
+      "community_name": "auth.ts",
       "norm_label": "kirim()",
       "id": "webapp_src_lib_email_kirim"
     },
@@ -3243,8 +3254,8 @@
       "source_file": "webapp/src/lib/email.ts",
       "source_location": "L29",
       "_origin": "ast",
-      "community": 2,
-      "community_name": "ops.ts",
+      "community": 0,
+      "community_name": "auth.ts",
       "norm_label": "esc()",
       "id": "webapp_src_lib_email_esc"
     },
@@ -3254,8 +3265,8 @@
       "source_file": "webapp/src/lib/email.ts",
       "source_location": "L31",
       "_origin": "ast",
-      "community": 2,
-      "community_name": "ops.ts",
+      "community": 0,
+      "community_name": "auth.ts",
       "norm_label": "sendverification()",
       "id": "webapp_src_lib_email_sendverification"
     },
@@ -3265,8 +3276,8 @@
       "source_file": "webapp/src/lib/email.ts",
       "source_location": "L36",
       "_origin": "ast",
-      "community": 2,
-      "community_name": "ops.ts",
+      "community": 0,
+      "community_name": "auth.ts",
       "norm_label": "sendreset()",
       "id": "webapp_src_lib_email_sendreset"
     },
@@ -3606,8 +3617,8 @@
       "source_file": "webapp/src/lib/peringkat.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 0,
-      "community_name": "auth.ts",
+      "community": 1,
+      "community_name": "page.tsx",
       "norm_label": "peringkat.ts",
       "id": "webapp_src_lib_peringkat"
     },
@@ -3617,8 +3628,8 @@
       "source_file": "webapp/src/lib/peringkat.ts",
       "source_location": "L6",
       "_origin": "ast",
-      "community": 0,
-      "community_name": "auth.ts",
+      "community": 1,
+      "community_name": "page.tsx",
       "norm_label": "peringkatbaris",
       "id": "webapp_src_lib_peringkat_peringkatbaris"
     },
@@ -3628,8 +3639,8 @@
       "source_file": "webapp/src/lib/peringkat.ts",
       "source_location": "L13",
       "_origin": "ast",
-      "community": 0,
-      "community_name": "auth.ts",
+      "community": 1,
+      "community_name": "page.tsx",
       "norm_label": "peringkat",
       "id": "webapp_src_lib_peringkat_peringkat"
     },
@@ -3639,8 +3650,8 @@
       "source_file": "webapp/src/lib/peringkat.ts",
       "source_location": "L19",
       "_origin": "ast",
-      "community": 0,
-      "community_name": "auth.ts",
+      "community": 1,
+      "community_name": "page.tsx",
       "norm_label": "kuartalrange()",
       "id": "webapp_src_lib_peringkat_kuartalrange"
     },
@@ -3650,8 +3661,8 @@
       "source_file": "webapp/src/lib/peringkat.ts",
       "source_location": "L28",
       "_origin": "ast",
-      "community": 0,
-      "community_name": "auth.ts",
+      "community": 1,
+      "community_name": "page.tsx",
       "norm_label": "peringkatkuartal()",
       "id": "webapp_src_lib_peringkat_peringkatkuartal"
     },
@@ -3661,8 +3672,8 @@
       "source_file": "webapp/src/lib/session-next.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 0,
-      "community_name": "auth.ts",
+      "community": 1,
+      "community_name": "page.tsx",
       "norm_label": "session-next.ts",
       "id": "webapp_src_lib_session_next"
     },
@@ -3738,8 +3749,8 @@
       "source_file": "webapp/src/lib/setoran.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 0,
-      "community_name": "auth.ts",
+      "community": 1,
+      "community_name": "page.tsx",
       "norm_label": "setoran.ts",
       "id": "webapp_src_lib_setoran"
     },
@@ -3749,8 +3760,8 @@
       "source_file": "webapp/src/lib/setoran.ts",
       "source_location": "L6",
       "_origin": "ast",
-      "community": 0,
-      "community_name": "auth.ts",
+      "community": 1,
+      "community_name": "page.tsx",
       "norm_label": "page",
       "id": "webapp_src_lib_setoran_page"
     },
@@ -3760,8 +3771,8 @@
       "source_file": "webapp/src/lib/setoran.ts",
       "source_location": "L8",
       "_origin": "ast",
-      "community": 0,
-      "community_name": "auth.ts",
+      "community": 1,
+      "community_name": "page.tsx",
       "norm_label": "createsetoran()",
       "id": "webapp_src_lib_setoran_createsetoran"
     },
@@ -3826,8 +3837,8 @@
       "source_file": "webapp/tests/db/email-token.test.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 2,
-      "community_name": "ops.ts",
+      "community": 0,
+      "community_name": "auth.ts",
       "norm_label": "email-token.test.ts",
       "id": "webapp_tests_db_email_token_test"
     },
@@ -3859,8 +3870,8 @@
       "source_file": "webapp/tests/db/helpers.ts",
       "source_location": "L16",
       "_origin": "ast",
-      "community": 0,
-      "community_name": "auth.ts",
+      "community": 1,
+      "community_name": "page.tsx",
       "norm_label": "buatjenis()",
       "id": "webapp_tests_db_helpers_buatjenis"
     },
@@ -3903,8 +3914,8 @@
       "source_file": "webapp/tests/db/penukaran.test.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 1,
-      "community_name": "page.tsx",
+      "community": 0,
+      "community_name": "auth.ts",
       "norm_label": "penukaran.test.ts",
       "id": "webapp_tests_db_penukaran_test"
     },
@@ -3914,8 +3925,8 @@
       "source_file": "webapp/tests/db/penukaran.test.ts",
       "source_location": "L6",
       "_origin": "ast",
-      "community": 1,
-      "community_name": "page.tsx",
+      "community": 0,
+      "community_name": "auth.ts",
       "norm_label": "siap()",
       "id": "webapp_tests_db_penukaran_test_siap"
     },
@@ -3925,8 +3936,8 @@
       "source_file": "webapp/tests/db/peringkat.test.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 0,
-      "community_name": "auth.ts",
+      "community": 1,
+      "community_name": "page.tsx",
       "norm_label": "peringkat.test.ts",
       "id": "webapp_tests_db_peringkat_test"
     },
@@ -3980,8 +3991,8 @@
       "source_file": "webapp/tests/db/setoran.test.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 0,
-      "community_name": "auth.ts",
+      "community": 1,
+      "community_name": "page.tsx",
       "norm_label": "setoran.test.ts",
       "id": "webapp_tests_db_setoran_test"
     },
@@ -3991,8 +4002,8 @@
       "source_file": "webapp/tests/db/setoran.test.ts",
       "source_location": "L6",
       "_origin": "ast",
-      "community": 0,
-      "community_name": "auth.ts",
+      "community": 1,
+      "community_name": "page.tsx",
       "norm_label": "ops()",
       "id": "webapp_tests_db_setoran_test_ops"
     },
@@ -5068,13 +5079,79 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "webapp/src/app/layout.tsx",
+      "source_location": "L17",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "webapp_src_app_layout",
+      "target": "webapp_src_app_layout_metadata",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "webapp/src/app/layout.tsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "webapp_src_app_layout",
+      "target": "webapp_src_app_layout_outfit",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "webapp/src/app/layout.tsx",
+      "source_location": "L42",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "webapp_src_app_layout",
+      "target": "webapp_src_app_layout_rootlayout",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "webapp/src/app/layout.tsx",
+      "source_location": "L32",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "webapp_src_app_layout",
+      "target": "webapp_src_app_layout_viewport",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "webapp/src/app/page.tsx",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "webapp_src_app_page",
+      "target": "webapp_src_app_page_home",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "webapp/src/components/InstallPengaturan.tsx",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "webapp_src_components_installpengaturan",
+      "target": "webapp_src_components_installpengaturan_installpengaturan",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "webapp/src/app/warga/layout.tsx",
       "source_location": "L8",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "webapp_src_app_warga_layout",
-      "target": "webapp_src_app_warga_layout_wargalayout",
-      "confidence_score": 1.0
+      "target": "webapp_src_app_warga_layout_wargalayout"
     },
     {
       "relation": "contains",
@@ -5497,18 +5574,6 @@
       "target": "webapp_src_app_warga_profil_page_profilpage"
     },
     {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "webapp/src/app/layout.tsx",
-      "source_location": "L3",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "webapp_src_app_layout",
-      "target": "webapp_src_components_daftarsw"
-    },
-    {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "webapp/src/components/DaftarSW.tsx",
@@ -5518,29 +5583,6 @@
       "confidence_score": 1.0,
       "source": "webapp_src_components_daftarsw",
       "target": "webapp_src_components_daftarsw_daftarsw"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "webapp/src/app/layout.tsx",
-      "source_location": "L3",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "webapp_src_app_layout",
-      "target": "webapp_src_components_daftarsw_daftarsw"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "webapp/src/components/InstallPengaturan.tsx",
-      "source_location": "L9",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "webapp_src_components_installpengaturan",
-      "target": "webapp_src_components_installpengaturan_installpengaturan"
     },
     {
       "relation": "contains",
@@ -5574,17 +5616,6 @@
       "confidence_score": 1.0,
       "source": "webapp_src_app_warga_scan_page",
       "target": "webapp_src_app_warga_scan_page_scanpage"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "webapp/src/app/page.tsx",
-      "source_location": "L9",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "webapp_src_app_page",
-      "target": "webapp_src_app_page_home"
     },
     {
       "relation": "contains",
@@ -6981,63 +7012,6 @@
       "confidence_score": 1.0,
       "source": "webapp_src_app_error",
       "target": "webapp_src_app_error_error"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "webapp/src/app/layout.tsx",
-      "source_location": "L10",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "webapp_src_app_layout",
-      "target": "webapp_src_app_layout_metadata"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "webapp/src/app/layout.tsx",
-      "source_location": "L35",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "webapp_src_app_layout",
-      "target": "webapp_src_app_layout_rootlayout"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "webapp/src/app/layout.tsx",
-      "source_location": "L25",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "webapp_src_app_layout",
-      "target": "webapp_src_app_layout_viewport"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "webapp/src/app/layout.tsx",
-      "source_location": "L4",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "webapp_src_app_layout",
-      "target": "webapp_src_components_indikatoroffline"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "webapp/src/app/layout.tsx",
-      "source_location": "L4",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "webapp_src_app_layout",
-      "target": "webapp_src_components_indikatoroffline_indikatoroffline"
     },
     {
       "relation": "contains",
@@ -13276,5 +13250,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "d696c95433b9a14e96e3d02fc8a4c1fa47240021"
+  "built_at_commit": "e1b0b72be80ce23aecb4acf1a2142552f02fa488"
 }

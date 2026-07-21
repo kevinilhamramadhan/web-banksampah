@@ -234,7 +234,12 @@ a {
   font-weight: 600;
   cursor: pointer;
   text-decoration: none;
-  transition: background var(--gerak-cepat), transform var(--gerak-cepat);
+  box-shadow: 0 4px 14px oklch(0 0 0 / 0.1);
+  transition: background var(--gerak-cepat), transform var(--gerak-cepat), box-shadow var(--gerak-sedang);
+}
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px oklch(0 0 0 / 0.15);
 }
 .btn:active {
   background: var(--hijau-gelap);
@@ -608,9 +613,16 @@ label {
 
 /* Riwayat: baris masuk dgn stagger halus saat dimuat */
 .riwayat-item {
-  padding: 12px 4px;
-  border-bottom: 1px solid var(--garis);
+  padding: 12px 14px;
+  margin: 4px 0;
+  border-radius: var(--radius);
+  border-bottom: 1px solid transparent;
+  transition: background var(--gerak-cepat), transform var(--gerak-cepat);
   animation: baris-masuk var(--gerak-sedang) both;
+}
+.riwayat-item:hover {
+  background: var(--daun-tipis);
+  transform: translateX(4px);
 }
 .riwayat-item:nth-child(1) {
   animation-delay: 0ms;
@@ -1197,6 +1209,16 @@ body {
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid color-mix(in oklab, var(--garis) 50%, transparent);
   box-shadow: 0 8px 32px oklch(0 0 0 / 0.05);
+}
+
+.glass-panel {
+  background: color-mix(in oklab, var(--kartu) 85%, transparent);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid color-mix(in oklab, var(--garis) 60%, transparent);
+  border-radius: var(--radius-besar);
+  box-shadow: 0 12px 40px oklch(0 0 0 / 0.08);
+  padding: 32px;
 }
 
 .gradient-text {

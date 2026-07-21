@@ -30,11 +30,11 @@ export default async function WargaPage() {
         <div className="label" style={{ marginTop: 20 }}>
           Saldo poin {user.nama}
         </div>
-        <div className="angka">
+        <div className="angka gradient-text" style={{ paddingBottom: "10px" }}>
           {user.saldoPoin.toLocaleString("id-ID")}
-          <span className="satuan"> poin</span>
+          <span className="satuan" style={{ color: "var(--hijau-link)" }}> poin</span>
         </div>
-        <div className="rupiah">≈ {fmtRupiah(user.saldoPoin * RUPIAH_PER_POIN)}</div>
+        <div className="rupiah" style={{ color: "var(--hijau-link)" }}>≈ {fmtRupiah(user.saldoPoin * RUPIAH_PER_POIN)}</div>
         <div className="aturan">
           1 poin = {fmtRupiah(RUPIAH_PER_POIN)} • cair min. {MIN_TUKAR_POIN} poin (
           {fmtRupiah(MIN_TUKAR_POIN * RUPIAH_PER_POIN)})
@@ -48,16 +48,16 @@ export default async function WargaPage() {
         ) : (
           <>
             <Onboarding />
-            <Link href="/warga/kontribusi" className="card baris" style={{ textDecoration: "none", color: "inherit" }}>
+            <Link href="/warga/kontribusi" className="card glass baris" style={{ textDecoration: "none", color: "inherit", padding: "20px" }}>
               <span>
-                <strong>Grafik kontribusimu</strong>
+                <strong style={{ fontSize: "1.1rem" }}>Grafik kontribusimu</strong>
                 <br />
                 <span className="muted">Tren sampah per bulan &amp; jenis favoritmu</span>
               </span>
-              <span aria-hidden="true" style={{ color: "var(--hijau-link)", fontSize: "1.4rem" }}>→</span>
+              <span aria-hidden="true" className="animate-float" style={{ color: "var(--hijau-link)", fontSize: "1.6rem", animationDirection: "alternate-reverse" }}>→</span>
             </Link>
 
-            <h2>Riwayat</h2>
+            <h2 style={{ fontWeight: 800, marginTop: "24px" }}>Riwayat</h2>
             <RiwayatList
               varian="warga"
               initialSetoran={initialSetoran}
