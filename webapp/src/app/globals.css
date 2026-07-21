@@ -1332,7 +1332,13 @@ body {
     padding-bottom: 0;
   }
 
+  .dgn-nav > *:not(.nav-bawah) {
+    grid-column: 2;
+  }
+
   .nav-bawah {
+    grid-column: 1;
+    grid-row: 1 / span 99;
     position: sticky;
     top: 0;
     left: 0;

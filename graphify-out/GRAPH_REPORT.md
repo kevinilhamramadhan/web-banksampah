@@ -1,7 +1,7 @@
 # Graph Report - websampah  (2026-07-21)
 
 ## Corpus Check
-- 110 files · ~31,226 words
+- 110 files · ~31,245 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `4fb94375`
+- Built from commit: `dc94b811`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -161,7 +161,7 @@ Cohesion: 0.40
 Nodes (3): metadata, outfit, viewport
 
 ## Knowledge Gaps
-- **157 isolated node(s):** `outfit`, `metadata`, `viewport`, `IKON`, `TAUTAN` (+152 more)
+- **157 isolated node(s):** `IKON`, `Item`, `MENU`, `outfit`, `metadata` (+152 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **10 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -172,7 +172,7 @@ _Questions this graph is uniquely positioned to answer:_
   _High betweenness centrality (0.085) - this node is a cross-community bridge._
 - **Why does `QrFullscreen()` connect `dependencies` to `RiwayatList.tsx`, `page.tsx`?**
   _High betweenness centrality (0.084) - this node is a cross-community bridge._
-- **What connects `outfit`, `metadata`, `viewport` to the rest of the system?**
+- **What connects `IKON`, `Item`, `MENU` to the rest of the system?**
   _157 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `auth.ts` be split into smaller, more focused modules?**
   _Cohesion score 0.12073170731707317 - nodes in this community are weakly interconnected._
