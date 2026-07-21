@@ -30,17 +30,17 @@ export default async function OpsPage() {
       <AppHeader judul="Ops Bank Sampah" aksi={<TombolKeluar />} />
       <main className="container">
         {/* Dua tugas inti ops, langsung di depan. */}
-        <div className="aksi-utama blob-container" style={{ position: "relative", zIndex: 1, padding: "10px 0" }}>
-          <Link href="/ops/setoran" className="aksi-kartu utama gradient-bg" style={{ boxShadow: "0 8px 32px oklch(0 0 0 / 0.15)", border: "none" }}>
-            <span className="ikon animate-float" style={{ animationDuration: "4s", background: "oklch(1 0 0 / 0.2)" }}>{IKON_SETOR}</span>
+        <div className="aksi-utama" style={{ padding: "10px 0" }}>
+          <Link href="/ops/setoran" className="aksi-kartu utama">
+            <span className="ikon">{IKON_SETOR}</span>
             <span>
               <span className="judul">Catat Setoran</span>
               <br />
               <span className="ket">Timbang sampah warga, poin otomatis</span>
             </span>
           </Link>
-          <Link href="/ops/penukaran" className="aksi-kartu glass" style={{ border: "1px solid color-mix(in oklab, var(--garis) 50%, transparent)" }}>
-            <span className="ikon animate-float" style={{ animationDuration: "5s" }}>{IKON_TUKAR}</span>
+          <Link href="/ops/penukaran" className="aksi-kartu">
+            <span className="ikon">{IKON_TUKAR}</span>
             <span>
               <span className="judul">Proses Penukaran</span>
               <br />

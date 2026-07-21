@@ -30,7 +30,7 @@ export default async function WargaPage() {
         <div className="label" style={{ marginTop: 20 }}>
           Saldo poin {user.nama}
         </div>
-        <div className="angka gradient-text" style={{ paddingBottom: "10px" }}>
+        <div className="angka" style={{ paddingBottom: "10px" }}>
           {user.saldoPoin.toLocaleString("id-ID")}
           <span className="satuan" style={{ color: "var(--hijau-link)" }}> poin</span>
         </div>
@@ -48,13 +48,13 @@ export default async function WargaPage() {
         ) : (
           <>
             <Onboarding />
-            <Link href="/warga/kontribusi" className="card glass baris" style={{ textDecoration: "none", color: "inherit", padding: "20px" }}>
+            <Link href="/warga/kontribusi" className="card baris" style={{ textDecoration: "none", color: "inherit", padding: "20px" }}>
               <span>
                 <strong style={{ fontSize: "1.1rem" }}>Grafik kontribusimu</strong>
                 <br />
                 <span className="muted">Tren sampah per bulan &amp; jenis favoritmu</span>
               </span>
-              <span aria-hidden="true" className="animate-float" style={{ color: "var(--hijau-link)", fontSize: "1.6rem", animationDirection: "alternate-reverse" }}>→</span>
+              <span aria-hidden="true" style={{ color: "var(--hijau-link)", fontSize: "1.6rem" }}>→</span>
             </Link>
 
             <h2 style={{ fontWeight: 800, marginTop: "24px" }}>Riwayat</h2>

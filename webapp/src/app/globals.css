@@ -1207,111 +1207,6 @@ body {
 /* ---------- Utility Modern & UI Effects ---------- */
 .glass {
   background: color-mix(in oklab, var(--kartu) 70%, transparent);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid color-mix(in oklab, var(--garis) 50%, transparent);
-  box-shadow: 0 8px 32px oklch(0 0 0 / 0.05);
-}
-
-.glass-panel {
-  background: color-mix(in oklab, var(--kartu) 85%, transparent);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid color-mix(in oklab, var(--garis) 60%, transparent);
-  border-radius: var(--radius-besar);
-  box-shadow: 0 12px 40px oklch(0 0 0 / 0.08);
-  padding: 32px;
-}
-
-.gradient-text {
-  background: linear-gradient(135deg, var(--hijau), var(--hijau-link));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.gradient-bg {
-  background: linear-gradient(135deg, var(--hijau-pekat), var(--hijau));
-}
-
-.animate-float {
-  animation: float 6s ease-in-out infinite;
-}
-
-@keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-  100% { transform: translateY(0px); }
-}
-
-.blob-container {
-  position: relative;
-  overflow: hidden;
-}
-
-.blob-container::before {
-  content: "";
-  position: absolute;
-  top: -20%;
-  left: -10%;
-  width: 60%;
-  height: 60%;
-  background: var(--daun-tipis);
-  border-radius: 50%;
-  filter: blur(60px);
-  z-index: -1;
-  animation: float 8s ease-in-out infinite alternate;
-}
-
-.blob-container::after {
-  content: "";
-  position: absolute;
-  bottom: -20%;
-  right: -10%;
-  width: 50%;
-  height: 50%;
-  background: oklch(0.96 0.05 130);
-  border-radius: 50%;
-  filter: blur(60px);
-  z-index: -1;
-  animation: float 6s ease-in-out infinite alternate-reverse;
-}
-
-.blob-dark {
-  position: relative;
-  overflow: hidden;
-}
-.blob-dark::before {
-  content: "";
-  position: absolute;
-  top: -20%;
-  left: -20%;
-  width: 70%;
-  height: 70%;
-  background: color-mix(in oklab, var(--hijau) 40%, transparent);
-  border-radius: 50%;
-  filter: blur(80px);
-  z-index: 0;
-  animation: float 8s ease-in-out infinite alternate;
-}
-.blob-dark::after {
-  content: "";
-  position: absolute;
-  bottom: -30%;
-  right: -20%;
-  width: 60%;
-  height: 60%;
-  background: color-mix(in oklab, var(--hijau-link) 30%, transparent);
-  border-radius: 50%;
-  filter: blur(90px);
-  z-index: 0;
-  animation: float 6s ease-in-out infinite alternate-reverse;
-}
-
-/* Elevate z-index of content inside blob-dark so text stays above blobs */
-.blob-dark > * {
-  position: relative;
-  z-index: 1;
 }
 
 .nav-merek {
@@ -1340,11 +1235,9 @@ body {
     flex-direction: column;
     justify-content: flex-start;
     border-top: none;
-    border-right: 1px solid color-mix(in oklab, var(--garis) 60%, transparent);
+    border-right: 1px solid var(--garis);
     padding: 32px 16px;
-    background: color-mix(in oklab, var(--kartu) 85%, transparent);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
+    background: transparent;
     box-shadow: none;
   }
 
@@ -1383,11 +1276,7 @@ body {
     color: #fff;
   }
 
-  .markas {
-    border-radius: 0 0 24px 24px;
-    margin: 0 24px 24px 24px;
-    box-shadow: 0 12px 30px oklch(0 0 0 / 0.05);
-  }
+
 
   .nav-merek {
     display: flex;

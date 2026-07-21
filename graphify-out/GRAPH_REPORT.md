@@ -1,16 +1,16 @@
 # Graph Report - websampah  (2026-07-21)
 
 ## Corpus Check
-- 110 files · ~31,245 words
+- 110 files · ~31,251 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 461 nodes · 704 edges · 57 communities (47 shown, 10 thin omitted)
+- 461 nodes · 703 edges · 58 communities (48 shown, 10 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 7 edges (avg confidence: 0.71)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `dc94b811`
+- Built from commit: `4ffd680e`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -74,7 +74,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (57 total, 10 thin omitted)
+## Communities (58 total, 10 thin omitted)
 
 ### Community 0 - "auth.ts"
 Cohesion: 0.12
@@ -125,7 +125,7 @@ Cohesion: 0.18
 Nodes (10): Accessibility & Inclusion, Anti-references, Brand Personality, Design Principles, Platform, Positioning, Product, Product Purpose (+2 more)
 
 ### Community 17 - "CLAUDE.md"
-Cohesion: 0.29
+Cohesion: 0.40
 Nodes (3): IKON, Item, MENU
 
 ### Community 19 - "ResetForm.tsx"
