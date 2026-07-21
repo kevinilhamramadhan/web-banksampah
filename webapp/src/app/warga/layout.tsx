@@ -9,8 +9,10 @@ export default async function WargaLayout({ children }: { children: ReactNode })
   const user = await getSessionUser();
   return (
     <div className="dgn-nav">
-      {children}
       <AppNav peran={user?.role === "ops" ? "ops" : "warga"} />
+      <div className="dgn-konten">
+        {children}
+      </div>
     </div>
   );
 }
