@@ -84,7 +84,7 @@ body {
 }
 
 body {
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-family: var(--font-outfit), system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   font-size: 16px;
   line-height: 1.5;
   background: var(--permukaan);
@@ -133,9 +133,10 @@ a {
 /* ---------- Markas: header hijau di setiap layar ter-autentikasi ---------- */
 
 .markas {
-  background: var(--hijau-pekat);
+  background: linear-gradient(135deg, var(--hijau-pekat), var(--hijau-gelap));
   color: #fff;
   padding-top: max(10px, env(safe-area-inset-top));
+  border-bottom: 1px solid oklch(1 0 0 / 0.1);
 }
 .markas .container {
   padding-top: 12px;
@@ -191,6 +192,12 @@ a {
   border-radius: var(--radius-besar);
   padding: 16px;
   margin-bottom: 12px;
+  box-shadow: 0 4px 20px oklch(0 0 0 / 0.03);
+  transition: transform var(--gerak-sedang), box-shadow var(--gerak-sedang);
+}
+.card:hover {
+  box-shadow: 0 8px 30px oklch(0 0 0 / 0.06);
+  transform: translateY(-2px);
 }
 
 /* Kartu perhatian (verifikasi email): tint emas + ikon — bukan warna-saja */
@@ -759,9 +766,12 @@ label {
   align-items: stretch;
   max-width: 720px;
   margin: 0 auto;
-  background: var(--kartu);
+  background: color-mix(in oklab, var(--kartu) 85%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border-top: 1px solid var(--garis);
   padding-bottom: env(safe-area-inset-bottom);
+  box-shadow: 0 -4px 30px oklch(0 0 0 / 0.04);
 }
 .nav-item {
   flex: 1;
@@ -1178,4 +1188,67 @@ body {
 }
 .install-langkah li strong {
   color: var(--hijau-link);
+}
+
+/* ---------- Utility Modern & UI Effects ---------- */
+.glass {
+  background: color-mix(in oklab, var(--kartu) 70%, transparent);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid color-mix(in oklab, var(--garis) 50%, transparent);
+  box-shadow: 0 8px 32px oklch(0 0 0 / 0.05);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, var(--hijau), var(--hijau-link));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-bg {
+  background: linear-gradient(135deg, var(--hijau-pekat), var(--hijau));
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.blob-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.blob-container::before {
+  content: "";
+  position: absolute;
+  top: -20%;
+  left: -10%;
+  width: 60%;
+  height: 60%;
+  background: var(--daun-tipis);
+  border-radius: 50%;
+  filter: blur(60px);
+  z-index: -1;
+  animation: float 8s ease-in-out infinite alternate;
+}
+
+.blob-container::after {
+  content: "";
+  position: absolute;
+  bottom: -20%;
+  right: -10%;
+  width: 50%;
+  height: 50%;
+  background: oklch(0.96 0.05 130);
+  border-radius: 50%;
+  filter: blur(60px);
+  z-index: -1;
+  animation: float 6s ease-in-out infinite alternate-reverse;
 }

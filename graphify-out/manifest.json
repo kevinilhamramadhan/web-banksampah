@@ -65,8 +65,8 @@
     "semantic_hash": ""
   },
   "webapp/src/app/ops/page.tsx": {
-    "mtime": 1784532990.3594282,
-    "ast_hash": "c9c354fe063464867b1a581259cfcf8a",
+    "mtime": 1784573395.3815925,
+    "ast_hash": "592f343178a15e67e9c9e903ee5fdd5f",
     "semantic_hash": ""
   },
   "webapp/src/app/ops/penukaran/page.tsx": {
@@ -315,13 +315,13 @@
     "semantic_hash": ""
   },
   "webapp/src/app/warga/layout.tsx": {
-    "mtime": 1784441148.6200738,
-    "ast_hash": "4527ae55cb6d84404df909d74dce985a",
+    "mtime": 1784574175.2498345,
+    "ast_hash": "b6f7d7ad7162cc4ef4b26b4f6b7fbd23",
     "semantic_hash": ""
   },
   "webapp/src/app/warga/peringkat/page.tsx": {
-    "mtime": 1784536732.2167425,
-    "ast_hash": "c8436ef9e2c41fdeadf9a30e8145f2b8",
+    "mtime": 1784573203.6803288,
+    "ast_hash": "625eedb19213a89c83c251cf8998b382",
     "semantic_hash": ""
   },
   "webapp/src/components/AppHeader.tsx": {
@@ -330,8 +330,8 @@
     "semantic_hash": ""
   },
   "webapp/src/components/AppNav.tsx": {
-    "mtime": 1784538284.803667,
-    "ast_hash": "b70a177d568eb3bc730859a6f756523f",
+    "mtime": 1784573032.9313533,
+    "ast_hash": "6d29366ed565f8a491d3599a0a5b2435",
     "semantic_hash": ""
   },
   "webapp/src/components/TombolKeluar.tsx": {
@@ -415,13 +415,13 @@
     "semantic_hash": ""
   },
   "webapp/src/app/ops/jenis-sampah/page.tsx": {
-    "mtime": 1784532990.3579981,
-    "ast_hash": "d94aa6912ac4c50dd0653288ae6dc08f",
+    "mtime": 1784573184.1724217,
+    "ast_hash": "ce3a36f133fd303e68a04c9325706e22",
     "semantic_hash": ""
   },
   "webapp/src/components/KelolaJenis.tsx": {
-    "mtime": 1784532990.359465,
-    "ast_hash": "8474a2945d8edffcea65ab0fe090ab14",
+    "mtime": 1784573481.7060444,
+    "ast_hash": "f8bafc32fa8063cf71345c50fb4e5e5a",
     "semantic_hash": ""
   },
   "webapp/src/lib/actions/jenis.ts": {
@@ -440,18 +440,18 @@
     "semantic_hash": ""
   },
   "webapp/src/app/ops/analitik/page.tsx": {
-    "mtime": 1784532990.3579981,
-    "ast_hash": "2e59d8027915f3c6c9901ccc0d9de60e",
+    "mtime": 1784573432.3791661,
+    "ast_hash": "248ed914decccca865b5defc84c622d9",
     "semantic_hash": ""
   },
   "webapp/src/lib/analitik.ts": {
-    "mtime": 1784532990.361465,
-    "ast_hash": "1e909910dcbe1a3e67977b6e3556e858",
+    "mtime": 1784572883.1982265,
+    "ast_hash": "8787ca6fc138b76a96f93eb589895802",
     "semantic_hash": ""
   },
   "webapp/tests/db/analitik.test.ts": {
-    "mtime": 1784532990.361465,
-    "ast_hash": "f15a7db53e1b36060a00a8ed56bb2bbe",
+    "mtime": 1784573671.938292,
+    "ast_hash": "df56f3f4412d36a0dfa11570feec5a2d",
     "semantic_hash": ""
   },
   "webapp/src/app/ops/laporan/export/route.ts": {
@@ -460,8 +460,8 @@
     "semantic_hash": ""
   },
   "webapp/src/app/ops/laporan/page.tsx": {
-    "mtime": 1784532990.3594282,
-    "ast_hash": "a3f07b1b165436d48c6c466b42568f09",
+    "mtime": 1784573168.9265316,
+    "ast_hash": "0d06935dd9d86f82e1896a395aca4e5f",
     "semantic_hash": ""
   },
   "webapp/src/components/UnduhLaporan.tsx": {
@@ -545,13 +545,23 @@
     "semantic_hash": ""
   },
   "webapp/src/components/InstallPengaturan.tsx": {
-    "mtime": 1784536732.217333,
-    "ast_hash": "07ce5c8dc5fcc908afd5d5be2f823c4e",
+    "mtime": 1784538736.9737434,
+    "ast_hash": "9b1c767464c731f01644088b8dfb4594",
     "semantic_hash": ""
   },
   "webapp/src/app/warga/pengaturan/page.tsx": {
     "mtime": 1784538254.8498263,
     "ast_hash": "8df6c236d813f4de3895db577b1a059e",
+    "semantic_hash": ""
+  },
+  "webapp/src/app/ops/menu/page.tsx": {
+    "mtime": 1784573051.0877492,
+    "ast_hash": "97e50bed1d49aedfd40c6e17638de6d7",
+    "semantic_hash": ""
+  },
+  "webapp/src/app/ops/riwayat/page.tsx": {
+    "mtime": 1784573152.5006895,
+    "ast_hash": "d64b6352e86fedaa359b0b48cf2b8e6d",
     "semantic_hash": ""
   }
 }

@@ -12,13 +12,13 @@ export default async function Home() {
 
   return (
     <div className="landing">
-      <header className="hero">
-        <div className="container">
-          <div className="hero-merek">
-            <Image src="/icon-192.png" alt="" width={52} height={52} style={{ borderRadius: 14 }} />
-            <span>Bank Sampah Digital</span>
+      <header className="hero blob-container" style={{ padding: "40px 0 20px" }}>
+        <div className="container" style={{ position: "relative", zIndex: 1 }}>
+          <div className="hero-merek glass" style={{ display: "inline-flex", padding: "10px 20px", borderRadius: "999px", marginBottom: "20px", alignItems: "center", gap: "10px" }}>
+            <Image src="/icon-192.png" alt="" width={32} height={32} style={{ borderRadius: 8 }} />
+            <span style={{ fontWeight: 700 }}>Bank Sampah Digital</span>
           </div>
-          <h1>Pilah sampahmu, rawat lingkungan, tabung jadi uang.</h1>
+          <h1 className="gradient-text animate-float" style={{ fontSize: "2.5rem", fontWeight: 800, lineHeight: 1.1, marginBottom: "20px" }}>Pilah sampahmu,<br/>rawat lingkungan,<br/>tabung jadi uang.</h1>
           <p>
             Kenali jenis sampah dan cara mengolahnya — lalu setor sampah anorganikmu ke bank sampah
             untuk jadi tabungan poin yang bisa dicairkan.
@@ -31,9 +31,9 @@ export default async function Home() {
         </div>
       </header>
 
-      <main className="container landing-isi">
+      <main className="container landing-isi" style={{ marginTop: "20px", position: "relative", zIndex: 1 }}>
         <section aria-labelledby="jenis">
-          <h2 id="jenis">Kenali jenis sampahmu</h2>
+          <h2 id="jenis" style={{ fontWeight: 800 }}>Kenali jenis sampahmu</h2>
           <p className="muted">
             Memilah dari rumah adalah langkah pertama. Secara umum sampah dibagi dua: organik dan anorganik.
           </p>
@@ -79,7 +79,7 @@ export default async function Home() {
         </section>
 
         <section aria-labelledby="organik">
-          <h2 id="organik">Olah sampah organik di rumah</h2>
+          <h2 id="organik" style={{ fontWeight: 800, marginTop: "40px" }}>Olah sampah organik di rumah</h2>
           <div className="dua-kolom">
             <div className="card">
               <h3>Kompos (pupuk)</h3>
@@ -105,7 +105,7 @@ export default async function Home() {
         </section>
 
         <section aria-labelledby="anorganik">
-          <h2 id="anorganik">Olah sampah anorganik lewat bank sampah</h2>
+          <h2 id="anorganik" style={{ fontWeight: 800, marginTop: "40px" }}>Olah sampah anorganik lewat bank sampah</h2>
           <p className="muted">
             Sampah anorganik yang bersih dan terpilah punya nilai jual. Alih-alih dibuang, tabung lewat bank sampah:
           </p>

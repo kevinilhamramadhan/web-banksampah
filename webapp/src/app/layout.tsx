@@ -1,7 +1,14 @@
 import type { Metadata, Viewport } from "next";
+import { Outfit } from "next/font/google";
 import "./globals.css";
 import DaftarSW from "@/components/DaftarSW";
 import IndikatorOffline from "@/components/IndikatorOffline";
+
+const outfit = Outfit({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-outfit",
+});
 
 // Terapkan tema tersimpan sebelum paint (hindari kedip terang→gelap).
 // Hanya "dark"/"light" yang dipatok; "system"/kosong → media query yang mengatur.
@@ -38,7 +45,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="id">
+    <html lang="id" className={outfit.variable}>
       <body>
         <script dangerouslySetInnerHTML={{ __html: skripTema }} />
         <IndikatorOffline />
