@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 
 /* Navigasi bawah ala aplikasi — pola PWA standar. Item tengah (aksi utama) ditonjolkan. */
@@ -89,6 +90,10 @@ export default function AppNav({ peran }: { peran: "warga" | "ops" }) {
   const pathname = usePathname();
   return (
     <nav className="nav-bawah" aria-label="Navigasi utama">
+      <div className="nav-merek">
+        <Image src="/icon-192.png" alt="" width={32} height={32} />
+        <span>Bank Sampah</span>
+      </div>
       {MENU[peran].map((item) => {
         const aktif =
           pathname === item.href || (item.cakupan?.some((p) => pathname.startsWith(p)) ?? false);

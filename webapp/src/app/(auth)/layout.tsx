@@ -5,8 +5,8 @@ import type { ReactNode } from "react";
 /* Cangkang auth: panel brand hijau di desktop, kartu form terpusat di semua ukuran. */
 export default function AuthLayout({ children }: { children: ReactNode }) {
   return (
-    <div className="auth-split">
-      <aside className="auth-panel gradient-bg blob-container" style={{ position: "relative", zIndex: 1, overflow: "hidden" }}>
+    <div className="auth-split" style={{ background: "color-mix(in oklab, var(--permukaan) 40%, var(--daun-tipis))" }}>
+      <aside className="auth-panel gradient-bg blob-dark" style={{ overflow: "hidden" }}>
         <div className="merek">
           <Image src="/icon-192.png" alt="" width={44} height={44} />
           Bank Sampah

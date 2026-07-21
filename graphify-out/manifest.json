@@ -65,8 +65,8 @@
     "semantic_hash": ""
   },
   "webapp/src/app/ops/page.tsx": {
-    "mtime": 1784573395.3815925,
-    "ast_hash": "592f343178a15e67e9c9e903ee5fdd5f",
+    "mtime": 1784606325.5134275,
+    "ast_hash": "c86355cf616f97b6e5da749910fb85e2",
     "semantic_hash": ""
   },
   "webapp/src/app/ops/penukaran/page.tsx": {
@@ -85,8 +85,8 @@
     "semantic_hash": ""
   },
   "webapp/src/app/warga/page.tsx": {
-    "mtime": 1784536732.2165866,
-    "ast_hash": "5c1931a58421cbbdeaa54b5a9909b2ce",
+    "mtime": 1784606313.334401,
+    "ast_hash": "35dd6f0846cea667902c90ea5253d803",
     "semantic_hash": ""
   },
   "webapp/src/app/warga/scan/page.tsx": {
@@ -305,8 +305,8 @@
     "semantic_hash": ""
   },
   "webapp/src/app/(auth)/layout.tsx": {
-    "mtime": 1784532990.356465,
-    "ast_hash": "8376d0f84e580fe32d45b2d9d835f129",
+    "mtime": 1784606300.6933763,
+    "ast_hash": "e2be1a998c683289241f60d8c168a73e",
     "semantic_hash": ""
   },
   "webapp/src/app/ops/layout.tsx": {

@@ -1,16 +1,16 @@
 # Graph Report - websampah  (2026-07-21)
 
 ## Corpus Check
-- 110 files · ~31,135 words
+- 110 files · ~31,226 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 461 nodes · 708 edges · 55 communities (45 shown, 10 thin omitted)
+- 461 nodes · 704 edges · 57 communities (47 shown, 10 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 7 edges (avg confidence: 0.71)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `e1b0b72b`
+- Built from commit: `4fb94375`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -60,8 +60,6 @@
 10. `sendVerification()` - 8 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `ops()` --calls--> `buatUser()`  [EXTRACTED]
-  webapp/tests/db/setoran.test.ts → webapp/tests/db/helpers.ts
 - `OpsAnalitikPage()` --calls--> `analitikOps`  [EXTRACTED]
   webapp/src/app/ops/analitik/page.tsx → webapp/src/lib/analitik.ts
 - `KontribusiPage()` --calls--> `kontribusiWarga`  [EXTRACTED]
@@ -70,23 +68,25 @@
   webapp/prisma/seed-warga.ts → webapp/src/lib/password.ts
 - `main()` --calls--> `hashPassword()`  [EXTRACTED]
   webapp/prisma/seed.ts → webapp/src/lib/password.ts
+- `RegisterPage()` --calls--> `registerAction()`  [EXTRACTED]
+  webapp/src/app/(auth)/register/page.tsx → webapp/src/lib/actions/auth.ts
 
 ## Import Cycles
 - None detected.
 
-## Communities (55 total, 10 thin omitted)
+## Communities (57 total, 10 thin omitted)
 
 ### Community 0 - "auth.ts"
-Cohesion: 0.09
-Nodes (36): main(), prisma, main(), prisma, LoginPage(), LoginState, ResetState, RegisterPage() (+28 more)
+Cohesion: 0.12
+Nodes (23): main(), prisma, main(), prisma, PengaturanAkun(), gantiPasswordAction(), ProfilState, updateProfilAction() (+15 more)
 
 ### Community 1 - "page.tsx"
-Cohesion: 0.07
-Nodes (50): GET(), PenukaranForm(), Props, bacaQr(), BarcodeDetectorLike, ScanQr(), JenisPilihan, SetoranForm() (+42 more)
+Cohesion: 0.09
+Nodes (43): GET(), PenukaranForm(), Props, bacaQr(), BarcodeDetectorLike, ScanQr(), JenisPilihan, SetoranForm() (+35 more)
 
 ### Community 2 - "ops.ts"
-Cohesion: 0.18
-Nodes (7): ResetForm(), ResetState, VerifikasiForm(), VerifikasiState, resetPasswordAction(), verifyEmailAction(), consumeEmailToken()
+Cohesion: 0.09
+Nodes (27): LoginPage(), LoginState, ResetState, RegisterPage(), RegisterState, ResetForm(), ResetState, VerifikasiForm() (+19 more)
 
 ### Community 3 - "dependencies"
 Cohesion: 0.11
@@ -141,8 +141,8 @@ Cohesion: 0.30
 Nodes (13): isUniqueError(), JenisDTO, muatJenisAction(), pastikanOps(), segarkan(), tambahJenisAction(), toggleJenisAction(), ubahTarifAction() (+5 more)
 
 ### Community 31 - "page.tsx"
-Cohesion: 0.26
-Nodes (9): OpsAnalitikPage(), OpsPage(), analitikOps, JenisRingkas, kunciBulan(), labelBulan(), RingkasanBulan, ringkasanBulanIni() (+1 more)
+Cohesion: 0.29
+Nodes (8): OpsAnalitikPage(), analitikOps, JenisRingkas, kunciBulan(), labelBulan(), RingkasanBulan, ringkasanBulanIni(), TrenBulan
 
 ### Community 32 - "RiwayatList.tsx"
 Cohesion: 0.20
@@ -175,10 +175,10 @@ _Questions this graph is uniquely positioned to answer:_
 - **What connects `outfit`, `metadata`, `viewport` to the rest of the system?**
   _157 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `auth.ts` be split into smaller, more focused modules?**
-  _Cohesion score 0.08771929824561403 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.12073170731707317 - nodes in this community are weakly interconnected._
 - **Should `page.tsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.07319347319347319 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.08896103896103896 - nodes in this community are weakly interconnected._
+- **Should `ops.ts` be split into smaller, more focused modules?**
+  _Cohesion score 0.09358974358974359 - nodes in this community are weakly interconnected._
 - **Should `dependencies` be split into smaller, more focused modules?**
   _Cohesion score 0.1111111111111111 - nodes in this community are weakly interconnected._
-- **Should `compilerOptions` be split into smaller, more focused modules?**
-  _Cohesion score 0.06896551724137931 - nodes in this community are weakly interconnected._
