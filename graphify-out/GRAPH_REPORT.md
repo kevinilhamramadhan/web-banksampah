@@ -1,16 +1,16 @@
 # Graph Report - websampah  (2026-07-21)
 
 ## Corpus Check
-- 110 files · ~31,251 words
+- 110 files · ~31,218 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 461 nodes · 703 edges · 58 communities (48 shown, 10 thin omitted)
+- 461 nodes · 700 edges · 60 communities (50 shown, 10 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 7 edges (avg confidence: 0.71)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `4ffd680e`
+- Built from commit: `0d4a9fa3`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -46,6 +46,7 @@
 - page.tsx
 - UnduhLaporan.tsx
 - layout.tsx
+- peringkat.test.ts
 
 ## God Nodes (most connected - your core abstractions)
 1. `getSessionUser()` - 26 edges
@@ -60,10 +61,10 @@
 10. `sendVerification()` - 8 edges
 
 ## Surprising Connections (you probably didn't know these)
+- `ops()` --calls--> `buatUser()`  [EXTRACTED]
+  webapp/tests/db/setoran.test.ts → webapp/tests/db/helpers.ts
 - `OpsAnalitikPage()` --calls--> `analitikOps`  [EXTRACTED]
   webapp/src/app/ops/analitik/page.tsx → webapp/src/lib/analitik.ts
-- `KontribusiPage()` --calls--> `kontribusiWarga`  [EXTRACTED]
-  webapp/src/app/warga/kontribusi/page.tsx → webapp/src/lib/kontribusi.ts
 - `main()` --calls--> `hashPassword()`  [EXTRACTED]
   webapp/prisma/seed-warga.ts → webapp/src/lib/password.ts
 - `main()` --calls--> `hashPassword()`  [EXTRACTED]
@@ -74,19 +75,19 @@
 ## Import Cycles
 - None detected.
 
-## Communities (58 total, 10 thin omitted)
+## Communities (60 total, 10 thin omitted)
 
 ### Community 0 - "auth.ts"
-Cohesion: 0.12
-Nodes (23): main(), prisma, main(), prisma, PengaturanAkun(), gantiPasswordAction(), ProfilState, updateProfilAction() (+15 more)
+Cohesion: 0.09
+Nodes (36): main(), prisma, main(), prisma, LoginPage(), LoginState, ResetState, RegisterPage() (+28 more)
 
 ### Community 1 - "page.tsx"
-Cohesion: 0.09
-Nodes (43): GET(), PenukaranForm(), Props, bacaQr(), BarcodeDetectorLike, ScanQr(), JenisPilihan, SetoranForm() (+35 more)
+Cohesion: 0.08
+Nodes (46): GET(), PenukaranForm(), Props, bacaQr(), BarcodeDetectorLike, ScanQr(), JenisPilihan, SetoranForm() (+38 more)
 
 ### Community 2 - "ops.ts"
-Cohesion: 0.09
-Nodes (27): LoginPage(), LoginState, ResetState, RegisterPage(), RegisterState, ResetForm(), ResetState, VerifikasiForm() (+19 more)
+Cohesion: 0.18
+Nodes (7): ResetForm(), ResetState, VerifikasiForm(), VerifikasiState, resetPasswordAction(), verifyEmailAction(), consumeEmailToken()
 
 ### Community 3 - "dependencies"
 Cohesion: 0.11
@@ -149,8 +150,8 @@ Cohesion: 0.20
 Nodes (9): BarisPenukaran(), BarisSetoran(), PenukaranRow, Props, RiwayatPage, SetoranRow, STATUS_LABEL, fmtTanggal() (+1 more)
 
 ### Community 33 - "kontribusi.ts"
-Cohesion: 0.36
-Nodes (6): KontribusiPage(), JenisRingkas, kontribusiWarga, kunciBulan(), labelBulan(), TrenBulan
+Cohesion: 0.43
+Nodes (5): JenisRingkas, kontribusiWarga, kunciBulan(), labelBulan(), TrenBulan
 
 ### Community 34 - "route.ts"
 Cohesion: 0.24
@@ -159,6 +160,10 @@ Nodes (11): RFC-4180, GET(), parseTanggal(), slug(), STATUS, tgl(), bidangCsv(),
 ### Community 53 - "layout.tsx"
 Cohesion: 0.40
 Nodes (3): metadata, outfit, viewport
+
+### Community 58 - "peringkat.test.ts"
+Cohesion: 0.53
+Nodes (4): kuartalRange(), Peringkat, PeringkatBaris, peringkatKuartal()
 
 ## Knowledge Gaps
 - **157 isolated node(s):** `IKON`, `Item`, `MENU`, `outfit`, `metadata` (+152 more)
@@ -175,10 +180,10 @@ _Questions this graph is uniquely positioned to answer:_
 - **What connects `IKON`, `Item`, `MENU` to the rest of the system?**
   _157 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `auth.ts` be split into smaller, more focused modules?**
-  _Cohesion score 0.12073170731707317 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.08771929824561403 - nodes in this community are weakly interconnected._
 - **Should `page.tsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.08896103896103896 - nodes in this community are weakly interconnected._
-- **Should `ops.ts` be split into smaller, more focused modules?**
-  _Cohesion score 0.09358974358974359 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.08248587570621468 - nodes in this community are weakly interconnected._
 - **Should `dependencies` be split into smaller, more focused modules?**
   _Cohesion score 0.1111111111111111 - nodes in this community are weakly interconnected._
+- **Should `compilerOptions` be split into smaller, more focused modules?**
+  _Cohesion score 0.06896551724137931 - nodes in this community are weakly interconnected._

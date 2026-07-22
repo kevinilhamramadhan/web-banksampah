@@ -6,13 +6,145 @@
     {
       "label": "layout.tsx",
       "file_type": "code",
+      "source_file": "webapp/src/app/(info)/layout.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "webapp_src_app_info_layout",
+      "community": 39,
+      "community_name": "layout.tsx",
+      "norm_label": "layout.tsx"
+    },
+    {
+      "label": "InfoLayout()",
+      "file_type": "code",
+      "source_file": "webapp/src/app/(info)/layout.tsx",
+      "source_location": "L5",
+      "_origin": "ast",
+      "id": "webapp_src_app_info_layout_infolayout",
+      "community": 39,
+      "community_name": "layout.tsx",
+      "norm_label": "infolayout()"
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "webapp/src/app/ops/page.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "webapp_src_app_ops_page",
+      "community": 55,
+      "community_name": "page.tsx",
+      "norm_label": "page.tsx"
+    },
+    {
+      "label": "OpsPage()",
+      "file_type": "code",
+      "source_file": "webapp/src/app/ops/page.tsx",
+      "source_location": "L23",
+      "_origin": "ast",
+      "id": "webapp_src_app_ops_page_opspage",
+      "community": 55,
+      "community_name": "page.tsx",
+      "norm_label": "opspage()"
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "webapp/src/app/page.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "webapp_src_app_page",
+      "community": 36,
+      "community_name": "page.tsx",
+      "norm_label": "page.tsx"
+    },
+    {
+      "label": "Home()",
+      "file_type": "code",
+      "source_file": "webapp/src/app/page.tsx",
+      "source_location": "L9",
+      "_origin": "ast",
+      "id": "webapp_src_app_page_home",
+      "community": 36,
+      "community_name": "page.tsx",
+      "norm_label": "home()"
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "webapp/src/app/warga/kontribusi/page.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "webapp_src_app_warga_kontribusi_page",
+      "community": 59,
+      "community_name": "page.tsx",
+      "norm_label": "page.tsx"
+    },
+    {
+      "label": "KontribusiPage()",
+      "file_type": "code",
+      "source_file": "webapp/src/app/warga/kontribusi/page.tsx",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "webapp_src_app_warga_kontribusi_page_kontribusipage",
+      "community": 59,
+      "community_name": "page.tsx",
+      "norm_label": "kontribusipage()"
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "webapp/src/app/warga/page.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "webapp_src_app_warga_page",
+      "community": 56,
+      "community_name": "page.tsx",
+      "norm_label": "page.tsx"
+    },
+    {
+      "label": "WargaPage()",
+      "file_type": "code",
+      "source_file": "webapp/src/app/warga/page.tsx",
+      "source_location": "L13",
+      "_origin": "ast",
+      "id": "webapp_src_app_warga_page_wargapage",
+      "community": 56,
+      "community_name": "page.tsx",
+      "norm_label": "wargapage()"
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "webapp/src/app/warga/pengaturan/page.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "webapp_src_app_warga_pengaturan_page",
+      "community": 44,
+      "community_name": "page.tsx",
+      "norm_label": "page.tsx"
+    },
+    {
+      "label": "PengaturanPage()",
+      "file_type": "code",
+      "source_file": "webapp/src/app/warga/pengaturan/page.tsx",
+      "source_location": "L8",
+      "_origin": "ast",
+      "id": "webapp_src_app_warga_pengaturan_page_pengaturanpage",
+      "community": 44,
+      "community_name": "page.tsx",
+      "norm_label": "pengaturanpage()"
+    },
+    {
+      "label": "layout.tsx",
+      "file_type": "code",
       "source_file": "webapp/src/app/ops/layout.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "webapp_src_app_ops_layout",
       "community": 57,
       "community_name": "layout.tsx",
-      "norm_label": "layout.tsx"
+      "norm_label": "layout.tsx",
+      "id": "webapp_src_app_ops_layout"
     },
     {
       "label": "OpsLayout()",
@@ -20,10 +152,10 @@
       "source_file": "webapp/src/app/ops/layout.tsx",
       "source_location": "L4",
       "_origin": "ast",
-      "id": "webapp_src_app_ops_layout_opslayout",
       "community": 57,
       "community_name": "layout.tsx",
-      "norm_label": "opslayout()"
+      "norm_label": "opslayout()",
+      "id": "webapp_src_app_ops_layout_opslayout"
     },
     {
       "label": "layout.tsx",
@@ -31,10 +163,10 @@
       "source_file": "webapp/src/app/warga/layout.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "webapp_src_app_warga_layout",
       "community": 52,
       "community_name": "layout.tsx",
-      "norm_label": "layout.tsx"
+      "norm_label": "layout.tsx",
+      "id": "webapp_src_app_warga_layout"
     },
     {
       "label": "WargaLayout()",
@@ -42,10 +174,10 @@
       "source_file": "webapp/src/app/warga/layout.tsx",
       "source_location": "L8",
       "_origin": "ast",
-      "id": "webapp_src_app_warga_layout_wargalayout",
       "community": 52,
       "community_name": "layout.tsx",
-      "norm_label": "wargalayout()"
+      "norm_label": "wargalayout()",
+      "id": "webapp_src_app_warga_layout_wargalayout"
     },
     {
       "label": "layout.tsx",
@@ -125,50 +257,6 @@
       "id": "webapp_src_components_appnav_appnav"
     },
     {
-      "label": "page.tsx",
-      "file_type": "code",
-      "source_file": "webapp/src/app/ops/page.tsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 55,
-      "community_name": "page.tsx",
-      "norm_label": "page.tsx",
-      "id": "webapp_src_app_ops_page"
-    },
-    {
-      "label": "OpsPage()",
-      "file_type": "code",
-      "source_file": "webapp/src/app/ops/page.tsx",
-      "source_location": "L23",
-      "_origin": "ast",
-      "community": 55,
-      "community_name": "page.tsx",
-      "norm_label": "opspage()",
-      "id": "webapp_src_app_ops_page_opspage"
-    },
-    {
-      "label": "page.tsx",
-      "file_type": "code",
-      "source_file": "webapp/src/app/warga/page.tsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 56,
-      "community_name": "page.tsx",
-      "norm_label": "page.tsx",
-      "id": "webapp_src_app_warga_page"
-    },
-    {
-      "label": "WargaPage()",
-      "file_type": "code",
-      "source_file": "webapp/src/app/warga/page.tsx",
-      "source_location": "L13",
-      "_origin": "ast",
-      "community": 56,
-      "community_name": "page.tsx",
-      "norm_label": "wargapage()",
-      "id": "webapp_src_app_warga_page_wargapage"
-    },
-    {
       "label": "layout.tsx",
       "file_type": "code",
       "source_file": "webapp/src/app/layout.tsx",
@@ -222,28 +310,6 @@
       "community_name": "layout.tsx",
       "norm_label": "rootlayout()",
       "id": "webapp_src_app_layout_rootlayout"
-    },
-    {
-      "label": "page.tsx",
-      "file_type": "code",
-      "source_file": "webapp/src/app/page.tsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 36,
-      "community_name": "page.tsx",
-      "norm_label": "page.tsx",
-      "id": "webapp_src_app_page"
-    },
-    {
-      "label": "Home()",
-      "file_type": "code",
-      "source_file": "webapp/src/app/page.tsx",
-      "source_location": "L9",
-      "_origin": "ast",
-      "community": 36,
-      "community_name": "page.tsx",
-      "norm_label": "home()",
-      "id": "webapp_src_app_page_home"
     },
     {
       "label": "InstallPengaturan.tsx",
@@ -556,28 +622,6 @@
     {
       "label": "page.tsx",
       "file_type": "code",
-      "source_file": "webapp/src/app/warga/pengaturan/page.tsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 44,
-      "community_name": "page.tsx",
-      "norm_label": "page.tsx",
-      "id": "webapp_src_app_warga_pengaturan_page"
-    },
-    {
-      "label": "PengaturanPage()",
-      "file_type": "code",
-      "source_file": "webapp/src/app/warga/pengaturan/page.tsx",
-      "source_location": "L8",
-      "_origin": "ast",
-      "community": 44,
-      "community_name": "page.tsx",
-      "norm_label": "pengaturanpage()",
-      "id": "webapp_src_app_warga_pengaturan_page_pengaturanpage"
-    },
-    {
-      "label": "page.tsx",
-      "file_type": "code",
       "source_file": "webapp/src/app/warga/profil/page.tsx",
       "source_location": "L1",
       "_origin": "ast",
@@ -684,28 +728,6 @@
       "community_name": "page.tsx",
       "norm_label": "scanpage()",
       "id": "webapp_src_app_warga_scan_page_scanpage"
-    },
-    {
-      "label": "page.tsx",
-      "file_type": "code",
-      "source_file": "webapp/src/app/warga/kontribusi/page.tsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 33,
-      "community_name": "kontribusi.ts",
-      "norm_label": "page.tsx",
-      "id": "webapp_src_app_warga_kontribusi_page"
-    },
-    {
-      "label": "KontribusiPage()",
-      "file_type": "code",
-      "source_file": "webapp/src/app/warga/kontribusi/page.tsx",
-      "source_location": "L6",
-      "_origin": "ast",
-      "community": 33,
-      "community_name": "kontribusi.ts",
-      "norm_label": "kontribusipage()",
-      "id": "webapp_src_app_warga_kontribusi_page_kontribusipage"
     },
     {
       "label": "Onboarding.tsx",
@@ -1483,8 +1505,8 @@
       "source_file": "webapp/src/app/(auth)/login/page.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 2,
-      "community_name": "ops.ts",
+      "community": 0,
+      "community_name": "auth.ts",
       "norm_label": "page.tsx",
       "id": "webapp_src_app_auth_login_page"
     },
@@ -1494,8 +1516,8 @@
       "source_file": "webapp/src/app/(auth)/login/page.tsx",
       "source_location": "L6",
       "_origin": "ast",
-      "community": 2,
-      "community_name": "ops.ts",
+      "community": 0,
+      "community_name": "auth.ts",
       "norm_label": "loginstate",
       "id": "webapp_src_app_auth_login_page_loginstate"
     },
@@ -1505,8 +1527,8 @@
       "source_file": "webapp/src/app/(auth)/login/page.tsx",
       "source_location": "L7",
       "_origin": "ast",
-      "community": 2,
-      "community_name": "ops.ts",
+      "community": 0,
+      "community_name": "auth.ts",
       "norm_label": "resetstate",
       "id": "webapp_src_app_auth_login_page_resetstate"
     },
@@ -1516,8 +1538,8 @@
       "source_file": "webapp/src/app/(auth)/login/page.tsx",
       "source_location": "L9",
       "_origin": "ast",
-      "community": 2,
-      "community_name": "ops.ts",
+      "community": 0,
+      "community_name": "auth.ts",
       "norm_label": "loginpage()",
       "id": "webapp_src_app_auth_login_page_loginpage"
     },
@@ -1527,8 +1549,8 @@
       "source_file": "webapp/src/app/(auth)/register/page.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 2,
-      "community_name": "ops.ts",
+      "community": 0,
+      "community_name": "auth.ts",
       "norm_label": "page.tsx",
       "id": "webapp_src_app_auth_register_page"
     },
@@ -1538,8 +1560,8 @@
       "source_file": "webapp/src/app/(auth)/register/page.tsx",
       "source_location": "L6",
       "_origin": "ast",
-      "community": 2,
-      "community_name": "ops.ts",
+      "community": 0,
+      "community_name": "auth.ts",
       "norm_label": "registerstate",
       "id": "webapp_src_app_auth_register_page_registerstate"
     },
@@ -1549,8 +1571,8 @@
       "source_file": "webapp/src/app/(auth)/register/page.tsx",
       "source_location": "L8",
       "_origin": "ast",
-      "community": 2,
-      "community_name": "ops.ts",
+      "community": 0,
+      "community_name": "auth.ts",
       "norm_label": "registerpage()",
       "id": "webapp_src_app_auth_register_page_registerpage"
     },
@@ -1696,28 +1718,6 @@
       "community_name": "helpers.ts",
       "norm_label": "ketentuanpage()",
       "id": "webapp_src_app_info_ketentuan_page_ketentuanpage"
-    },
-    {
-      "label": "layout.tsx",
-      "file_type": "code",
-      "source_file": "webapp/src/app/(info)/layout.tsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 39,
-      "community_name": "layout.tsx",
-      "norm_label": "layout.tsx",
-      "id": "webapp_src_app_info_layout"
-    },
-    {
-      "label": "InfoLayout()",
-      "file_type": "code",
-      "source_file": "webapp/src/app/(info)/layout.tsx",
-      "source_location": "L5",
-      "_origin": "ast",
-      "community": 39,
-      "community_name": "layout.tsx",
-      "norm_label": "infolayout()",
-      "id": "webapp_src_app_info_layout_infolayout"
     },
     {
       "label": "page.tsx",
@@ -2385,8 +2385,8 @@
       "source_file": "webapp/src/components/TombolKeluar.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 2,
-      "community_name": "ops.ts",
+      "community": 0,
+      "community_name": "auth.ts",
       "norm_label": "tombolkeluar.tsx",
       "id": "webapp_src_components_tombolkeluar"
     },
@@ -2396,8 +2396,8 @@
       "source_file": "webapp/src/components/TombolKeluar.tsx",
       "source_location": "L6",
       "_origin": "ast",
-      "community": 2,
-      "community_name": "ops.ts",
+      "community": 0,
+      "community_name": "auth.ts",
       "norm_label": "tombolkeluar()",
       "id": "webapp_src_components_tombolkeluar_tombolkeluar"
     },
@@ -2484,8 +2484,8 @@
       "source_file": "webapp/src/components/VerifikasiBanner.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 2,
-      "community_name": "ops.ts",
+      "community": 0,
+      "community_name": "auth.ts",
       "norm_label": "verifikasibanner.tsx",
       "id": "webapp_src_components_verifikasibanner"
     },
@@ -2495,8 +2495,8 @@
       "source_file": "webapp/src/components/VerifikasiBanner.tsx",
       "source_location": "L8",
       "_origin": "ast",
-      "community": 2,
-      "community_name": "ops.ts",
+      "community": 0,
+      "community_name": "auth.ts",
       "norm_label": "verifikasibanner()",
       "id": "webapp_src_components_verifikasibanner_verifikasibanner"
     },
@@ -2528,8 +2528,8 @@
       "source_file": "webapp/src/lib/actions/auth.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 2,
-      "community_name": "ops.ts",
+      "community": 0,
+      "community_name": "auth.ts",
       "norm_label": "auth.ts",
       "id": "webapp_src_lib_actions_auth"
     },
@@ -2539,8 +2539,8 @@
       "source_file": "webapp/src/lib/actions/auth.ts",
       "source_location": "L10",
       "_origin": "ast",
-      "community": 2,
-      "community_name": "ops.ts",
+      "community": 0,
+      "community_name": "auth.ts",
       "norm_label": "pasangsession()",
       "id": "webapp_src_lib_actions_auth_pasangsession"
     },
@@ -2550,8 +2550,8 @@
       "source_file": "webapp/src/lib/actions/auth.ts",
       "source_location": "L17",
       "_origin": "ast",
-      "community": 2,
-      "community_name": "ops.ts",
+      "community": 0,
+      "community_name": "auth.ts",
       "norm_label": "loginaction()",
       "id": "webapp_src_lib_actions_auth_loginaction"
     },
@@ -2561,8 +2561,8 @@
       "source_file": "webapp/src/lib/actions/auth.ts",
       "source_location": "L28",
       "_origin": "ast",
-      "community": 2,
-      "community_name": "ops.ts",
+      "community": 0,
+      "community_name": "auth.ts",
       "norm_label": "registeraction()",
       "id": "webapp_src_lib_actions_auth_registeraction"
     },
@@ -2572,8 +2572,8 @@
       "source_file": "webapp/src/lib/actions/auth.ts",
       "source_location": "L48",
       "_origin": "ast",
-      "community": 2,
-      "community_name": "ops.ts",
+      "community": 0,
+      "community_name": "auth.ts",
       "norm_label": "logoutaction()",
       "id": "webapp_src_lib_actions_auth_logoutaction"
     },
@@ -2583,8 +2583,8 @@
       "source_file": "webapp/src/lib/actions/auth.ts",
       "source_location": "L55",
       "_origin": "ast",
-      "community": 2,
-      "community_name": "ops.ts",
+      "community": 0,
+      "community_name": "auth.ts",
       "norm_label": "requestresetaction()",
       "id": "webapp_src_lib_actions_auth_requestresetaction"
     },
@@ -2605,8 +2605,8 @@
       "source_file": "webapp/src/lib/actions/auth.ts",
       "source_location": "L75",
       "_origin": "ast",
-      "community": 2,
-      "community_name": "ops.ts",
+      "community": 0,
+      "community_name": "auth.ts",
       "norm_label": "resendverificationaction()",
       "id": "webapp_src_lib_actions_auth_resendverificationaction"
     },
@@ -2616,8 +2616,8 @@
       "source_file": "webapp/src/lib/actions/auth.ts",
       "source_location": "L88",
       "_origin": "ast",
-      "community": 2,
-      "community_name": "ops.ts",
+      "community": 0,
+      "community_name": "auth.ts",
       "norm_label": "gantiemailaction()",
       "id": "webapp_src_lib_actions_auth_gantiemailaction"
     },
@@ -3199,8 +3199,8 @@
       "source_file": "webapp/src/lib/email.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 2,
-      "community_name": "ops.ts",
+      "community": 0,
+      "community_name": "auth.ts",
       "norm_label": "email.ts",
       "id": "webapp_src_lib_email"
     },
@@ -3210,8 +3210,8 @@
       "source_file": "webapp/src/lib/email.ts",
       "source_location": "L6",
       "_origin": "ast",
-      "community": 2,
-      "community_name": "ops.ts",
+      "community": 0,
+      "community_name": "auth.ts",
       "norm_label": "createemailtoken()",
       "id": "webapp_src_lib_email_createemailtoken"
     },
@@ -3232,8 +3232,8 @@
       "source_file": "webapp/src/lib/email.ts",
       "source_location": "L25",
       "_origin": "ast",
-      "community": 2,
-      "community_name": "ops.ts",
+      "community": 0,
+      "community_name": "auth.ts",
       "norm_label": "resend()",
       "id": "webapp_src_lib_email_resend"
     },
@@ -3243,8 +3243,8 @@
       "source_file": "webapp/src/lib/email.ts",
       "source_location": "L26",
       "_origin": "ast",
-      "community": 2,
-      "community_name": "ops.ts",
+      "community": 0,
+      "community_name": "auth.ts",
       "norm_label": "kirim()",
       "id": "webapp_src_lib_email_kirim"
     },
@@ -3254,8 +3254,8 @@
       "source_file": "webapp/src/lib/email.ts",
       "source_location": "L29",
       "_origin": "ast",
-      "community": 2,
-      "community_name": "ops.ts",
+      "community": 0,
+      "community_name": "auth.ts",
       "norm_label": "esc()",
       "id": "webapp_src_lib_email_esc"
     },
@@ -3265,8 +3265,8 @@
       "source_file": "webapp/src/lib/email.ts",
       "source_location": "L31",
       "_origin": "ast",
-      "community": 2,
-      "community_name": "ops.ts",
+      "community": 0,
+      "community_name": "auth.ts",
       "norm_label": "sendverification()",
       "id": "webapp_src_lib_email_sendverification"
     },
@@ -3276,8 +3276,8 @@
       "source_file": "webapp/src/lib/email.ts",
       "source_location": "L36",
       "_origin": "ast",
-      "community": 2,
-      "community_name": "ops.ts",
+      "community": 0,
+      "community_name": "auth.ts",
       "norm_label": "sendreset()",
       "id": "webapp_src_lib_email_sendreset"
     },
@@ -3617,8 +3617,8 @@
       "source_file": "webapp/src/lib/peringkat.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 0,
-      "community_name": "auth.ts",
+      "community": 58,
+      "community_name": "peringkat.test.ts",
       "norm_label": "peringkat.ts",
       "id": "webapp_src_lib_peringkat"
     },
@@ -3628,8 +3628,8 @@
       "source_file": "webapp/src/lib/peringkat.ts",
       "source_location": "L6",
       "_origin": "ast",
-      "community": 0,
-      "community_name": "auth.ts",
+      "community": 58,
+      "community_name": "peringkat.test.ts",
       "norm_label": "peringkatbaris",
       "id": "webapp_src_lib_peringkat_peringkatbaris"
     },
@@ -3639,8 +3639,8 @@
       "source_file": "webapp/src/lib/peringkat.ts",
       "source_location": "L13",
       "_origin": "ast",
-      "community": 0,
-      "community_name": "auth.ts",
+      "community": 58,
+      "community_name": "peringkat.test.ts",
       "norm_label": "peringkat",
       "id": "webapp_src_lib_peringkat_peringkat"
     },
@@ -3650,8 +3650,8 @@
       "source_file": "webapp/src/lib/peringkat.ts",
       "source_location": "L19",
       "_origin": "ast",
-      "community": 0,
-      "community_name": "auth.ts",
+      "community": 58,
+      "community_name": "peringkat.test.ts",
       "norm_label": "kuartalrange()",
       "id": "webapp_src_lib_peringkat_kuartalrange"
     },
@@ -3661,8 +3661,8 @@
       "source_file": "webapp/src/lib/peringkat.ts",
       "source_location": "L28",
       "_origin": "ast",
-      "community": 0,
-      "community_name": "auth.ts",
+      "community": 58,
+      "community_name": "peringkat.test.ts",
       "norm_label": "peringkatkuartal()",
       "id": "webapp_src_lib_peringkat_peringkatkuartal"
     },
@@ -3738,8 +3738,8 @@
       "source_file": "webapp/src/lib/session.ts",
       "source_location": "L25",
       "_origin": "ast",
-      "community": 2,
-      "community_name": "ops.ts",
+      "community": 0,
+      "community_name": "auth.ts",
       "norm_label": "deletesession()",
       "id": "webapp_src_lib_session_deletesession"
     },
@@ -3782,8 +3782,8 @@
       "source_file": "webapp/src/lib/setoran.ts",
       "source_location": "L36",
       "_origin": "ast",
-      "community": 0,
-      "community_name": "auth.ts",
+      "community": 1,
+      "community_name": "page.tsx",
       "norm_label": "searchwarga()",
       "id": "webapp_src_lib_setoran_searchwarga"
     },
@@ -3870,8 +3870,8 @@
       "source_file": "webapp/tests/db/helpers.ts",
       "source_location": "L16",
       "_origin": "ast",
-      "community": 0,
-      "community_name": "auth.ts",
+      "community": 1,
+      "community_name": "page.tsx",
       "norm_label": "buatjenis()",
       "id": "webapp_tests_db_helpers_buatjenis"
     },
@@ -3936,8 +3936,8 @@
       "source_file": "webapp/tests/db/peringkat.test.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 0,
-      "community_name": "auth.ts",
+      "community": 58,
+      "community_name": "peringkat.test.ts",
       "norm_label": "peringkat.test.ts",
       "id": "webapp_tests_db_peringkat_test"
     },
@@ -3991,8 +3991,8 @@
       "source_file": "webapp/tests/db/setoran.test.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 0,
-      "community_name": "auth.ts",
+      "community": 1,
+      "community_name": "page.tsx",
       "norm_label": "setoran.test.ts",
       "id": "webapp_tests_db_setoran_test"
     },
@@ -4002,8 +4002,8 @@
       "source_file": "webapp/tests/db/setoran.test.ts",
       "source_location": "L6",
       "_origin": "ast",
-      "community": 0,
-      "community_name": "auth.ts",
+      "community": 1,
+      "community_name": "page.tsx",
       "norm_label": "ops()",
       "id": "webapp_tests_db_setoran_test_ops"
     },
@@ -5079,13 +5079,79 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "webapp/src/app/(info)/layout.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "webapp_src_app_info_layout",
+      "target": "webapp_src_app_info_layout_infolayout",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "webapp/src/app/ops/page.tsx",
+      "source_location": "L23",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "webapp_src_app_ops_page",
+      "target": "webapp_src_app_ops_page_opspage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "webapp/src/app/page.tsx",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "webapp_src_app_page",
+      "target": "webapp_src_app_page_home",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "webapp/src/app/warga/kontribusi/page.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "webapp_src_app_warga_kontribusi_page",
+      "target": "webapp_src_app_warga_kontribusi_page_kontribusipage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "webapp/src/app/warga/page.tsx",
+      "source_location": "L13",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "webapp_src_app_warga_page",
+      "target": "webapp_src_app_warga_page_wargapage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "webapp/src/app/warga/pengaturan/page.tsx",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "webapp_src_app_warga_pengaturan_page",
+      "target": "webapp_src_app_warga_pengaturan_page_pengaturanpage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "webapp/src/app/ops/layout.tsx",
       "source_location": "L4",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "webapp_src_app_ops_layout",
-      "target": "webapp_src_app_ops_layout_opslayout",
-      "confidence_score": 1.0
+      "target": "webapp_src_app_ops_layout_opslayout"
     },
     {
       "relation": "contains",
@@ -5094,9 +5160,9 @@
       "source_location": "L8",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "webapp_src_app_warga_layout",
-      "target": "webapp_src_app_warga_layout_wargalayout",
-      "confidence_score": 1.0
+      "target": "webapp_src_app_warga_layout_wargalayout"
     },
     {
       "relation": "contains",
@@ -5156,28 +5222,6 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "webapp/src/app/ops/page.tsx",
-      "source_location": "L23",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "webapp_src_app_ops_page",
-      "target": "webapp_src_app_ops_page_opspage"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "webapp/src/app/warga/page.tsx",
-      "source_location": "L13",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "webapp_src_app_warga_page",
-      "target": "webapp_src_app_warga_page_wargapage"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
       "source_file": "webapp/src/app/layout.tsx",
       "source_location": "L17",
       "weight": 1.0,
@@ -5218,17 +5262,6 @@
       "confidence_score": 1.0,
       "source": "webapp_src_app_layout",
       "target": "webapp_src_app_layout_viewport"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "webapp/src/app/page.tsx",
-      "source_location": "L9",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "webapp_src_app_page",
-      "target": "webapp_src_app_page_home"
     },
     {
       "relation": "contains",
@@ -5539,17 +5572,6 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "webapp/src/app/warga/pengaturan/page.tsx",
-      "source_location": "L8",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "webapp_src_app_warga_pengaturan_page",
-      "target": "webapp_src_app_warga_pengaturan_page_pengaturanpage"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
       "source_file": "webapp/src/app/warga/profil/page.tsx",
       "source_location": "L5",
       "weight": 1.0,
@@ -5601,53 +5623,6 @@
       "confidence_score": 1.0,
       "source": "webapp_src_app_warga_scan_page",
       "target": "webapp_src_app_warga_scan_page_scanpage"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "webapp/src/app/warga/kontribusi/page.tsx",
-      "source_location": "L6",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "webapp_src_app_warga_kontribusi_page",
-      "target": "webapp_src_app_warga_kontribusi_page_kontribusipage"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "webapp/src/app/warga/kontribusi/page.tsx",
-      "source_location": "L3",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "webapp_src_app_warga_kontribusi_page",
-      "target": "webapp_src_lib_kontribusi"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "webapp/src/app/warga/kontribusi/page.tsx",
-      "source_location": "L3",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "webapp_src_app_warga_kontribusi_page",
-      "target": "webapp_src_lib_kontribusi_kontribusiwarga"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "webapp/src/app/warga/kontribusi/page.tsx",
-      "source_location": "L8",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "webapp_src_app_warga_kontribusi_page_kontribusipage",
-      "target": "webapp_src_lib_kontribusi_kontribusiwarga"
     },
     {
       "relation": "contains",
@@ -6814,17 +6789,6 @@
       "confidence_score": 1.0,
       "source": "webapp_src_app_info_ketentuan_page",
       "target": "webapp_src_app_info_ketentuan_page_metadata"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "webapp/src/app/(info)/layout.tsx",
-      "source_location": "L5",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "webapp_src_app_info_layout",
-      "target": "webapp_src_app_info_layout_infolayout"
     },
     {
       "relation": "contains",
@@ -13190,5 +13154,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "4ffd680ef09e2ac74bc1e06dca9b00bf70e57dbb"
+  "built_at_commit": "0d4a9fa360bc05f1882cad38e727f8bc7826c861"
 }

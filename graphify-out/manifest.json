@@ -65,8 +65,8 @@
     "semantic_hash": ""
   },
   "webapp/src/app/ops/page.tsx": {
-    "mtime": 1784606325.5134275,
-    "ast_hash": "c86355cf616f97b6e5da749910fb85e2",
+    "mtime": 1784648044.9396408,
+    "ast_hash": "ce73183e215f59500c5ad00b8780503c",
     "semantic_hash": ""
   },
   "webapp/src/app/ops/penukaran/page.tsx": {
@@ -80,13 +80,13 @@
     "semantic_hash": ""
   },
   "webapp/src/app/page.tsx": {
-    "mtime": 1784605628.9788873,
-    "ast_hash": "c554f797bc8f4fb53b6e51fbe34c18d1",
+    "mtime": 1784648068.3257985,
+    "ast_hash": "88fe56cfef48474387dd6e77e45db932",
     "semantic_hash": ""
   },
   "webapp/src/app/warga/page.tsx": {
-    "mtime": 1784606313.334401,
-    "ast_hash": "35dd6f0846cea667902c90ea5253d803",
+    "mtime": 1784647985.8902404,
+    "ast_hash": "e45889159edacb24c6c58ab68d59af39",
     "semantic_hash": ""
   },
   "webapp/src/app/warga/scan/page.tsx": {
@@ -305,8 +305,8 @@
     "semantic_hash": ""
   },
   "webapp/src/app/(auth)/layout.tsx": {
-    "mtime": 1784607093.6245751,
-    "ast_hash": "390e187d06eb4b84c4fc5ac52c11bde1",
+    "mtime": 1784613206.153635,
+    "ast_hash": "8376d0f84e580fe32d45b2d9d835f129",
     "semantic_hash": ""
   },
   "webapp/src/app/ops/layout.tsx": {
@@ -510,8 +510,8 @@
     "semantic_hash": ""
   },
   "webapp/src/app/(info)/layout.tsx": {
-    "mtime": 1784532990.3579981,
-    "ast_hash": "4de8308f7ec097171a08be9e983467c4",
+    "mtime": 1784647996.2953112,
+    "ast_hash": "70bde25422d1103208f7733d633cb88c",
     "semantic_hash": ""
   },
   "webapp/src/app/(info)/privasi/page.tsx": {
@@ -525,8 +525,8 @@
     "semantic_hash": ""
   },
   "webapp/src/app/warga/kontribusi/page.tsx": {
-    "mtime": 1784536732.2163894,
-    "ast_hash": "35ddcb121f828685ebd05dcf3dbaaedd",
+    "mtime": 1784648055.8917146,
+    "ast_hash": "1fa7f34721fa521b04766ad762f45eab",
     "semantic_hash": ""
   },
   "webapp/src/components/Onboarding.tsx": {
@@ -550,8 +550,8 @@
     "semantic_hash": ""
   },
   "webapp/src/app/warga/pengaturan/page.tsx": {
-    "mtime": 1784538254.8498263,
-    "ast_hash": "8df6c236d813f4de3895db577b1a059e",
+    "mtime": 1784648037.0875876,
+    "ast_hash": "86abfdd5069e08b10004952b2b07c78d",
     "semantic_hash": ""
   },
   "webapp/src/app/ops/menu/page.tsx": {
