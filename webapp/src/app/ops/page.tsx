@@ -27,7 +27,7 @@ export default async function OpsPage() {
 
   return (
     <>
-      <AppHeader judul="Ops Bank Sampah" aksi={<TombolKeluar />} />
+      <AppHeader judul="Beranda" />
       <main className="container">
         {/* Dua tugas inti ops, langsung di depan. */}
         <div className="aksi-utama" style={{ padding: "10px 0" }}>
@@ -50,8 +50,8 @@ export default async function OpsPage() {
         </div>
 
         <p className="ringkas">
-          Bulan ini: <strong>{bulan.jumlahSetoran} setoran</strong> ·{" "}
-          <strong className="emas">{bulan.poin.toLocaleString("id-ID")} poin</strong> ·{" "}
+          Bulan ini <strong>{bulan.jumlahSetoran} setoran</strong>,{" "}
+          <strong className="emas">{bulan.poin.toLocaleString("id-ID")} poin</strong>,{" "}
           <strong>{bulan.beratKg.toLocaleString("id-ID")} kg</strong>
         </p>
         <p className="muted" style={{ marginTop: 0 }}>
@@ -69,15 +69,14 @@ export default async function OpsPage() {
         ) : (
           <div style={{ marginTop: 4 }}>
             {terbaru.map((s) => (
-              <div className="riwayat-item baris" key={s.id}>
-                <span>
+              <div key={s.id} className="riwayat-item baris" style={{ padding: "12px 0", borderBottom: "1px solid var(--garis)" }}>
+                <div>
                   <strong>{s.wargaNama}</strong>
                   <br />
-                  <span className="muted">
-                    {s.items.map((i) => `${i.jenisSampahNama} ${i.beratKg} kg`).join(", ")} •{" "}
-                    {fmtTanggal(new Date(s.tanggal))}
+                  <span className="muted" style={{ fontSize: "0.85rem" }}>
+                    {s.items.map((i) => `${i.jenisSampahNama} ${i.beratKg} kg`).join(", ")}, {fmtTanggal(new Date(s.tanggal))}
                   </span>
-                </span>
+                </div>
                 <strong style={{ color: "var(--hijau-link)" }}>+{s.totalPoin} poin</strong>
               </div>
             ))}

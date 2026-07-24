@@ -3,13 +3,19 @@ import { requireRole } from "@/lib/session-next";
 import AppHeader from "@/components/AppHeader";
 import TombolTema from "@/components/TombolTema";
 import InstallPengaturan from "@/components/InstallPengaturan";
-import TombolKeluar from "@/components/TombolKeluar";
 
 export default async function PengaturanPage() {
   await requireRole("warga");
   return (
     <>
-      <AppHeader judul="Pengaturan" />
+      <AppHeader
+        judul="Pengaturan"
+        aksi={
+          <Link href="/warga/profil" className="tautan-sentuh" style={{ color: "#fff", textDecoration: "none" }}>
+            ← Profil
+          </Link>
+        }
+      />
       <main className="container">
         <div className="card">
           <h2 style={{ fontSize: "1.02rem" }}>Tampilan</h2>
@@ -26,10 +32,6 @@ export default async function PengaturanPage() {
             <Link href="/privasi">Kebijakan privasi</Link>
             <Link href="/ketentuan">Syarat &amp; ketentuan</Link>
           </p>
-        </div>
-
-        <div style={{ marginTop: 8 }}>
-          <TombolKeluar />
         </div>
       </main>
     </>

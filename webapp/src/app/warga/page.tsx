@@ -26,7 +26,7 @@ export default async function WargaPage() {
 
   return (
     <>
-      <AppHeader judul="Bank Sampah" kelas="saldo-panel" aksi={<TombolKeluar />}>
+      <AppHeader kelas="saldo-panel">
         <div className="label" style={{ marginTop: 20 }}>
           Saldo poin {user.nama}
         </div>
@@ -38,7 +38,7 @@ export default async function WargaPage() {
         </div>
         <div className="rupiah">≈ {fmtRupiah(user.saldoPoin * RUPIAH_PER_POIN)}</div>
         <div className="aturan">
-          1 poin = {fmtRupiah(RUPIAH_PER_POIN)} • cair min. {MIN_TUKAR_POIN} poin (
+          1 poin = {fmtRupiah(RUPIAH_PER_POIN)}, cair min. {MIN_TUKAR_POIN} poin (
           {fmtRupiah(MIN_TUKAR_POIN * RUPIAH_PER_POIN)})
         </div>
       </AppHeader>
@@ -56,7 +56,7 @@ export default async function WargaPage() {
                 <br />
                 <span className="muted">Tren sampah per bulan &amp; jenis favoritmu</span>
               </span>
-              <span aria-hidden="true" style={{ color: "var(--hijau-link)", fontSize: "1.6rem" }}>→</span>
+              <span aria-hidden="true" style={{ color: "var(--hijau-link)", fontSize: "1.6rem" }}>›</span>
             </Link>
 
             <h2 style={{ fontWeight: 800, marginTop: "24px" }}>Riwayat</h2>

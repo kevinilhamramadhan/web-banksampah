@@ -21,7 +21,7 @@ export function kuartalRange(d = new Date()) {
   return {
     mulai: new Date(d.getFullYear(), q * 3, 1),
     selesai: new Date(d.getFullYear(), q * 3 + 3, 1),
-    label: `Kuartal ${q + 1} · ${d.getFullYear()}`,
+    label: `Kuartal ${q + 1} (${d.getFullYear()})`,
   };
 }
 

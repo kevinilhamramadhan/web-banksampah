@@ -52,7 +52,7 @@ function BarisSetoran({ s, varian }: { s: SetoranRow; varian: Props["varian"] })
       <div>
         <div>{varian === "ops" ? s.wargaNama : rincian}</div>
         <div className="muted">
-          {varian === "ops" ? `${rincian} • ${fmtTanggal(new Date(s.tanggal))}` : fmtTanggal(new Date(s.tanggal))}
+          {varian === "ops" ? `${rincian}, ${fmtTanggal(new Date(s.tanggal))}` : fmtTanggal(new Date(s.tanggal))}
         </div>
       </div>
       <strong style={{ color: "var(--hijau-link)" }}>+{s.totalPoin} poin</strong>
@@ -65,7 +65,7 @@ function BarisPenukaran({ p, varian }: { p: PenukaranRow; varian: Props["varian"
     <div className="baris">
       <div>
         <div>
-          {varian === "ops" ? `${p.wargaNama} • ${STATUS_LABEL[p.status]}` : `${STATUS_LABEL[p.status]} • ${fmtRupiah(p.jumlahRupiah)}`}
+          {varian === "ops" ? `${p.wargaNama}, ${STATUS_LABEL[p.status]}` : `${STATUS_LABEL[p.status]}, ${fmtRupiah(p.jumlahRupiah)}`}
         </div>
         <div className="muted">{fmtTanggal(new Date(p.createdAt))}</div>
       </div>
@@ -127,7 +127,7 @@ export default function RiwayatList({
       setSetoranCursor(page.nextCursor);
     } catch {
       setSetoranError(
-        navigator.onLine ? "Gagal memuat riwayat. Coba lagi." : "Kamu sedang offline — riwayat butuh koneksi.",
+        navigator.onLine ? "Gagal memuat riwayat. Coba lagi." : "Kamu sedang offline, riwayat butuh koneksi.",
       );
     } finally {
       setSetoranSibuk(false);
@@ -147,7 +147,7 @@ export default function RiwayatList({
       setPenukaranCursor(page.nextCursor);
     } catch {
       setPenukaranError(
-        navigator.onLine ? "Gagal memuat riwayat. Coba lagi." : "Kamu sedang offline — riwayat butuh koneksi.",
+        navigator.onLine ? "Gagal memuat riwayat. Coba lagi." : "Kamu sedang offline, riwayat butuh koneksi.",
       );
     } finally {
       setPenukaranSibuk(false);

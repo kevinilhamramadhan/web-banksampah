@@ -8,7 +8,7 @@ export default function AppHeader({
   kelas,
   children,
 }: {
-  judul: string;
+  judul?: string;
   aksi?: ReactNode;
   kelas?: string;
   children?: ReactNode;
@@ -16,10 +16,12 @@ export default function AppHeader({
   return (
     <header className={`markas${kelas ? ` ${kelas}` : ""}`}>
       <div className="container">
-        <div className="baris">
-          <h1>{judul}</h1>
-          {aksi}
-        </div>
+        {(judul || aksi) && (
+          <div className="baris">
+            {judul ? <h1>{judul}</h1> : <div />}
+            {aksi}
+          </div>
+        )}
         {children}
       </div>
     </header>

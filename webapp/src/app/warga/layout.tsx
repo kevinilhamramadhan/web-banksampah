@@ -2,17 +2,18 @@ import type { ReactNode } from "react";
 import AppNav from "@/components/AppNav";
 import { getSessionUser } from "@/lib/session-next";
 
-// Navbar mengikuti PERAN pengguna, bukan segmen URL. Penting untuk /warga/peringkat
-// yang juga boleh dibuka ops — tanpa ini ops melihat menu warga (Scan/Profil) yang
-// justru akan memantulkannya balik ke /ops.
 export default async function WargaLayout({ children }: { children: ReactNode }) {
   const user = await getSessionUser();
+
+  // Warga yang belum verifikasi email tidak menampilkan navbar utama
+  if (user?.role === "warga" && !user.emailVerifiedAt) {
+    return <div className="dgn-konten">{children}</div>;
+  }
+
   return (
     <div className="dgn-nav">
       <AppNav peran={user?.role === "ops" ? "ops" : "warga"} />
-      <div className="dgn-konten">
-        {children}
-      </div>
+      <div className="dgn-konten">{children}</div>
     </div>
   );
 }

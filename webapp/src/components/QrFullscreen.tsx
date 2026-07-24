@@ -154,11 +154,11 @@ export default function QrFullscreen({ penukaran: awal, onBuatUlang, onBatalkan,
   return (
     <div className="qr-layar">
       <h2>
-        {p.wargaNama} • {p.poinDitukar} poin → {fmtRupiah(p.jumlahRupiah)}
+        {p.wargaNama}, {p.poinDitukar} poin setara {fmtRupiah(p.jumlahRupiah)}
       </h2>
       <canvas ref={canvasRef} />
       <p style={{ fontSize: "1.25rem" }}>
-        Minta warga scan QR ini •{" "}
+        Minta warga scan QR ini,{" "}
         <strong>
           {Math.floor(sisa / 60)}:{String(sisa % 60).padStart(2, "0")}
         </strong>

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { requireRole } from "@/lib/session-next";
 import AppHeader from "@/components/AppHeader";
+import TombolKeluar from "@/components/TombolKeluar";
 
 const IKON = {
   analitik: (
@@ -65,6 +66,10 @@ export default async function OpsMenuPage() {
             </Link>
           ))}
         </nav>
+
+        <div style={{ marginTop: 28, paddingBottom: 24 }}>
+          <TombolKeluar kelas="btn bahaya" />
+        </div>
       </main>
     </>
   );

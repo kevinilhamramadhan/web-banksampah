@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-export const metadata: Metadata = { title: "Tentang — Bank Sampah Digital" };
+export const metadata: Metadata = { title: "Tentang | Bank Sampah Digital" };
 
 export default function TentangPage() {
   return (

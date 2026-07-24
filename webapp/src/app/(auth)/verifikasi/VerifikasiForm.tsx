@@ -37,7 +37,7 @@ export default function VerifikasiForm({ token }: { token: string }) {
         </>
       )}
       <p aria-live="polite" style={{ margin: state?.ok || state?.error ? "4px 0 16px" : 0 }}>
-        {state?.ok && <span className="sukses">Email berhasil diverifikasi — selamat menabung sampah!</span>}
+        {state?.ok && <span className="sukses">Email berhasil diverifikasi, selamat menabung sampah!</span>}
         {state?.error && <span className="error">{state.error}</span>}
       </p>
       {(state?.ok || state?.error) && (

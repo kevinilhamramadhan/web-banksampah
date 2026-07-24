@@ -70,7 +70,7 @@ export default async function KontribusiPage() {
                   <div className="baris">
                     <strong>{j.nama}</strong>
                     <span className="muted">
-                      {j.beratKg.toLocaleString("id-ID")} kg • <span className="emas">{j.poin.toLocaleString("id-ID")} poin</span>
+                      {j.beratKg.toLocaleString("id-ID")} kg, <span className="emas">{j.poin.toLocaleString("id-ID")} poin</span>
                     </span>
                   </div>
                   <div className="isi">

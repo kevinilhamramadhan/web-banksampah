@@ -1,32 +1,68 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState, useTransition } from "react";
 import { logoutAction } from "@/lib/actions/auth";
 
-/** Keluar dgn konfirmasi dua-langkah — mencegah tap tak sengaja di posisi header. */
-export default function TombolKeluar() {
-  const [konfirmasi, setKonfirmasi] = useState(false);
+export default function TombolKeluar({ kelas = "btn bahaya" }: { kelas?: string }) {
+  const [buka, setBuka] = useState(false);
+  const [pending, startTransition] = useTransition();
+  const dialogRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!konfirmasi) return;
-    const t = setTimeout(() => setKonfirmasi(false), 4000);
-    return () => clearTimeout(t);
-  }, [konfirmasi]);
+    if (buka) {
+      dialogRef.current?.focus();
+    }
+  }, [buka]);
 
-  if (!konfirmasi) {
-    return (
-      <button className="btn kecil bahaya" onClick={() => setKonfirmasi(true)}>
-        Keluar
-      </button>
-    );
-  }
+  const handleLogout = () => {
+    startTransition(async () => {
+      await logoutAction();
+    });
+  };
+
   return (
-    <form action={logoutAction} className="baris" style={{ gap: 8 }}>
-      <button className="btn kecil bahaya" type="submit" autoFocus>
-        Ya, keluar
+    <>
+      <button className={kelas} type="button" onClick={() => setBuka(true)}>
+        Keluar Akun
       </button>
-      <button className="btn kecil sekunder di-hijau" type="button" onClick={() => setKonfirmasi(false)}>
-        Batal
-      </button>
-    </form>
+
+      {buka && (
+        <div
+          className="popup-latar"
+          role="dialog"
+          aria-modal="true"
+          tabIndex={-1}
+          ref={dialogRef}
+          onClick={(e) => {
+            if (e.target === e.currentTarget) setBuka(false);
+          }}
+        >
+          <div className="popup-isi">
+            <h3 style={{ marginTop: 0, fontSize: "1.2rem", fontWeight: 800 }}>Konfirmasi Keluar</h3>
+            <p className="muted" style={{ margin: "12px 0 24px" }}>
+              Apakah Anda yakin ingin keluar dari akun ini?
+            </p>
+            <div className="baris" style={{ justifyContent: "flex-end", gap: 12 }}>
+              <button
+                className="btn sekunder"
+                type="button"
+                onClick={() => setBuka(false)}
+                disabled={pending}
+              >
+                Batal
+              </button>
+              <button
+                className="btn bahaya"
+                type="button"
+                onClick={handleLogout}
+                disabled={pending}
+                autoFocus
+              >
+                {pending ? "Mengeluarkan…" : "Ya, Keluar"}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
   );
 }

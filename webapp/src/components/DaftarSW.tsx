@@ -9,6 +9,18 @@ import "@/lib/install";
 export default function DaftarSW() {
   useEffect(() => {
     if (!("serviceWorker" in navigator)) return;
+
+    // Di mode development, batalkan registrasi Service Worker agar tidak bentrok
+    // dengan Hot Module Replacement (HMR) / Turbopack yang menyebabkan halaman terus reload.
+    if (process.env.NODE_ENV !== "production") {
+      navigator.serviceWorker.getRegistrations().then((registrations) => {
+        for (const registration of registrations) {
+          registration.unregister();
+        }
+      });
+      return;
+    }
+
     const daftar = () => {
       navigator.serviceWorker
         .register("/sw.js", { scope: "/", updateViaCache: "none" })

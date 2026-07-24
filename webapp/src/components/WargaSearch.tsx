@@ -30,7 +30,7 @@ export default function WargaSearch({ onSelect }: { onSelect: (w: WargaHasil) =>
         setHasil(res);
       } catch {
         setError(
-          navigator.onLine ? "Gagal mencari warga. Coba lagi." : "Kamu sedang offline — pencarian butuh koneksi.",
+          navigator.onLine ? "Gagal mencari warga. Coba lagi." : "Kamu sedang offline, pencarian butuh koneksi.",
         );
       } finally {
         setSibuk(false);

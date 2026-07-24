@@ -14,14 +14,14 @@ export default async function PeringkatPage() {
     <>
       <AppHeader judul="Peringkat Penabung">
         <p className="label" style={{ margin: "4px 0 0" }}>
-          {musimLabel} — poin dari setoran sampah kuartal ini
+          {musimLabel}, poin dari setoran sampah kuartal ini
         </p>
       </AppHeader>
 
       <main className="container">
         {top.length === 0 ? (
           <p className="muted" style={{ marginTop: 16 }}>
-            Belum ada setoran kuartal ini — jadilah penabung pertama!
+            Belum ada setoran kuartal ini, jadilah penabung pertama!
           </p>
         ) : (
           <ol className="peringkat" aria-label={`Peringkat penabung ${musimLabel}`}>
@@ -31,7 +31,7 @@ export default async function PeringkatPage() {
                   <span className="posisi">{t.posisi}</span>
                   <span>
                     {t.nama}
-                    {t.wargaId === saya?.wargaId && <span className="muted"> — kamu</span>}
+                    {t.wargaId === saya?.wargaId && <span className="muted"> (kamu)</span>}
                   </span>
                 </span>
                 <strong className="emas">{t.poin.toLocaleString("id-ID")} poin</strong>
@@ -43,7 +43,7 @@ export default async function PeringkatPage() {
                   <span className="posisi">{saya.posisi}</span>
                   <span>
                     {saya.nama}
-                    <span className="muted"> — kamu</span>
+                    <span className="muted"> (kamu)</span>
                   </span>
                 </span>
                 <strong className="emas">{saya.poin.toLocaleString("id-ID")} poin</strong>
@@ -52,7 +52,7 @@ export default async function PeringkatPage() {
           </ol>
         )}
         {user.role === "warga" && !saya && top.length > 0 && (
-          <p className="muted">Kamu belum menyetor kuartal ini — setor sampah untuk masuk peringkat!</p>
+          <p className="muted">Kamu belum menyetor kuartal ini, setor sampah untuk masuk peringkat!</p>
         )}
       </main>
     </>

@@ -14,7 +14,7 @@ export default function RegisterPage() {
   return (
     <>
       <h1>Buat akun warga</h1>
-      <p className="auth-sub">Gratis — mulai menabung dari sampah hari ini.</p>
+      <p className="auth-sub">Gratis, mulai menabung dari sampah hari ini.</p>
       <form action={formAction}>
         <label htmlFor="nama">Nama lengkap</label>
         <input id="nama" name="nama" className="input" placeholder="Sesuai nama panggilan di lingkungan" autoComplete="name" required maxLength={100} />

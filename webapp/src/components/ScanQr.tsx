@@ -80,7 +80,7 @@ export default function ScanQr({ verified, email }: { verified: boolean; email: 
             () =>
               tolak(
                 new Error(
-                  "Koneksi lambat — proses belum tuntas. Cek saldo di beranda dulu; kalau belum terpotong, scan lagi.",
+                  "Koneksi lambat, proses belum tuntas. Cek saldo di beranda dulu; kalau belum terpotong, scan lagi.",
                 ),
               ),
             20_000,
@@ -117,7 +117,7 @@ export default function ScanQr({ verified, email }: { verified: boolean; email: 
         </h2>
         <div className="jumlah">{fmtRupiah(hasil.rupiah)}</div>
         <p className="pesan">
-          {hasil.poin} poin kamu sudah dicairkan — terima uang tunainya dari ops, ya. Terima kasih sudah menabung
+          {hasil.poin} poin kamu sudah dicairkan. Terima uang tunainya dari ops, ya. Terima kasih sudah menabung
           sampah!
         </p>
         <Link href="/warga" className="btn di-hijau" style={{ maxWidth: 320 }}>
@@ -137,7 +137,7 @@ export default function ScanQr({ verified, email }: { verified: boolean; email: 
           {/* video selalu ter-mount saat scan/proses agar kamera tidak berkedip */}
           <video ref={videoRef} className="scan-video" muted playsInline />
           <p aria-live="polite" style={{ margin: fase === "proses" || error ? undefined : 0 }}>
-            {fase === "proses" && <span className="sukses">QR terbaca — memproses penukaran…</span>}
+            {fase === "proses" && <span className="sukses">QR terbaca, memproses penukaran…</span>}
             {error && <span className="error">{error}</span>}
           </p>
           {error && (

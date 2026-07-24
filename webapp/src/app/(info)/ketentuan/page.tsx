@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-export const metadata: Metadata = { title: "Syarat & Ketentuan — Bank Sampah Digital" };
+export const metadata: Metadata = { title: "Syarat & Ketentuan | Bank Sampah Digital" };
 
 export default function KetentuanPage() {
   return (

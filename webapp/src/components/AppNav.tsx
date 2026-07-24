@@ -70,8 +70,7 @@ const MENU: Record<"warga" | "ops", Item[]> = {
     { href: "/warga", label: "Beranda", ikon: "beranda", cakupan: ["/warga/kontribusi"] },
     { href: "/warga/peringkat", label: "Peringkat", ikon: "peringkat" },
     { href: "/warga/scan", label: "Scan", ikon: "scan" },
-    { href: "/warga/pengaturan", label: "Pengaturan", ikon: "pengaturan" },
-    { href: "/warga/profil", label: "Profil", ikon: "profil" },
+    { href: "/warga/profil", label: "Profil", ikon: "profil", cakupan: ["/warga/pengaturan"] },
   ],
   ops: [
     { href: "/ops", label: "Beranda", ikon: "beranda", cakupan: ["/ops/riwayat"] },

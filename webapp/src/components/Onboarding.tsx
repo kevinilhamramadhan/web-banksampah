@@ -5,19 +5,15 @@ import { useEffect, useRef, useState } from "react";
 const KUNCI = "websampah.onboarding.v1";
 const SLIDE = [
   {
-    judul: "Selamat datang di Bank Sampah",
-    teks: "Ubah sampah yang kamu pilah jadi tabungan poin — bisa dicairkan menjadi uang tunai.",
-  },
-  {
-    judul: "1 · Setor sampah",
+    judul: "1. Setor sampah",
     teks: "Bawa sampah terpilah ke petugas. Ditimbang, lalu poin otomatis masuk ke saldomu.",
   },
   {
-    judul: "2 · Kumpulkan poin",
+    judul: "2. Kumpulkan poin",
     teks: "Saldo naik tiap setoran. Pantau di Beranda dan naik peringkat penabung tiap kuartal.",
   },
   {
-    judul: "3 · Tukar jadi uang",
+    judul: "3. Tukar jadi uang",
     teks: "Minta petugas membuat QR penukaran, lalu pindai lewat menu Scan untuk mencairkan poin.",
   },
 ];

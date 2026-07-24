@@ -60,7 +60,7 @@ export default async function OpsAnalitikPage() {
                   <div className="baris">
                     <strong>{j.nama}</strong>
                     <span className="muted">
-                      {nf(j.beratKg)} kg · <span className="emas">{nf(j.poin)} poin</span>
+                      {nf(j.beratKg)} kg, <span className="emas">{nf(j.poin)} poin</span>
                     </span>
                   </div>
                   <div className="isi">

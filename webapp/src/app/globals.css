@@ -149,7 +149,6 @@ a {
 .markas {
   background: linear-gradient(135deg, var(--hijau-pekat), var(--hijau-gelap));
   color: #fff;
-  padding-top: max(10px, env(safe-area-inset-top));
   border-bottom: 1px solid oklch(1 0 0 / 0.1);
 }
 
@@ -879,17 +878,18 @@ label {
   bottom: 0;
   left: 0;
   right: 0;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
   z-index: var(--z-lekat);
   display: flex;
   align-items: stretch;
-  max-width: 720px;
-  margin: 0 auto;
-  background: color-mix(in oklab, var(--kartu) 85%, transparent);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: color-mix(in oklab, var(--kartu) 65%, transparent);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
   border-top: 1px solid var(--garis);
   padding-bottom: env(safe-area-inset-bottom);
-  box-shadow: 0 -4px 30px oklch(0 0 0 / 0.04);
+  box-shadow: 0 -4px 30px oklch(0 0 0 / 0.08);
 }
 
 .nav-item {
@@ -1255,9 +1255,21 @@ body {
 }
 
 .landing-footer {
-  margin: 8px 0 28px;
+  margin: 32px auto 40px;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   color: var(--teks-redup);
+}
+
+.landing-footer p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 4px;
 }
 
 /* Welcome: drenched — pintu masuk brand */
@@ -1439,8 +1451,11 @@ body {
     border-top: none;
     border-right: 1px solid var(--garis);
     padding: 32px 16px;
-    background: transparent;
+    background: var(--kartu);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
     box-shadow: none;
+    z-index: var(--z-lekat);
   }
 
   .nav-item {
@@ -1478,8 +1493,6 @@ body {
     color: #fff;
   }
 
-
-
   .nav-merek {
     display: flex;
     align-items: center;
@@ -1495,4 +1508,32 @@ body {
     border-radius: 8px;
     box-shadow: 0 4px 12px oklch(0 0 0 / 0.1);
   }
+}
+
+/* ---------- Modal Pop-up Konfirmasi ---------- */
+.popup-latar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: color-mix(in oklab, oklch(0 0 0) 55%, transparent);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: var(--z-layar-penuh);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.popup-isi {
+  background: var(--kartu);
+  color: var(--teks);
+  border-radius: var(--radius-besar);
+  padding: 28px 24px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 20px 48px oklch(0 0 0 / 0.25);
+  border: 1px solid var(--garis);
 }
