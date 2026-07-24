@@ -10,8 +10,8 @@
     "semantic_hash": ""
   },
   "webapp/package.json": {
-    "mtime": 1784369285.5887995,
-    "ast_hash": "3b992b150f911b39bdd6796fb6348fc4",
+    "mtime": 1784910057.7208617,
+    "ast_hash": "b2a5eaab9e33c608e7e521d5bb9f08a6",
     "semantic_hash": ""
   },
   "webapp/src/app/(auth)/login/page.tsx": {
@@ -20,8 +20,8 @@
     "semantic_hash": ""
   },
   "webapp/src/app/(auth)/register/page.tsx": {
-    "mtime": 1784478773.8873265,
-    "ast_hash": "73a6215b574110a24c0aeabc2ff599e7",
+    "mtime": 1784912406.913786,
+    "ast_hash": "0ba6480546a1132c9a447280ad373f01",
     "semantic_hash": ""
   },
   "webapp/src/app/(auth)/reset/ResetForm.tsx": {
@@ -35,8 +35,8 @@
     "semantic_hash": ""
   },
   "webapp/src/app/(auth)/verifikasi/VerifikasiForm.tsx": {
-    "mtime": 1784478809.478462,
-    "ast_hash": "13ece477319e1d5318d03843d1ed9aa1",
+    "mtime": 1784912402.0687687,
+    "ast_hash": "4e8b38ffa4768254bc622a55e1efbbcd",
     "semantic_hash": ""
   },
   "webapp/src/app/(auth)/verifikasi/page.tsx": {
@@ -65,8 +65,8 @@
     "semantic_hash": ""
   },
   "webapp/src/app/ops/page.tsx": {
-    "mtime": 1784648044.9396408,
-    "ast_hash": "ce73183e215f59500c5ad00b8780503c",
+    "mtime": 1784915230.0763721,
+    "ast_hash": "5e4497ab6bfd0f66da065e2657d2399f",
     "semantic_hash": ""
   },
   "webapp/src/app/ops/penukaran/page.tsx": {
@@ -80,13 +80,13 @@
     "semantic_hash": ""
   },
   "webapp/src/app/page.tsx": {
-    "mtime": 1784648068.3257985,
-    "ast_hash": "88fe56cfef48474387dd6e77e45db932",
+    "mtime": 1784914602.7743077,
+    "ast_hash": "9dd196fcb3277e22495cd071422568c3",
     "semantic_hash": ""
   },
   "webapp/src/app/warga/page.tsx": {
-    "mtime": 1784647985.8902404,
-    "ast_hash": "e45889159edacb24c6c58ab68d59af39",
+    "mtime": 1784915222.9856756,
+    "ast_hash": "bad13878519d914c30daeb6ca0748fd9",
     "semantic_hash": ""
   },
   "webapp/src/app/warga/scan/page.tsx": {
@@ -110,18 +110,18 @@
     "semantic_hash": ""
   },
   "webapp/src/components/QrFullscreen.tsx": {
-    "mtime": 1784421025.9308975,
-    "ast_hash": "123df563f4d075f2275b02384f569c75",
+    "mtime": 1784912789.8868046,
+    "ast_hash": "b0dabfb85bb754fc76f57dc408cf93ca",
     "semantic_hash": ""
   },
   "webapp/src/components/RiwayatList.tsx": {
-    "mtime": 1784532990.359465,
-    "ast_hash": "e4b68e84a7e7bd526d4e2bc4efb2d95d",
+    "mtime": 1784912774.0027006,
+    "ast_hash": "61e324e02c888574b051979d57a37324",
     "semantic_hash": ""
   },
   "webapp/src/components/ScanQr.tsx": {
-    "mtime": 1784421044.7513049,
-    "ast_hash": "3d9a83a6e8423105d8d757a3cebb8671",
+    "mtime": 1784912364.621645,
+    "ast_hash": "e24bdbf9db3fb6d7578434240f582896",
     "semantic_hash": ""
   },
   "webapp/src/components/SetoranForm.tsx": {
@@ -135,8 +135,8 @@
     "semantic_hash": ""
   },
   "webapp/src/components/WargaSearch.tsx": {
-    "mtime": 1784532990.360465,
-    "ast_hash": "9307cefd2aa6a41fe8e3269934095a11",
+    "mtime": 1784912346.532591,
+    "ast_hash": "da7a7f7e1b7f8b08a7c9f8ba9d1e16bd",
     "semantic_hash": ""
   },
   "webapp/src/lib/actions/auth.ts": {
@@ -205,8 +205,8 @@
     "semantic_hash": ""
   },
   "webapp/src/lib/session-next.ts": {
-    "mtime": 1784352712.1626334,
-    "ast_hash": "25f28c29cef09a68012718f0d7de4d4f",
+    "mtime": 1784914584.651141,
+    "ast_hash": "ce0edacf91d3db2d500a29c90070d0c3",
     "semantic_hash": ""
   },
   "webapp/src/lib/session.ts": {
@@ -305,8 +305,8 @@
     "semantic_hash": ""
   },
   "webapp/src/app/(auth)/layout.tsx": {
-    "mtime": 1784613206.153635,
-    "ast_hash": "8376d0f84e580fe32d45b2d9d835f129",
+    "mtime": 1784912757.5675945,
+    "ast_hash": "f7697d3c5651d3659aa63068e894d570",
     "semantic_hash": ""
   },
   "webapp/src/app/ops/layout.tsx": {
@@ -315,33 +315,33 @@
     "semantic_hash": ""
   },
   "webapp/src/app/warga/layout.tsx": {
-    "mtime": 1784609272.9722147,
-    "ast_hash": "11a1179a087625657db00719de6963b2",
+    "mtime": 1784914597.4522588,
+    "ast_hash": "da92b9830ea18f161f435709b086136d",
     "semantic_hash": ""
   },
   "webapp/src/app/warga/peringkat/page.tsx": {
-    "mtime": 1784573203.6803288,
-    "ast_hash": "625eedb19213a89c83c251cf8998b382",
+    "mtime": 1784912370.2436626,
+    "ast_hash": "53d8ec343daca0de5fea9de02e7a57ef",
     "semantic_hash": ""
   },
   "webapp/src/components/AppHeader.tsx": {
-    "mtime": 1784420977.5847554,
-    "ast_hash": "2ffeb58a60426cce2fc120151d5b3e5a",
+    "mtime": 1784915217.3689191,
+    "ast_hash": "2c37df107034f4e1a1452e1c8575f74f",
     "semantic_hash": ""
   },
   "webapp/src/components/AppNav.tsx": {
-    "mtime": 1784607351.3503013,
-    "ast_hash": "86eef720ab94fec58e03fcceb913f7b3",
+    "mtime": 1784913775.917786,
+    "ast_hash": "470b64c1f7d6c395546cb0d068c27371",
     "semantic_hash": ""
   },
   "webapp/src/components/TombolKeluar.tsx": {
-    "mtime": 1784420975.192816,
-    "ast_hash": "67d63e4c58cfb2e37222fd3aca01a08d",
+    "mtime": 1784913767.0957074,
+    "ast_hash": "5c41c0fa5275e69b17ec056a1587a944",
     "semantic_hash": ""
   },
   "webapp/src/lib/peringkat.ts": {
-    "mtime": 1784478830.097591,
-    "ast_hash": "4048a3b56414d36bcdf7fe00495922ac",
+    "mtime": 1784912737.036464,
+    "ast_hash": "4a77b36781742a93ad95e9a1e036de52",
     "semantic_hash": ""
   },
   "webapp/tests/db/peringkat.test.ts": {
@@ -385,8 +385,8 @@
     "semantic_hash": ""
   },
   "webapp/src/components/DaftarSW.tsx": {
-    "mtime": 1784536732.2172594,
-    "ast_hash": "28704bb650fd2dd4427c79af3a737003",
+    "mtime": 1784909648.550304,
+    "ast_hash": "1be24fbd239c98fe00a1029a5a06ba0a",
     "semantic_hash": ""
   },
   "webapp/src/app/ops/loading.tsx": {
@@ -440,8 +440,8 @@
     "semantic_hash": ""
   },
   "webapp/src/app/ops/analitik/page.tsx": {
-    "mtime": 1784573432.3791661,
-    "ast_hash": "248ed914decccca865b5defc84c622d9",
+    "mtime": 1784912762.7066274,
+    "ast_hash": "5157645911ce0e9d151744f54e565c7b",
     "semantic_hash": ""
   },
   "webapp/src/lib/analitik.ts": {
@@ -480,8 +480,8 @@
     "semantic_hash": ""
   },
   "webapp/src/app/warga/profil/page.tsx": {
-    "mtime": 1784538265.2050703,
-    "ast_hash": "982c9fab008bcc3b3091f665a4a7f167",
+    "mtime": 1784913793.22394,
+    "ast_hash": "0f23922e3af395109c8594235b3ef9dd",
     "semantic_hash": ""
   },
   "webapp/src/components/PengaturanAkun.tsx": {
@@ -505,8 +505,8 @@
     "semantic_hash": ""
   },
   "webapp/src/app/(info)/ketentuan/page.tsx": {
-    "mtime": 1784532990.3579981,
-    "ast_hash": "5feccbf5da64382ba2b1769f996a57d8",
+    "mtime": 1784912379.1686912,
+    "ast_hash": "b7fc33417cbfe51a316db822cb45912c",
     "semantic_hash": ""
   },
   "webapp/src/app/(info)/layout.tsx": {
@@ -515,23 +515,23 @@
     "semantic_hash": ""
   },
   "webapp/src/app/(info)/privasi/page.tsx": {
-    "mtime": 1784532990.3579981,
-    "ast_hash": "9acc9b4196a1c28687e3e2f24ec4ee46",
+    "mtime": 1784912383.8757067,
+    "ast_hash": "c5a73db898ab1f4f414e16b33ac8d0ee",
     "semantic_hash": ""
   },
   "webapp/src/app/(info)/tentang/page.tsx": {
-    "mtime": 1784532990.3579981,
-    "ast_hash": "44655bc3de48e18bc2f1cb3bc6710882",
+    "mtime": 1784912374.5366762,
+    "ast_hash": "6cbf6d42f76af624af0f22f61040d93c",
     "semantic_hash": ""
   },
   "webapp/src/app/warga/kontribusi/page.tsx": {
-    "mtime": 1784648055.8917146,
-    "ast_hash": "1fa7f34721fa521b04766ad762f45eab",
+    "mtime": 1784912778.6147306,
+    "ast_hash": "68875fe453325b6b53b7e97e853740b1",
     "semantic_hash": ""
   },
   "webapp/src/components/Onboarding.tsx": {
-    "mtime": 1784536732.2174118,
-    "ast_hash": "86b16111cd4ade7dd37e8f47b44c949c",
+    "mtime": 1784912690.0451748,
+    "ast_hash": "242196b0b63520c76d5e0b0d4ce18475",
     "semantic_hash": ""
   },
   "webapp/src/lib/kontribusi.ts": {
@@ -550,13 +550,13 @@
     "semantic_hash": ""
   },
   "webapp/src/app/warga/pengaturan/page.tsx": {
-    "mtime": 1784648037.0875876,
-    "ast_hash": "86abfdd5069e08b10004952b2b07c78d",
+    "mtime": 1784913804.6200416,
+    "ast_hash": "c4dfd00ed83f7872baaadc11005e0122",
     "semantic_hash": ""
   },
   "webapp/src/app/ops/menu/page.tsx": {
-    "mtime": 1784573051.0877492,
-    "ast_hash": "97e50bed1d49aedfd40c6e17638de6d7",
+    "mtime": 1784913799.0389917,
+    "ast_hash": "6c00f7013ffa3a1e1728565b9eb2dc6c",
     "semantic_hash": ""
   },
   "webapp/src/app/ops/riwayat/page.tsx": {
@@ -1177,6 +1177,11 @@
   ".claude/skills/impeccable/reference/typeset.md": {
     "mtime": 1784710092.364065,
     "ast_hash": "9b66dd9278240182829bf8bdaed6b3ba",
+    "semantic_hash": ""
+  },
+  "webapp/src/app/warga/tunggu-verifikasi/page.tsx": {
+    "mtime": 1784914591.6752055,
+    "ast_hash": "8f44b38711c2c99c21134f8720121207",
     "semantic_hash": ""
   }
 }

@@ -106,11 +106,12 @@ export default async function Home() {
             Sampah anorganik yang bersih dan terpilah punya nilai jual. Alih-alih dibuang, tabung saja lewat bank sampah.
           </p>
           <ol className="langkah">
-            <li><strong>Pilah &amp; bersihkan</strong>, pisahkan plastik, kertas, dan logam serta pastikan kering.</li>
-            <li><strong>Bawa ke petugas</strong> bank sampah pada jadwal setoran.</li>
-            <li><strong>Ditimbang</strong>, berat dikonversi jadi poin sesuai tarif tiap jenis.</li>
-            <li><strong>Poin masuk saldo</strong> otomatis dan tercatat di aplikasi.</li>
-            <li><strong>Tukar jadi uang</strong>, petugas membuat QR lalu kamu pindai untuk mencairkan.</li>
+            <li>Warga memilah sampah anorganik dari rumah masing-masing.</li>
+            <li>Sampah anorganik dikumpulkan pada titik Bank Sampah di wilayah pengguna.</li>
+            <li>Petugas melakukan penimbangan sampah berdasarkan jenisnya.</li>
+            <li>Hasil penimbangan dimasukkan ke dalam aplikasi Bank Sampah Digital.</li>
+            <li>Aplikasi secara otomatis mencatat berat sampah, mengonversi menjadi poin dan saldo tabungan sesuai nilai ekonominya, serta menyimpan riwayat penyetoran setiap warga.</li>
+            <li>Poin atau saldo yang terkumpul dapat ditukarkan menjadi uang sesuai ketentuan yang berlaku.</li>
           </ol>
         </section>
 
